@@ -95,23 +95,24 @@ public class RomanNumeral {
 
     private String convertNumber(String customDigit) {
         String result = "";
-        if (customDigit.length() == 1) {
+        int customDigitLength = customDigit.length();
+        if (customDigitLength == 1) {
             return convertOneDigit(customDigit);
         } else {
 
 
-            if (customDigit.length() == 4) {
+            if (customDigitLength == 4) {
                 int fourNumber = Integer.valueOf(customDigit) / THOUSAND;
                 while (fourNumber > 0) {
                     result += convertFourDigit(String.valueOf(THOUSAND));
                     fourNumber--;
                 }
                 result = threeDigitsNumberConvert(customDigit, result);
-            } else if (customDigit.length() == 3) {
+            } else if (customDigitLength == 3) {
                 result = threeDigitsNumberConvert(customDigit, result);
-            } else if (customDigit.length() == 2) {
+            } else if (customDigitLength == 2) {
                 result = twoDigitsNumberConvert(customDigit, result);
-            } else if (customDigit.length() == 1) {
+            } else if (customDigitLength == 1) {
                 result = oneDigitNumberConvert(customDigit, result);
             } else {
                 result = ABSENT_NUMBER;
@@ -122,22 +123,31 @@ public class RomanNumeral {
 
     private String oneDigitNumberConvert(String customDigit, String result) {
         int theLowestDigit = customDigit.length() - 1;
-        result += convertOneDigit(customDigit.substring(theLowestDigit));
+        if (customDigit.substring(theLowestDigit) != null && Integer.valueOf(customDigit.substring(theLowestDigit)) != 0) {
+            result += convertOneDigit(customDigit.substring(theLowestDigit));
+        }
         return result;
     }
 
     private String twoDigitsNumberConvert(String customDigit, String result) {
-        int twoNumber = (Integer.valueOf(customDigit) % HUNDRED) / TEN;
-        result += convertTwoDigit(String.valueOf(twoNumber * TEN));
-        result = oneDigitNumberConvert(customDigit, result);
+        if ((Integer.valueOf(customDigit) % HUNDRED) != 0) {
+            if((Integer.valueOf(customDigit) % HUNDRED) >= 10) {
+                int twoNumber = (Integer.valueOf(customDigit) % HUNDRED) / TEN;
+                result += convertTwoDigit(String.valueOf(twoNumber * TEN));
+            }
+            result = oneDigitNumberConvert(customDigit, result);
+        }
         return result;
     }
 
     private String threeDigitsNumberConvert(String customDigit, String result) {
-        int threeNumber = (Integer.valueOf(customDigit) % THOUSAND) / HUNDRED;
-        result += convertThreeDigit(String.valueOf(threeNumber * HUNDRED));
-
-        result = twoDigitsNumberConvert(customDigit, result);
+        if ((Integer.valueOf(customDigit) % THOUSAND) != 0) {
+            int threeNumber = (Integer.valueOf(customDigit) % THOUSAND) / HUNDRED;
+            if (threeNumber != 0) {
+                result += convertThreeDigit(String.valueOf(threeNumber * HUNDRED));
+            }
+            result = twoDigitsNumberConvert(customDigit, result);
+        }
         return result;
     }
 }

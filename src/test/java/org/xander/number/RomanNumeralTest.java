@@ -3,8 +3,9 @@ package org.xander.number;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import java.io.*;
+
+import static org.junit.Assert.*;
 
 public class RomanNumeralTest {
     RomanNumeral romanNumeral;
@@ -221,10 +222,81 @@ public class RomanNumeralTest {
     }
 
     @Test
+    public void testConvertCustomFourDigit3001Number() {
+        String customDigit = "3001";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MMMI", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomFourDigit3100Number() {
+        String customDigit = "3100";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MMMC", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomFourDigit3070Number() {
+        String customDigit = "3070";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MMMLXX", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomFourDigit9482Number() {
+        String customDigit = "9482";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MMMMMMMMMCDLXXXII", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomFourDigit3700Number() {
+        String customDigit = "3700";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MMMDCC", customNumberRoman);
+    }
+
+    @Test
     public void testConvertCustomThreeDigitNumber() {
         String customDigit = "388";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("CCCLXXXVIII", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomThreeDigit800Number() {
+        String customDigit = "800";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("DCCC", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomThreeDigit801Number() {
+        String customDigit = "801";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("DCCCI", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomTwoDigit80Number() {
+        String customDigit   = "80";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("LXXX", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomTwoDigit10Number() {
+        String customDigit = "10";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("X", customNumberRoman);
+    }
+
+
+    @Test
+    public void testConvertCustomTwoDigit81Number() {
+        String customDigit = "81";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("LXXXI", customNumberRoman);
     }
 
     @Test
@@ -246,5 +318,46 @@ public class RomanNumeralTest {
         String customDigit = "123123123218";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("there is no such a number", customNumberRoman);
+    }
+
+    @Test
+    public void testNegativeWhetherAllNumbersUpTo10000AreExisting() {
+        PrintWriter writer = null;
+        try {
+            writer = new PrintWriter("fileWithRomanNumbers", "UTF-8");
+        } catch (FileNotFoundException | UnsupportedEncodingException e ) {
+            e.printStackTrace();
+        }
+
+        int writtenLines = 0;
+        for (int i = 1; i < 10000; i++) {
+            String romanNumber = romanNumeral.convertCustomDigit(String.valueOf(i));
+            writer.println(romanNumber);
+            assertNotSame("there is no such a number", romanNumber);
+            if(i == 9600) {
+                System.out.println(romanNumber);
+            }
+            writtenLines = i;
+        }
+
+        String line;
+        int lineNumber = 1;
+        try {
+            FileReader f = new FileReader("fileWithRomanNumbers.txt");
+            BufferedReader bufferReader = new BufferedReader(f);
+
+            while ((line = bufferReader.readLine()) != null) {
+                lineNumber++;
+//                System.out.print(lineNumber++ + " ");
+//                System.out.println(line);
+            }
+
+            bufferReader.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        assertEquals(lineNumber, writtenLines);
     }
 }
