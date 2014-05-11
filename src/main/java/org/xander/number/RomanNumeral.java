@@ -1,6 +1,11 @@
 package org.xander.number;
 
 public class RomanNumeral {
+    final String ABSENT_NUMBER = "there is no such a number";
+    final int THOUSAND = 1000;
+    final int HUNDRED = 100;
+    final int TEN = 10;
+
     public static void main(String[] args) {
         System.out.println("Arabic numerals into Roman Numbers");
     }
@@ -22,11 +27,11 @@ public class RomanNumeral {
                 case "7": romanNumber = "VII"; break;
                 case "8": romanNumber = "VIII"; break;
                 case "9": romanNumber = "IX"; break;
-                default: romanNumber = "there is no such a number";
+                default: romanNumber = ABSENT_NUMBER;
             }
             return romanNumber;
         }
-        return "there is no such a number";
+        return ABSENT_NUMBER;
     }
 
     public String convertTwoDigit(String twoDigitNumber) {
@@ -42,11 +47,11 @@ public class RomanNumeral {
                 case "70": romanNumber = "LXX"; break;
                 case "80": romanNumber = "LXXX"; break;
                 case "90": romanNumber = "XC"; break;
-                default: romanNumber = "there is no such a number";
+                default: romanNumber = ABSENT_NUMBER;
             }
             return romanNumber;
         }
-        return "there is no such a number";
+        return ABSENT_NUMBER;
     }
 
     public String convertThreeDigit(String threeDigitNumber) {
@@ -62,11 +67,11 @@ public class RomanNumeral {
             case "700": romanNumber = "DCC"; break;
             case "800": romanNumber = "DCCC"; break;
             case "900": romanNumber = "CM"; break;
-            default: romanNumber = "there is no such a number";
+            default: romanNumber = ABSENT_NUMBER;
         }
         return romanNumber;
         }
-        return "there is no such a number";
+        return ABSENT_NUMBER;
     }
 
     public String convertFourDigit(String fourDigitNumber) {
@@ -74,10 +79,65 @@ public class RomanNumeral {
         String romanNumber;
         switch (fourDigitNumber) {
             case "1000": romanNumber = "M"; break;
-            default: romanNumber = "there is no such a number";
+            default: romanNumber = ABSENT_NUMBER;
         }
         return romanNumber;
         }
-        return "there is no such a number";
+        return ABSENT_NUMBER;
+    }
+
+    public String convertCustomDigit(String customDigit) {
+        if (customDigit != null) {
+            return convertNumber(customDigit);
+        }
+        return ABSENT_NUMBER;
+    }
+
+    private String convertNumber(String customDigit) {
+        String result = "";
+        if (customDigit.length() == 1) {
+            return convertOneDigit(customDigit);
+        } else {
+
+
+            if (customDigit.length() == 4) {
+                int fourNumber = Integer.valueOf(customDigit) / THOUSAND;
+                while (fourNumber > 0) {
+                    result += convertFourDigit(String.valueOf(THOUSAND));
+                    fourNumber--;
+                }
+                result = threeDigitsNumberConvert(customDigit, result);
+            } else if (customDigit.length() == 3) {
+                result = threeDigitsNumberConvert(customDigit, result);
+            } else if (customDigit.length() == 2) {
+                result = twoDigitsNumberConvert(customDigit, result);
+            } else if (customDigit.length() == 1) {
+                result = oneDigitNumberConvert(customDigit, result);
+            } else {
+                result = ABSENT_NUMBER;
+            }
+        }
+        return result;
+    }
+
+    private String oneDigitNumberConvert(String customDigit, String result) {
+        int theLowestDigit = customDigit.length() - 1;
+        result += convertOneDigit(customDigit.substring(theLowestDigit));
+        return result;
+    }
+
+    private String twoDigitsNumberConvert(String customDigit, String result) {
+        int twoNumber = (Integer.valueOf(customDigit) % HUNDRED) / TEN;
+        result += convertTwoDigit(String.valueOf(twoNumber * TEN));
+        result = oneDigitNumberConvert(customDigit, result);
+        return result;
+    }
+
+    private String threeDigitsNumberConvert(String customDigit, String result) {
+        int threeNumber = (Integer.valueOf(customDigit) % THOUSAND) / HUNDRED;
+        result += convertThreeDigit(String.valueOf(threeNumber * HUNDRED));
+
+        result = twoDigitsNumberConvert(customDigit, result);
+        return result;
     }
 }

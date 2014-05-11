@@ -193,23 +193,58 @@ public class RomanNumeralTest {
 
         String wrongNumberRoman2 = romanNumeral.convertOneDigit(twoSizeDigit);
         String wrongNumberRoman222 = romanNumeral.convertThreeDigit(twoSizeDigit);
-        String wrongNumberRoman2222= romanNumeral.convertFourDigit(twoSizeDigit);
+        String wrongNumberRoman2222 = romanNumeral.convertFourDigit(twoSizeDigit);
         assertEquals("there is no such a number", wrongNumberRoman2);
         assertEquals("there is no such a number", wrongNumberRoman222);
         assertEquals("there is no such a number", wrongNumberRoman2222);
 
-        String wrongNumberRoman3= romanNumeral.convertOneDigit(threeSizeDigit);
-        String wrongNumberRoman33= romanNumeral.convertTwoDigit(threeSizeDigit);
-        String wrongNumberRoman3333= romanNumeral.convertThreeDigit(threeSizeDigit);
+        String wrongNumberRoman3 = romanNumeral.convertOneDigit(threeSizeDigit);
+        String wrongNumberRoman33 = romanNumeral.convertTwoDigit(threeSizeDigit);
+        String wrongNumberRoman3333 = romanNumeral.convertThreeDigit(threeSizeDigit);
         assertEquals("there is no such a number", wrongNumberRoman3);
         assertEquals("there is no such a number", wrongNumberRoman33);
         assertEquals("there is no such a number", wrongNumberRoman3333);
 
-        String wrongNumberRoman4= romanNumeral.convertThreeDigit(fourSizeDigit);
-        String wrongNumberRoman44= romanNumeral.convertThreeDigit(fourSizeDigit);
-        String wrongNumberRoman444= romanNumeral.convertThreeDigit(fourSizeDigit);
+        String wrongNumberRoman4 = romanNumeral.convertThreeDigit(fourSizeDigit);
+        String wrongNumberRoman44 = romanNumeral.convertThreeDigit(fourSizeDigit);
+        String wrongNumberRoman444 = romanNumeral.convertThreeDigit(fourSizeDigit);
         assertEquals("there is no such a number", wrongNumberRoman4);
         assertEquals("there is no such a number", wrongNumberRoman44);
         assertEquals("there is no such a number", wrongNumberRoman444);
+    }
+
+    @Test
+    public void testConvertCustomFourDigitNumber() {
+        String customDigit = "3888";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MMMDCCCLXXXVIII", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomThreeDigitNumber() {
+        String customDigit = "388";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("CCCLXXXVIII", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomTwoDigitNumber() {
+        String customDigit = "38";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("XXXVIII", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomOneDigitNumber() {
+        String customDigit = "8";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("VIII", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomBigDigitNumber() {
+        String customDigit = "123123123218";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("there is no such a number", customNumberRoman);
     }
 }
