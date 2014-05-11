@@ -10,42 +10,48 @@ public class RomanNumeral {
     }
 
     public String convertOneDigit(String oneDigitNumber) {
-        String romanNumber = null;
-        switch (oneDigitNumber) {
-            case "0": romanNumber = ""; break;
-            case "1": romanNumber = "I"; break;
-            case "2": romanNumber = "II"; break;
-            case "3": romanNumber = "III"; break;
-            case "4": romanNumber = "IV"; break;
-            case "5": romanNumber = "V"; break;
-            case "6": romanNumber = "VI"; break;
-            case "7": romanNumber = "VII"; break;
-            case "8": romanNumber = "VIII"; break;
-            case "9": romanNumber = "IX"; break;
-            default: romanNumber = "there is no such a number";
+        if (oneDigitNumber != null) {
+            String romanNumber;
+            switch (oneDigitNumber) {
+                case "1": romanNumber = "I"; break;
+                case "2": romanNumber = "II"; break;
+                case "3": romanNumber = "III"; break;
+                case "4": romanNumber = "IV"; break;
+                case "5": romanNumber = "V"; break;
+                case "6": romanNumber = "VI"; break;
+                case "7": romanNumber = "VII"; break;
+                case "8": romanNumber = "VIII"; break;
+                case "9": romanNumber = "IX"; break;
+                default: romanNumber = "there is no such a number";
+            }
+            return romanNumber;
         }
-        return romanNumber;
+        return "there is no such a number";
     }
 
     public String convertTwoDigit(String twoDigitNumber) {
-        String romanNumber = null;
-        switch (twoDigitNumber) {
-            case "10": romanNumber = "X"; break;
-            case "20": romanNumber = "XX"; break;
-            case "30": romanNumber = "XXX"; break;
-            case "40": romanNumber = "XL"; break;
-            case "50": romanNumber = "L"; break;
-            case "60": romanNumber = "LX"; break;
-            case "70": romanNumber = "LXX"; break;
-            case "80": romanNumber = "LXXX"; break;
-            case "90": romanNumber = "XC"; break;
-            default: romanNumber = "there is no such a number";
+        if (twoDigitNumber != null) {
+            String romanNumber;
+            switch (twoDigitNumber) {
+                case "10": romanNumber = "X"; break;
+                case "20": romanNumber = "XX"; break;
+                case "30": romanNumber = "XXX"; break;
+                case "40": romanNumber = "XL"; break;
+                case "50": romanNumber = "L"; break;
+                case "60": romanNumber = "LX"; break;
+                case "70": romanNumber = "LXX"; break;
+                case "80": romanNumber = "LXXX"; break;
+                case "90": romanNumber = "XC"; break;
+                default: romanNumber = "there is no such a number";
+            }
+            return romanNumber;
         }
-        return romanNumber;
+        return "there is no such a number";
     }
 
     public String convertThreeDigit(String threeDigitNumber) {
-        String romanNumber = null;
+        if (threeDigitNumber != null) {
+        String romanNumber;
         switch (threeDigitNumber) {
             case "100": romanNumber = "C"; break;
             case "200": romanNumber = "CC"; break;
@@ -59,14 +65,19 @@ public class RomanNumeral {
             default: romanNumber = "there is no such a number";
         }
         return romanNumber;
+        }
+        return "there is no such a number";
     }
 
     public String convertFourDigit(String fourDigitNumber) {
-        String romanNumber = null;
+        if (fourDigitNumber != null) {
+        String romanNumber;
         switch (fourDigitNumber) {
             case "1000": romanNumber = "M"; break;
             default: romanNumber = "there is no such a number";
         }
         return romanNumber;
+        }
+        return "there is no such a number";
     }
 }

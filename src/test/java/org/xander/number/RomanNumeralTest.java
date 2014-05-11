@@ -151,8 +151,65 @@ public class RomanNumeralTest {
 
     @Test
     public void testNegative() {
-        String notANumber = "a";
-        String numberRoman = romanNumeral.convertFourDigit(notANumber);
-        assertEquals("there is no such a number", numberRoman);
+        for (int i = 65; i < 91; i++) {
+            String asciiToVerify = String.valueOf((char) i);
+            String numberRoman = romanNumeral.convertFourDigit(asciiToVerify);
+            assertEquals("there is no such a number", numberRoman);
+        }
+
+        for (int i = 97; i < 123; i++) {
+            String asciiToVerify = String.valueOf((char) i);
+            String numberRoman = romanNumeral.convertFourDigit(asciiToVerify);
+            assertEquals("there is no such a number", numberRoman);
+        }
+    }
+
+    @Test
+    public void zeroTest() {
+        String zero = "0";
+        String zeroRoman = romanNumeral.convertOneDigit(zero);
+        assertEquals("there is no such a number", zeroRoman);
+    }
+
+    @Test
+    public void testNull() {
+        String nullRoman = romanNumeral.convertFourDigit(null);
+        assertEquals("there is no such a number", nullRoman);
+    }
+
+    @Test
+    public void testWrongSizeOfDigits() {
+        String oneSizeDigit = "1";
+        String twoSizeDigit = "19";
+        String threeSizeDigit = "432";
+        String fourSizeDigit = "5121";
+
+        String wrongNumberRoman11 = romanNumeral.convertTwoDigit(oneSizeDigit);
+        String wrongNumberRoman111 = romanNumeral.convertThreeDigit(oneSizeDigit);
+        String wrongNumberRoman1111 = romanNumeral.convertFourDigit(oneSizeDigit);
+        assertEquals("there is no such a number", wrongNumberRoman11);
+        assertEquals("there is no such a number", wrongNumberRoman111);
+        assertEquals("there is no such a number", wrongNumberRoman1111);
+
+        String wrongNumberRoman2 = romanNumeral.convertOneDigit(twoSizeDigit);
+        String wrongNumberRoman222 = romanNumeral.convertThreeDigit(twoSizeDigit);
+        String wrongNumberRoman2222= romanNumeral.convertFourDigit(twoSizeDigit);
+        assertEquals("there is no such a number", wrongNumberRoman2);
+        assertEquals("there is no such a number", wrongNumberRoman222);
+        assertEquals("there is no such a number", wrongNumberRoman2222);
+
+        String wrongNumberRoman3= romanNumeral.convertOneDigit(threeSizeDigit);
+        String wrongNumberRoman33= romanNumeral.convertTwoDigit(threeSizeDigit);
+        String wrongNumberRoman3333= romanNumeral.convertThreeDigit(threeSizeDigit);
+        assertEquals("there is no such a number", wrongNumberRoman3);
+        assertEquals("there is no such a number", wrongNumberRoman33);
+        assertEquals("there is no such a number", wrongNumberRoman3333);
+
+        String wrongNumberRoman4= romanNumeral.convertThreeDigit(fourSizeDigit);
+        String wrongNumberRoman44= romanNumeral.convertThreeDigit(fourSizeDigit);
+        String wrongNumberRoman444= romanNumeral.convertThreeDigit(fourSizeDigit);
+        assertEquals("there is no such a number", wrongNumberRoman4);
+        assertEquals("there is no such a number", wrongNumberRoman44);
+        assertEquals("there is no such a number", wrongNumberRoman444);
     }
 }
