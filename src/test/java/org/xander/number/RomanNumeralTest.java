@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 public class RomanNumeralTest {
     RomanNumeral romanNumeral;
+    final String ABSENT_NUMBER = "there is no such a number";
 
     @Before
     public void setUp() {
@@ -145,8 +146,8 @@ public class RomanNumeralTest {
 
     @Test
     public void testFourDigit() {
-        String hundred = "1000";
-        String hundredRoman = romanNumeral.convertFourDigit(hundred);
+        String thousand = "1000";
+        String hundredRoman = romanNumeral.convertFourDigit(thousand);
         assertEquals("M", hundredRoman);
     }
 
@@ -155,13 +156,13 @@ public class RomanNumeralTest {
         for (int i = 65; i < 91; i++) {
             String asciiToVerify = String.valueOf((char) i);
             String numberRoman = romanNumeral.convertFourDigit(asciiToVerify);
-            assertEquals("there is no such a number", numberRoman);
+            assertEquals(ABSENT_NUMBER, numberRoman);
         }
 
         for (int i = 97; i < 123; i++) {
             String asciiToVerify = String.valueOf((char) i);
             String numberRoman = romanNumeral.convertFourDigit(asciiToVerify);
-            assertEquals("there is no such a number", numberRoman);
+            assertEquals(ABSENT_NUMBER, numberRoman);
         }
     }
 
@@ -169,13 +170,13 @@ public class RomanNumeralTest {
     public void zeroTest() {
         String zero = "0";
         String zeroRoman = romanNumeral.convertOneDigit(zero);
-        assertEquals("there is no such a number", zeroRoman);
+        assertEquals(ABSENT_NUMBER, zeroRoman);
     }
 
     @Test
     public void testNull() {
         String nullRoman = romanNumeral.convertFourDigit(null);
-        assertEquals("there is no such a number", nullRoman);
+        assertEquals(ABSENT_NUMBER, nullRoman);
     }
 
     @Test
@@ -188,30 +189,30 @@ public class RomanNumeralTest {
         String wrongNumberRoman11 = romanNumeral.convertTwoDigit(oneSizeDigit);
         String wrongNumberRoman111 = romanNumeral.convertThreeDigit(oneSizeDigit);
         String wrongNumberRoman1111 = romanNumeral.convertFourDigit(oneSizeDigit);
-        assertEquals("there is no such a number", wrongNumberRoman11);
-        assertEquals("there is no such a number", wrongNumberRoman111);
-        assertEquals("there is no such a number", wrongNumberRoman1111);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman11);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman111);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman1111);
 
         String wrongNumberRoman2 = romanNumeral.convertOneDigit(twoSizeDigit);
         String wrongNumberRoman222 = romanNumeral.convertThreeDigit(twoSizeDigit);
         String wrongNumberRoman2222 = romanNumeral.convertFourDigit(twoSizeDigit);
-        assertEquals("there is no such a number", wrongNumberRoman2);
-        assertEquals("there is no such a number", wrongNumberRoman222);
-        assertEquals("there is no such a number", wrongNumberRoman2222);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman2);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman222);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman2222);
 
         String wrongNumberRoman3 = romanNumeral.convertOneDigit(threeSizeDigit);
         String wrongNumberRoman33 = romanNumeral.convertTwoDigit(threeSizeDigit);
         String wrongNumberRoman3333 = romanNumeral.convertThreeDigit(threeSizeDigit);
-        assertEquals("there is no such a number", wrongNumberRoman3);
-        assertEquals("there is no such a number", wrongNumberRoman33);
-        assertEquals("there is no such a number", wrongNumberRoman3333);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman3);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman33);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman3333);
 
         String wrongNumberRoman4 = romanNumeral.convertThreeDigit(fourSizeDigit);
         String wrongNumberRoman44 = romanNumeral.convertThreeDigit(fourSizeDigit);
         String wrongNumberRoman444 = romanNumeral.convertThreeDigit(fourSizeDigit);
-        assertEquals("there is no such a number", wrongNumberRoman4);
-        assertEquals("there is no such a number", wrongNumberRoman44);
-        assertEquals("there is no such a number", wrongNumberRoman444);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman4);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman44);
+        assertEquals(ABSENT_NUMBER, wrongNumberRoman444);
     }
 
     @Test
@@ -226,6 +227,13 @@ public class RomanNumeralTest {
         String customDigit = "3001";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMI", customNumberRoman);
+    }
+
+    @Test
+    public void testConvertCustomFourDigit1001Number() {
+        String customDigit = "1001";
+        String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
+        assertEquals("MI", customNumberRoman);
     }
 
     @Test
@@ -317,47 +325,61 @@ public class RomanNumeralTest {
     public void testConvertCustomBigDigitNumber() {
         String customDigit = "123123123218";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
-        assertEquals("there is no such a number", customNumberRoman);
+        assertEquals(ABSENT_NUMBER, customNumberRoman);
     }
 
     @Test
     public void testNegativeWhetherAllNumbersUpTo10000AreExisting() {
+        File fileWithRomanNumbers = new File("fileWithRomanNumbers");
         PrintWriter writer = null;
         try {
-            writer = new PrintWriter("fileWithRomanNumbers", "UTF-8");
-        } catch (FileNotFoundException | UnsupportedEncodingException e ) {
+            writer = new PrintWriter(fileWithRomanNumbers, "UTF-8");
+        } catch (FileNotFoundException | UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        int writtenLines = 0;
-        for (int i = 1; i < 10000; i++) {
-            String romanNumber = romanNumeral.convertCustomDigit(String.valueOf(i));
-            writer.println(romanNumber);
-            assertNotSame("there is no such a number", romanNumber);
-            if(i == 9600) {
-                System.out.println(romanNumber);
+        int writtenLines = 1;
+        try {
+            for (int i = 1; i < 10000; i++) {
+                String romanNumber = romanNumeral.convertCustomDigit(String.valueOf(i));
+
+                writer.println(romanNumber);
+                assertNotSame(ABSENT_NUMBER, romanNumber);
+                writtenLines = i;
             }
-            writtenLines = i;
+        } finally {
+            writer.close();
         }
 
-        String line;
-        int lineNumber = 1;
+        int lineNumber = 0;
+        FileReader fileReader = null;
+        BufferedReader bufferReader = null;
         try {
-            FileReader f = new FileReader("fileWithRomanNumbers.txt");
-            BufferedReader bufferReader = new BufferedReader(f);
-
-            while ((line = bufferReader.readLine()) != null) {
+            fileReader = new FileReader(fileWithRomanNumbers);
+            bufferReader = new BufferedReader(fileReader);
+            while ((bufferReader.readLine()) != null) {
                 lineNumber++;
-//                System.out.print(lineNumber++ + " ");
-//                System.out.println(line);
             }
-
-            bufferReader.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                fileReader.close();
+                bufferReader.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         assertEquals(lineNumber, writtenLines);
+
+        boolean fileSuccessfullyDeleted = fileWithRomanNumbers.delete();
+        if (!fileSuccessfullyDeleted) {
+            System.out.println("There was an error with file(" + 
+                                fileWithRomanNumbers.getName() +
+                                ") deletion. Please delete manually");
+            System.exit(0);
+        } 
     }
 }
