@@ -1,4 +1,4 @@
-package org.xander.number;
+package org.xander.katas;
 
 import org.junit.Before;
 import org.junit.Test;

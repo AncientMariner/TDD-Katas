@@ -1,4 +1,4 @@
-package org.xander.number;
+package org.xander.katas;
 
 public class RomanNumeral {
     final String ABSENT_NUMBER = "there is no such a number";

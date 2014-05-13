@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.xander.number</groupId>
-    <artifactId>Roman-Numerals-Kata</artifactId>
+    <artifactId>TDD-Katas</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>Roman-Numerals-Kata</name>
+    <name>TDD-Katas</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -25,7 +25,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>Questionnaire</finalName>
+        <finalName>TDD-Katas</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

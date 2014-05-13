@@ -1,4 +1,4 @@
-package org.xander.number;
+package org.xander.katas;
 
 public class StringCalculator {
     public int add() {
