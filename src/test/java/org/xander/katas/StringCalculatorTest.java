@@ -20,7 +20,6 @@ public class StringCalculatorTest {
     public void zeroParametersTest() {
         int sum = stringCalculator.add();
 
-
         assertEquals(zero, sum);
     }
 
@@ -32,7 +31,6 @@ public class StringCalculatorTest {
         assertEquals(Integer.valueOf(number), sum);
     }
 
-    @Ignore
     @Test
     public void oneParameterNegativeTest() {
         String number = "a";
@@ -41,7 +39,6 @@ public class StringCalculatorTest {
         assertEquals(Integer.valueOf(0), sum);
     }
 
-    @Ignore
     @Test
     public void oneParameterMixedNegativeTest() {
         String number = "a2";
@@ -50,8 +47,7 @@ public class StringCalculatorTest {
         assertEquals(Integer.valueOf(2), sum);
     }
 
-    @Ignore
-    @Test(expected = NumberFormatException.class)
+    @Test
     public void oneParameterMixed2NegativeTest() {
         String number = "7a2";
         Integer sum = stringCalculator.add(number);
@@ -84,12 +80,49 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void twoParametersTest2() {
+    public void twoParametersTest1() {
+        String number1 = "6,\n\t\\#&^%(*)(&(*1";
+        String number2 = "7,4";
+        Integer sum = stringCalculator.add(number1, number2);
+
+        assertEquals(Integer.valueOf(18), sum);
+    }
+
+    @Test
+    public void oneParameterTest2() {
         String number1 = "7,7";
-//        String number2 = "7";
         Integer sum = stringCalculator.add(number1);
 
         assertEquals(Integer.valueOf(14), sum);
+    }
+
+    @Test
+    public void oneParameterTest3() {
+        String number1 = "7,,f7gh7";
+        Integer sum = stringCalculator.add(number1);
+
+        assertEquals(Integer.valueOf(21), sum);
+    }
+
+    @Test
+    public void oneParameterNegativeNumberTest() {
+        String number1 = "-7";
+        try {
+            Integer sum = stringCalculator.add(number1);
+        } catch (NumberFormatException ex) {
+            assertEquals("Negative number is not allowed \'-7\'", ex.getMessage());
+        }
+    }
+
+    @Test
+    public void twoParameterNegativeNumberTest() {
+        String number1 = "-7";
+        String number2 = "-8";
+        try {
+            Integer sum = stringCalculator.add(number1, number2);
+        } catch (NumberFormatException ex) {
+            assertEquals("Negative number is not allowed \'-7\' \'-8\'", ex.getMessage());
+        }
     }
 
     @Test
@@ -166,26 +199,25 @@ public class StringCalculatorTest {
         assertEquals(Integer.valueOf(15), sum);
     }
 
-    @Ignore
     @Test
     public void unknownAmountOfNumbersNegativeTest() {
-        String[] numbers = {"1", "2", "3", "", "5"};
+        String[] numbers = {"1", "2", "3", "", "5", "2", "//;\\n1;2", "", "5", "2", "3", "", "1\\n2,3"};
 
         Integer sum = stringCalculator.add(numbers);
 
-        assertEquals(Integer.valueOf(11), sum);
+        assertEquals(Integer.valueOf(32), sum);
 
-        String[] numbers1 = {"1", "2", "  ", "", "5"};
+        String[] numbers1 = {"a s f 1 f af af 1,\n", "1", " f ", ".,,\t..\t,,.\n", "5"};
 
         Integer sum1 = stringCalculator.add(numbers1);
 
         assertEquals(Integer.valueOf(8), sum1);
 
-        String[] numbers2 = {"", "", "  ", "      ", "  5"};
+        String[] numbers2 = {"", "5\n7", "  ", "      ", "  5    "};
 
         Integer sum2 = stringCalculator.add(numbers2);
 
-        assertEquals(Integer.valueOf(5), sum2);
+        assertEquals(Integer.valueOf(17), sum2);
     }
 
 }
