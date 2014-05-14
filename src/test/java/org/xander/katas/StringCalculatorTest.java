@@ -1,10 +1,10 @@
 package org.xander.katas;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class StringCalculatorTest {
 
@@ -121,8 +121,48 @@ public class StringCalculatorTest {
         try {
             Integer sum = stringCalculator.add(number1, number2);
         } catch (NumberFormatException ex) {
-            assertEquals("Negative number is not allowed \'-7\' \'-8\'", ex.getMessage());
+            assertEquals("Negative number is not allowed \'" + number1 + "\' \'" + number2 + "\'", ex.getMessage());
         }
+    }
+
+    @Test
+    public void twoParameterPositiveNegativeNumberTest() {
+        String number1 = "-7";
+        String number2 = "8";
+        boolean expectionHappened1 = false;
+        try {
+            Integer sum = stringCalculator.add(number1, number2);
+        } catch (NumberFormatException ex) {
+            expectionHappened1 = true;
+            assertEquals("Negative number is not allowed \'" + number1 + "\'", ex.getMessage());
+        }
+        assertTrue(expectionHappened1);
+
+
+        String number3 = "1";
+        String number4 = "-8";
+        boolean expectionHappened2 = false;
+        try {
+            Integer sum = stringCalculator.add(number3, number4);
+        } catch (NumberFormatException ex) {
+            expectionHappened2 = true;
+            assertEquals("Negative number is not allowed \'" + number4 + "\'", ex.getMessage());
+        }
+        assertTrue(expectionHappened2);
+    }
+
+    @Test
+    public void twoParameterNegativeEmptyNumberTest() {
+        String number1 = "-7";
+        String number2 = " ";
+        boolean expectionHappened1 = false;
+        try {
+            Integer sum = stringCalculator.add(number1, number2);
+        } catch (NumberFormatException ex) {
+            expectionHappened1 = true;
+            assertEquals("Negative number is not allowed \'" + number1 + "\'", ex.getMessage());
+        }
+        assertTrue(expectionHappened1);
     }
 
     @Test
@@ -201,17 +241,17 @@ public class StringCalculatorTest {
 
     @Test
     public void unknownAmountOfNumbersNegativeTest() {
-        String[] numbers = {"1", "2", "3", "", "5", "2", "//;\\n1;2", "", "5", "2", "3", "", "1\\n2,3"};
+        String[] numbers = {"1", "2", "3", "", "//[***]\n1***2***3", "1", "//;\\n1;2", "", ",.;'5", "2", "3", "", "1\\n2,3"};
 
         Integer sum = stringCalculator.add(numbers);
 
         assertEquals(Integer.valueOf(32), sum);
 
-        String[] numbers1 = {"a s f 1 f af af 1,\n", "1", " f ", ".,,\t..\t,,.\n", "5"};
+        String[] numbers1 = {"a s f 1 f af af 1,\n", "1", " f ", ".,,\t..\t,,.\n", "//[*][%]\\n1*2%3"};
 
         Integer sum1 = stringCalculator.add(numbers1);
 
-        assertEquals(Integer.valueOf(8), sum1);
+        assertEquals(Integer.valueOf(9), sum1);
 
         String[] numbers2 = {"", "5\n7", "  ", "      ", "  5    "};
 
@@ -220,4 +260,6 @@ public class StringCalculatorTest {
         assertEquals(Integer.valueOf(17), sum2);
     }
 
+
+//    TODO : Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
 }

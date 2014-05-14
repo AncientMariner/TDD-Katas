@@ -4,6 +4,7 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     final int zero = 0;
+    final String negativeNumberMessage = "Negative number is not allowed ";
 
     public int add() {
         return zero;
@@ -15,13 +16,26 @@ public class StringCalculator {
     }
 
     public Integer add(String number1, String number2) {
-        if(verifyNumberIsZero(number1) && verifyNumberIsZero(number2)) return 0;
-            else if(verifyNumberIsZero(number1)) return calculateNumber(number2);
-            else if(verifyNumberIsZero(number2)) return calculateNumber(number1);
+        if (validateElementForNegativity(number1.toCharArray())
+                && validateElementForNegativity(number2.toCharArray()))
+            throw new NumberFormatException(negativeNumberMessage + "\'" + number1 + "\'" + " " + "\'" + number2 + "\'");
+        else if (!validateElementForNegativity(number1.toCharArray())
+                && validateElementForNegativity(number2.toCharArray()))
+            throw new NumberFormatException(negativeNumberMessage + "\'" + number2 + "\'");
+        else if (validateElementForNegativity(number1.toCharArray())
+                && !validateElementForNegativity(number2.toCharArray()))
+            throw new NumberFormatException(negativeNumberMessage + "\'" + number1 + "\'");
 
-        //calculate both are negative
+        return (verifyNumberIsZero(number1) && verifyNumberIsZero(number2)) ? 0 :
+                (verifyNumberIsZero(number1)) ? calculateNumber(number2) :
+                        (verifyNumberIsZero(number2)) ? calculateNumber(number1) :
+                                calculateNumber(number1) + calculateNumber(number2);
+    }
 
-        return calculateNumber(number1) + calculateNumber(number2);
+    private boolean validateElementForNegativity(char[] elementInArray1) {
+        for (int elementInArray : elementInArray1)
+            return String.valueOf((char) ((int) elementInArray)).equals("-");
+        return false;
     }
 
     private int calculateNumber(String number) {
@@ -31,21 +45,7 @@ public class StringCalculator {
                 sum += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
             } else {
             for (int elementInArray : number.toCharArray()) {
-                if (String.valueOf((char) ((int) elementInArray)).equals("-")) {
-                    throw new NumberFormatException("Negative number is not allowed \'" + number + "\'");
-                }
-
-                if (String.valueOf((char) ((int) elementInArray)).equals("1") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("2") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("3") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("4") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("5") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("6") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("7") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("8") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("9") ||
-                        String.valueOf((char) ((int) elementInArray)).equals("0")
-                        ) {
+                if (stringContainsOnlyNumbers(String.valueOf((char) ((int) elementInArray)))) {
                     sum += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
                 }
             }
@@ -64,9 +64,8 @@ public class StringCalculator {
 
     public Integer add(String... numbers) {
         int sum = 0;
-        for (String element : numbers) {
+        for (String element : numbers)
             sum += verifyNumberIsZero(element) ? 0 : calculateNumber(element);
-        }
         return sum;
     }
 }
