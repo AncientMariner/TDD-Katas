@@ -40,24 +40,22 @@ public class StringCalculator {
     }
 
     private int calculateNumber(String number) {
-        int sum = 0;
+        int sum = zero;
+        if (stringContainsOnlyNumbers(number) && Integer.valueOf(number) > 1000) {
+            return zero;
+        } else {
+            if (number.trim().equals("")) return zero;
+            String result = "0";
 
-
-        if(stringContainsOnlyNumbers(number))
             for (int elementInArray : number.toCharArray()) {
-                sum += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
-            } else {
-            for (int elementInArray : number.toCharArray()) {
-                String result;
-                if (Integer.valueOf(elementInArray) > 999) {
-                    return sum;
+                if (stringContainsOnlyNumbers(String.valueOf((char) ((int) elementInArray))))
+                    result += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
+                else {
+                    sum += Integer.valueOf(result);
+                    result = "0";
                 }
-                if (stringContainsOnlyNumbers(String.valueOf((char) ((int) elementInArray)))) {
-                    sum += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
-                }
-
             }
-            return sum;
+            sum += Integer.valueOf(result);
         }
         return sum;
     }
