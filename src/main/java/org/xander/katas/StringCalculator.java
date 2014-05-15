@@ -16,6 +16,7 @@ public class StringCalculator {
     }
 
     public Integer add(String number1, String number2) {
+
         if (validateElementForNegativity(number1.toCharArray())
                 && validateElementForNegativity(number2.toCharArray()))
             throw new NumberFormatException(negativeNumberMessage + "\'" + number1 + "\'" + " " + "\'" + number2 + "\'");
@@ -40,14 +41,21 @@ public class StringCalculator {
 
     private int calculateNumber(String number) {
         int sum = 0;
+
+
         if(stringContainsOnlyNumbers(number))
             for (int elementInArray : number.toCharArray()) {
                 sum += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
             } else {
             for (int elementInArray : number.toCharArray()) {
+                String result;
+                if (Integer.valueOf(elementInArray) > 999) {
+                    return sum;
+                }
                 if (stringContainsOnlyNumbers(String.valueOf((char) ((int) elementInArray)))) {
                     sum += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
                 }
+
             }
             return sum;
         }

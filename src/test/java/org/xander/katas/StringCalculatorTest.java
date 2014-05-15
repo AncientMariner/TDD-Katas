@@ -261,5 +261,23 @@ public class StringCalculatorTest {
     }
 
 
+    @Test
+    public void twoParameterOverThresholdNumberTest() {
+        String number1 = "2";
+        String number2 = "1001";
+        Integer sum = stringCalculator.add(number1, number2);
+
+        assertEquals(Integer.valueOf(2), sum);
+    }
+
+    @Test
+    public void twoParameterNumberTest() {
+        String number1 = "22,";
+        String number2 = "22";
+        Integer sum = stringCalculator.add(number1, number2);
+
+        assertEquals(Integer.valueOf(2), sum);
+    }
+
 //    TODO : Numbers bigger than 1000 should be ignored, so adding 2 + 1001  = 2
 }
