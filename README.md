@@ -3,9 +3,10 @@ TDD Katas
 
 #### Roman Numerals Kata
 
-  - Given a positive integer number (eg 42) determine
+  Given a positive integer number (eg 42) determine
   its Roman numeral representation as a String (eg "XLII").
-  - You cannot write numerals like IM for 999.
+  
+  You cannot write numerals like IM for 999.
   Wikipedia states "Modern Roman numerals are written by
   expressing each digit separately starting with the
   leftmost digit and skipping any digit with a value of zero."
