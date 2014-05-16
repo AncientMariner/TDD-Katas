@@ -19,13 +19,13 @@ TDD Katas
 
 ---
 
-StringCalculator Kata
+#### StringCalculator Kata
 
 Adds 0, 1, 2 string parameters in string present together and return its sum
 
 ---
 
-Anagrams
+#### Anagrams
 
 Write a program to generate all potential 
 anagrams of an input string.
@@ -36,3 +36,5 @@ biro bior brio broi boir bori
 ibro ibor irbo irob iobr iorb
 rbio rboi ribo riob roib robi
 obir obri oibr oirb orbi orib
+
+---
