@@ -20,6 +20,7 @@ TDD Katas
 ---
 
 StringCalculator Kata
+
 Adds 0, 1, 2 string parameters in string present together and return its sum
 
 ---
