@@ -273,7 +273,7 @@ public class StringCalculatorTest {
     @Test
     public void twoParameterWithDelimiterNumberTest() {
         String number1 = "2";
-        String number2 = "10,01";
+        String number2 = "10,,01";
         Integer sum = stringCalculator.add(number1, number2);
 
         assertEquals(Integer.valueOf(13), sum);
