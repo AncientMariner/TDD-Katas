@@ -374,12 +374,16 @@ public class RomanNumeralTest {
         }
         assertEquals(lineNumber, writtenLines);
 
+        tearDown(fileWithRomanNumbers);
+    }
+
+    public void tearDown(File fileWithRomanNumbers) {
         boolean fileSuccessfullyDeleted = fileWithRomanNumbers.delete();
         if (!fileSuccessfullyDeleted) {
-            System.out.println("There was an error with file(" + 
-                                fileWithRomanNumbers.getName() +
-                                ") deletion. Please delete manually");
+            System.out.println("There was an error with file(" +
+                    fileWithRomanNumbers.getName() +
+                    ") deletion. Please delete manually");
             System.exit(0);
-        } 
+        }
     }
 }
