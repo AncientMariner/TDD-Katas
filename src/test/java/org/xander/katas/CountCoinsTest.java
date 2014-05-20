@@ -47,19 +47,27 @@ public class CountCoinsTest {
     @Test
     public void testCustomQuarter() {
         String name = countCoins.countCustomCoin(25);
-        assertThat(true, is(name.contains("25 penny")));
-        assertThat(true, is(name.contains("5 nickel")));
-        assertThat(true, is(name.contains("1 quarter")));
+        assertThat(true, is(name.contains("25_penny")));
+        assertThat(true, is(name.contains("5_nickel")));
+        assertThat(true, is(name.contains("1_quarter")));
     }
 
     @Test
     public void test15Cents() {
         String name = countCoins.countCustomCoin(15);
-        assertThat(true, is(name.contains("15 penny")));
-        assertThat(true, is(name.contains("3 nickel")));
-        assertThat(true, is(name.contains("2 nickel and 5 penny")));
-        assertThat(true, is(name.contains("1 dime and 5 penny")));
-        assertThat(true, is(name.contains("1 dime and 1 nickel")));
-        assertThat(true, is(name.contains("1 nickel and 10 penny")));
+        assertThat(true, is(name.contains("15_penny")));
+        assertThat(true, is(name.contains("3_nickel")));
+        assertThat(true, is(name.contains("1_dime and 5_penny")));
+        assertThat(true, is(name.contains("1_dime and 1_nickel")));
+        assertThat(true, is(name.contains("2_nickel and 5_penny")));
+        assertThat(true, is(name.contains("1_nickel and 10_penny")));
+    }
+
+    @Test
+    public void test26Cents() {
+        String name = countCoins.countCustomCoin(100);
+        assertThat(true, is(name.contains("4_quarter")));
+        assertThat(true, is(name.contains("9_dime and 2_nickel")));
+        assertThat(true, is(name.contains("8_dime and 4_nickel")));
     }
 }
