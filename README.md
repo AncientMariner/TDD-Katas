@@ -79,7 +79,7 @@ How many ways are there to make change for a dollar using these common coins? (1
 
 ---
 
-###  Leap Year :
+###  Leap Year
 
 *   Write a function that returns true or false depending on
 whether its input integer is a leap year or not.
