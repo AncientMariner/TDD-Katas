@@ -78,3 +78,18 @@ There are 6 ways to make change for 15 cents:
 How many ways are there to make change for a dollar using these common coins? (1 dollar = 100 cents).
 
 ---
+
+###  Leap Year :
+
+Write a function that returns true or false depending on
+whether its input integer is a leap year or not.
+
+A leap year is defined as one that is divisible by 4,
+but is not otherwise divisible by 100 unless it is
+also divisble by 400.
+
+For example, 2001 is a typical common year and 1996
+is a typical leap year, whereas 1900 is an atypical
+common year and 2000 is an atypical leap year.
+
+---

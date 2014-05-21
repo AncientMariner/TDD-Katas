@@ -14,9 +14,9 @@ public class CountCoins {
         }
     }
 
-    public String countOneCoin(int i) {
+    public String countOneCoin(int number) {
         String coin;
-        switch (i) {
+        switch (number) {
             case 1: coin = Coins.PENNY.toString().toLowerCase(); break;
             case 5: coin = Coins.NICKEL.toString().toLowerCase(); break;
             case 10: coin = Coins.DIME.toString().toLowerCase(); break;
@@ -27,9 +27,9 @@ public class CountCoins {
     }
 
     public String countCustomCoin(int number) {
-        String result = calculateResultForSingleTypeOfCoin(number);
-        String additonalCombinations = calculateManyTypesOfCoins(number, result);
-        return additonalCombinations;
+        String resultForSingleCoin = calculateResultForSingleTypeOfCoin(number);
+        String resultForCoinCombinations = calculateManyTypesOfCoins(number);
+        return resultForSingleCoin + resultForCoinCombinations;
     }
 
     private String calculateResultForSingleTypeOfCoin(int number) {
@@ -38,38 +38,43 @@ public class CountCoins {
             if (number % coin.number == 0) {
                 int numberOfCoins = number / coin.number;
                 result += " " + numberOfCoins + "_" + countOneCoin(coin.number);
+                //test generation
+//                result += " assertThat(true, is(name.contains(\"" + numberOfCoins + "_" + countOneCoin(coin.number) + "\")));\n";
+
             }
         }
         return result;
     }
 
-    private String calculateManyTypesOfCoins(int number, String result) {
-        for (Coins coinOuter : Coins.values()) {
-            for (Coins coinInner : Coins.values()) {
-//              if (coinInner.number != coinOuter.number)
-                String nameOfCoin = countOneCoin(coinOuter.number);
-                String numberWithName = "" + ((number - coinInner.number) / coinOuter.number);
-
-                if (number % coinOuter.number == coinInner.number) {
-                    result += " " + calculateOnlyOneTypeOfCoin(number - coinOuter.number, numberWithName, nameOfCoin);
-                }
-
-                if ((number - coinInner.number) / coinOuter.number > 0 && !"penny".equals(countOneCoin(coinInner.number))) {
-                    result += " " + calculateOnlyOneTypeOfCoin(coinInner.number, numberWithName, nameOfCoin);
-                }
-            }
-        }
-    return result;
-}
-
-    private String calculateOnlyOneTypeOfCoin(int number, String numberWithName, String nameOfCoin) {
+    private String calculateManyTypesOfCoins(int incomingNumber) {
         String result = "";
-        for (Coins coin : Coins.values()) {
-            if (number % coin.number == 0 && !nameOfCoin.equals(countOneCoin(coin.number))) {
-                int numberOfCoins = number / coin.number;
-                result += numberWithName + "_" + nameOfCoin + " and " + numberOfCoins + "_" + countOneCoin(coin.number) + " ";
+        for (Coins existingCoin : Coins.values()) {
+            int numberOfCoins = incomingNumber / existingCoin.number;
+            for (int currentCoin = 1; currentCoin <= numberOfCoins; currentCoin++) {
+                int additionalValueToCalculate = incomingNumber - existingCoin.number * currentCoin;
+                result += calculateOnlyOneTypeOfCoin(additionalValueToCalculate,
+                        String.valueOf(currentCoin),
+                        existingCoin.toString().toLowerCase());
             }
         }
         return result;
+    }
+
+    private String calculateOnlyOneTypeOfCoin(int additionalValueToCalculate, String incomingNumberOfCoins, String nameOfCoin) {
+        String result = "";
+        for (Coins coin : Coins.values()) {
+            if (additionalValueToCalculate % coin.number == 0 && !nameOfCoin.equals(countOneCoin(coin.number))) {
+                int numberOfCoinsForCurrentCoin = additionalValueToCalculate / coin.number;
+                if (numberOfCoinsForCurrentCoin != 0) {
+                    result += incomingNumberOfCoins + "_" + nameOfCoin + " and " + numberOfCoinsForCurrentCoin + "_" + countOneCoin(coin.number) + " ";
+                    //test generation
+//                    result += " assertThat(true, is(name.contains(\"" + incomingNumberOfCoins + "_" + nameOfCoin + " and " + numberOfCoinsForCurrentCoin + "_" + countOneCoin(coin.number) + "\")));\n ";
+                }
+            }
+        }
+        if (result.isEmpty()) {
+            return "";
+        }
+        return " " + result;
     }
 }
