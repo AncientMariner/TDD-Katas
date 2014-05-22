@@ -130,3 +130,58 @@ and subtracting this value from 10, and then taking the
 modulo 10 of the result again to produce a single digit.
 
 ---
+
+### Calc Stats:
+
+	Process a sequence of integer numbers
+	to determine the following statistics:
+
+		* minimum value
+		* maximum value
+		* number of elements in the sequence
+		* average value
+
+	For example: [6, 9, 15, -2, 92, 11]
+
+		* minimum value = -2
+		* maximum value = 92
+		* number of elements in the sequence = 6
+		* average value = 18.166666
+
+---
+
+### Game of Life :
+
+	Write a program to calculate the next
+	generation of Conway's game of life, given any starting
+	position. You start with a two dimensional grid of cells,
+	where each cell is either alive or dead. The grid is finite,
+	and no life can exist off the edges. When calculating the
+	next generation of the grid, follow these four rules:
+
+	1. Any live cell with fewer than two live neighbours dies,
+	   as if caused by underpopulation.
+	2. Any live cell with more than three live neighbours dies,
+	   as if by overcrowding.
+	3. Any live cell with two or three live neighbours lives
+	   on to the next generation.
+	4. Any dead cell with exactly three live neighbours becomes
+	   a live cell.
+
+	Examples: * indicates live cell, . indicates dead cell
+
+	Example input: (4 x 8 grid)
+	4 8
+	........
+	....*...
+	...**...
+	........
+
+	Example output:
+	4 8
+	........
+	...**...
+	...**...
+	........
+
+---
