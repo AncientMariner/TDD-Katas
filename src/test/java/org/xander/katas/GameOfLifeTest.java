@@ -62,5 +62,52 @@ public class GameOfLifeTest {
         assertEquals(expectedCell,result);
     }
 
+    @Test
+    public void testNextGenerationFirstRuleHorizontalNeighbours() {
+        int[][] firstGeneration = {{1,2}, {2,2}, {2,3}, {4,5}, {2,4}};
+        String afterFirstGeneration = ".*......\n" + ".***....\n" + "........\n" + "....*...\n";
+        String resultOfFirstGeneration = gameOfLife.buildTheWholeGeneration(firstGeneration, gameOfLife.drawCell(4, 8));
+        assertEquals(afterFirstGeneration, resultOfFirstGeneration);
+//        System.out.println(resultOfFirstGeneration + "\n\n\n");
+
+        gameOfLife.evolutionize();
+
+//        String resultAfterOneEvolution = gameOfLife.getCurrentState();
+//        System.out.println(resultAfterOneEvolution);
+        String expectedCellAfterEvolution = "........\n" + ".**.....\n" + "........\n" + "........\n";
+        String resultOfSecondGeneration = gameOfLife.getCurrentState();
+        assertEquals(expectedCellAfterEvolution, resultOfSecondGeneration);
+    }
+
+    @Test
+    public void testNextGenerationFirstRuleHorizontalAndVerticalNeighbours() {
+        int[][] firstGeneration = {{1,1}, {1,2}, {1,3}, {2,2}, {3,2}, {3,3}, {2,3}, {4,5}, {2,4}};
+        String resultOfFirstGeneration = gameOfLife.buildTheWholeGeneration(firstGeneration, gameOfLife.drawCell(4, 8));
+        System.out.println(resultOfFirstGeneration);
+        gameOfLife.evolutionize();
+
+        String resultAfterOneEvolution = gameOfLife.getCurrentState();
+        System.out.println(resultAfterOneEvolution);
+
+        gameOfLife.evolutionize();
+        String resultAfterSecondEvolution = gameOfLife.getCurrentState();
+        System.out.println(resultAfterSecondEvolution);
+    }
+
+    @Test
+    public void testNextGenerationSecondRule() {
+        int[][] firstGeneration = {{1,1}, {1,2}, {1,3}, {2,2}, {2,3}, {4,5}, {2,4}};
+        String resultOfFirstGeneration = gameOfLife.buildTheWholeGeneration(firstGeneration, gameOfLife.drawCell(4, 8));
+        System.out.println(resultOfFirstGeneration);
+        gameOfLife.evolutionize();
+
+        String resultAfterOneEvolution = gameOfLife.getCurrentState();
+        System.out.println(resultAfterOneEvolution);
+
+        gameOfLife.evolutionize();
+        String resultAfterSecondEvolution = gameOfLife.getCurrentState();
+        System.out.println(resultAfterSecondEvolution);
+
+    }
 
 }
