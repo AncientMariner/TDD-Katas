@@ -69,18 +69,21 @@ public class GameOfLife {
         int dimensionY = calculateYSize(currentState);
         int dimensionX = calculateXSize(currentState);
 
+        Set<Integer> livingElements = firstRule(livingCell, dimensionY, dimensionX);
+        secondRule(livingCell, dimensionY, dimensionX, livingElements);
+
+        currentState = formNewGeneration(dimensionY, dimensionX, livingElements);
+    }
+
+    private Set<Integer> firstRule(char[] livingCell, int dimensionY, int dimensionX) {
         Set<Integer> livingElements = new TreeSet<>();
-        Set<Integer> deadElements = new TreeSet<>();
         for (int y = 0; y < dimensionY; y++) {
             for (int x = 0; x < dimensionX; x++) {
-                //calculate vertical border Elements
                 if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x]) && ensureHorizontalBoundaries(livingCell, dimensionX, y, x)) {
                     if (verticalBorderElementIsLiving(livingCell, dimensionY, dimensionX, y, x)) {
-
                         livingElements.add(y * (dimensionX + 1) + x);
                     }
                 }
-                //calculate horizontal border Elements
                 if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
                         && ensureVerticalBoundaries(livingCell, dimensionX, y, x)) {
                     if(horizontalBorderElementIsLiving(livingCell, dimensionY, dimensionX, y, x)) {
@@ -90,20 +93,17 @@ public class GameOfLife {
                 if (cornerElementsAreLiving(livingCell, dimensionY, dimensionX, y, x)) {
                     livingElements.add(y * (dimensionX + 1) + x);
                 }
-                //previous and next neighbour horizontally and vertically present for non-border elements
                 if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
                         && ensureHorizontalBoundaries(livingCell, dimensionX, y, x)
                         && ensureVerticalBoundaries(livingCell, dimensionX, y, x)
-                        && ensureAtLeastTwoNeighboursPresent(livingCell, dimensionX, y, x)) {
+                        && ensureAtLeastTwoNeighboursPresentHorizOrVertic(livingCell, dimensionX, y, x)) {
                     livingElements.add(y * (dimensionX + 1) + x);
                 }
-                //previous and next neighbour horizontally present
                 if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
                         && ensureHorizontalBoundaries(livingCell, dimensionX, y, x)
                         && ensureAtLeastTwoHorizontalNeighboursPresent(livingCell, dimensionX, y, x)) {
                     livingElements.add(y * (dimensionX + 1) + x);
                 }
-                //previous and next neighbour vertically present
                 if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
                         && ensureVerticalBoundaries(livingCell, dimensionX, y, x)
                         && ensureAtLeastTwoVerticalNeighboursPresent(livingCell, dimensionX, y, x)) {
@@ -111,6 +111,12 @@ public class GameOfLife {
                 }
             }
         }
+        return livingElements;
+    }
+
+    private void secondRule(char[] livingCell, int dimensionY, int dimensionX, Set<Integer> livingElements) {
+        Set<Integer> deadElements = new TreeSet<>();
+
         for (int y = 0; y < dimensionY; y++) {
             for (int x = 0; x < dimensionX; x++) {
                 if(livingElements.contains(y * (dimensionX + 1) + x))
@@ -123,8 +129,6 @@ public class GameOfLife {
             }
         }
         livingElements.removeAll(deadElements);
-
-        currentState = formNewGeneration(dimensionY, dimensionX, livingElements);
     }
 
     private boolean cornerElementsAreLiving(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
@@ -182,7 +186,7 @@ public class GameOfLife {
         return currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]) && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1]);
     }
 
-    private boolean ensureAtLeastTwoNeighboursPresent(char[] livingCell, int dimensionX, int y, int x) {
+    private boolean ensureAtLeastTwoNeighboursPresentHorizOrVertic(char[] livingCell, int dimensionX, int y, int x) {
         return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]) && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX+1)]))
      || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]) && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX+1)]))
      || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1]) && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX+1)]))
