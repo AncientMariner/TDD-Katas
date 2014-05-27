@@ -71,7 +71,7 @@ public class GameOfLife {
 
         Set<Integer> livingElements = firstRule(livingCell, dimensionY, dimensionX);
         secondRule(livingCell, dimensionY, dimensionX, livingElements);
-//        thirdRule(livingCell, dimensionY, dimensionX, livingElements);
+        thirdRule(livingCell, dimensionY, dimensionX, livingElements);
 
         currentState = formNewGeneration(dimensionY, dimensionX, livingElements);
     }
@@ -144,10 +144,8 @@ public class GameOfLife {
         for (int y = 0; y < dimensionY; y++) {
             for (int x = 0; x < dimensionX; x++) {
                 if (livingElements.contains(y * (dimensionX + 1) + x)) {
-                    if (twoNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
                         if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
                             livingElements.add(y * (dimensionX + 1) + x);
-                        }
                     }
                 }
             }
@@ -155,21 +153,39 @@ public class GameOfLife {
     }
 
     private boolean threeNeighboursLiving(char[] livingCell, int dimensionY, int dimensionX, Set<Integer> livingElements, int y, int x) {
-        return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]))
+        if (cornerElementsAreLiving(livingCell, dimensionY, dimensionX, y, x)) {
+            return false;
+        }
 
-                || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1]))
+        if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
+                && threeElementsAreLivingOnHorizontalBorders(livingCell, dimensionY, dimensionX, y, x)) {
+            return true;
+        }
 
-                || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]))
+        if (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
+                && threeElementsAreLivingOnVerticalBorders(livingCell, dimensionY, dimensionX, y, x)) {
+            return true;
+        }
 
-                || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
-                && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]));
+        if (ensureHorizontalBoundaries(livingCell, dimensionX, y, x)
+                && ensureVerticalBoundaries(livingCell, dimensionX, y, x)) {
+            return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]))
+
+                    || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1]))
+
+                    || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]))
+
+                    || (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1]));
+        }
+        return false;
     }
 
     private boolean cornerElementsAreLiving(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
@@ -208,6 +224,21 @@ public class GameOfLife {
         return false;
     }
 
+    private boolean threeElementsAreLivingOnVerticalBorders(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
+        if (y == 0) {
+            return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)])
+                    && (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])));
+        }
+        if (y == dimensionY - 1) {
+            return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1])
+                    && (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])));
+        }
+        return false;
+    }
+
+
     private boolean elementIsLivingOnHorizontalBorders(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
         if (x == 0) {
             return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
@@ -223,6 +254,21 @@ public class GameOfLife {
         }
         return false;
     }
+
+    private boolean threeElementsAreLivingOnHorizontalBorders(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
+        if (x == 0) {
+            return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)]));
+        }
+        if (x == dimensionX - 1) {
+            return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - 1])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
+                    && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + (dimensionX + 1)]));
+        }
+        return false;
+    }
+
 
     private boolean ensureFourNeighboursPresent(char[] livingCell, int dimensionX, int y, int x) {
         return currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])

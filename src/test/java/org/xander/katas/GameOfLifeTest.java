@@ -111,48 +111,63 @@ public class GameOfLifeTest {
                 {4,1}, {4,2}, {4,5}, {4,7}, {4,8} };
         String resultOfFirstGeneration = gameOfLife.buildTheWholeGeneration(firstGeneration, gameOfLife.drawCell(4, 8));
 
-        System.out.println(resultOfFirstGeneration);
         gameOfLife.evolutionize();
-        System.out.println(gameOfLife.getCurrentState());
         assertEquals("****...*\n" +
                 "*..*...*\n" +
                 "*.*....*\n" +
                 "**.....*\n", gameOfLife.getCurrentState());
 
         gameOfLife.evolutionize();
-        System.out.println(gameOfLife.getCurrentState());
         assertEquals("****....\n" +
                 "*......*\n" +
                 "*......*\n" +
                 "*.......\n", gameOfLife.getCurrentState());
 
         gameOfLife.evolutionize();
-        System.out.println(gameOfLife.getCurrentState());
         assertEquals("***.....\n" +
                 "*.......\n" +
                 "*.......\n" +
                 "........\n", gameOfLife.getCurrentState());
 
         gameOfLife.evolutionize();
-        System.out.println(gameOfLife.getCurrentState());
         assertEquals("**......\n" +
                 "*.......\n" +
                 "........\n" +
                 "........\n", gameOfLife.getCurrentState());
 
         gameOfLife.evolutionize();
-        System.out.println(gameOfLife.getCurrentState());
         assertEquals("*.......\n" +
                 "........\n" +
                 "........\n" +
                 "........\n", gameOfLife.getCurrentState());
 
         gameOfLife.evolutionize();
-        System.out.println(gameOfLife.getCurrentState());
         assertEquals("........\n" +
                 "........\n" +
                 "........\n" +
                 "........\n", gameOfLife.getCurrentState());
     }
-    //    TODO third rule
+
+    @Test
+    public void testNextGenerationThirdRule() {
+        int[][] firstGeneration = {
+                {1,2}, {1,3}, {1,4}, {1,8},
+                {2,2}, {2,3},{2,7},{2,8},
+                {3,1}, {3,2}, {3,3}, {3,4},{3,8} };
+        String resultOfFirstGeneration = gameOfLife.buildTheWholeGeneration(firstGeneration, gameOfLife.drawCell(4, 8));
+
+        gameOfLife.evolutionize();
+        assertEquals(".**.....\n" +
+                ".**....*\n" +
+                ".**.....\n" +
+                "........\n", gameOfLife.getCurrentState());
+
+        gameOfLife.evolutionize();
+        assertEquals(".**.....\n" +
+                ".**.....\n" +
+                ".**.....\n" +
+                "........\n", gameOfLife.getCurrentState());
+        gameOfLife.evolutionize();
+    }
+    //    TODO fourth rule
 }
