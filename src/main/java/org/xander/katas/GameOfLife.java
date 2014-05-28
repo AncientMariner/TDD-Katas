@@ -72,7 +72,7 @@ public class GameOfLife {
         Set<Integer> livingElements = firstRule(livingCell, dimensionY, dimensionX);
         secondRule(livingCell, dimensionY, dimensionX, livingElements);
         thirdRule(livingCell, dimensionY, dimensionX, livingElements);
-        //fourthRule
+        fourthRule(livingCell, dimensionY, dimensionX, livingElements);
 
         currentState = formNewGeneration(dimensionY, dimensionX, livingElements);
     }
@@ -132,6 +132,18 @@ public class GameOfLife {
                 if (livingElements.contains(y * (dimensionX + 1) + x)) {
                         if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
                             livingElements.add(y * (dimensionX + 1) + x);
+                    }
+                }
+            }
+        }
+    }
+
+    private void fourthRule(char[] livingCell, int dimensionY, int dimensionX, Set<Integer> livingElements) {
+        for (int y = 0; y < dimensionY; y++) {
+            for (int x = 0; x < dimensionX; x++) {
+                if (!livingElements.contains(y * (dimensionX + 1) + x)) {
+                    if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
+                        livingElements.add(y * (dimensionX + 1) + x);
                     }
                 }
             }
