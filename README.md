@@ -227,7 +227,7 @@ For example: print-diamond 'C' prints
   
 ---
 
-### Diversion :
+### Diversion 
 
 	Think of binary numbers: sequences of 0's and 1's. How many
 	n-digit binary numbers are there that don't have two adjacent
