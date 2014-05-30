@@ -4,67 +4,80 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LetterDiamond {
+    final char A_LETTER = 'A';
+    final char B_LETTER = 'B';
+    final char WHITESPACE_SYMBOL = ' ';
+    final char NEXT_LINE_SYMBOL = '\n';
+
+
     public String buildADiamond(char symbol) {
-        int differenceWithStartingSymbol = (int) (String.valueOf(symbol).toUpperCase().charAt(0)) - (int) 'A';
-        System.out.println(differenceWithStartingSymbol);
-//        System.out.println("A" + 'A' + " " + (int) 'A');
-//        System.out.println("B" + 'B' + " " + (int) 'B');
-
         List<Character> listOfSymbols = new ArrayList<>();
-        for (int w = differenceWithStartingSymbol; w > 0; w--) {
-            listOfSymbols.add(' ');
-        }
-        listOfSymbols.add('A');
-        listOfSymbols.add('\n');
-        int i, a;
-        for (i = 1, a = 'B'; i < differenceWithStartingSymbol; i++) {
-            for (int w = differenceWithStartingSymbol - i; w > 0; w--) {
-                listOfSymbols.add(' ');
-            }
-            listOfSymbols.add((char)(a));
-            for (int innerWhitespaceCounter = 0 ; innerWhitespaceCounter < ((a-'A') - 1)*2 + 1; innerWhitespaceCounter++) {
-                listOfSymbols.add(' ');
-            }
-            listOfSymbols.add((char)(a++));
-            listOfSymbols.add('\n');
-        }
 
-        listOfSymbols.add(symbol);
-        for (int w = 0; w < (differenceWithStartingSymbol * 2) - 1; w++) {
-            listOfSymbols.add(' ');
-        }
-        listOfSymbols.add(symbol);
-                listOfSymbols.add('\n');
+        buildFirstAndLastRow(listOfSymbols, symbol);
 
+        buildAscendingPart(symbol, listOfSymbols);
 
-        for (i = differenceWithStartingSymbol, a = (char)(symbol-1); i > 1 ; i--) {
-            for (int w = differenceWithStartingSymbol -i + 1; w > 0; w--) {
-                listOfSymbols.add(' ');
-            }
-            listOfSymbols.add((char)(a));
-            for (int innerWhitespaceCounter = ((a-'A'))*2 - 1 ; innerWhitespaceCounter > 0 ; innerWhitespaceCounter--) {
-                listOfSymbols.add(' ');
-            }
-            listOfSymbols.add((char)(a--));
-            listOfSymbols.add('\n');
-        }
+        buildDescendingPart(symbol, listOfSymbols);
 
-        for (int w = differenceWithStartingSymbol; w > 0; w--) {
-            listOfSymbols.add(' ');
-        }
-        listOfSymbols.add('A');
-
-
-        for (char ch : listOfSymbols) {
-            System.out.print(ch);
-        }
-
-//        Collections.reverse(listOfSymbols);
+        buildFirstAndLastRow(listOfSymbols, symbol);
+//
 //        for (char ch : listOfSymbols) {
 //            System.out.print(ch);
 //        }
 
+        StringBuilder finalResult = new StringBuilder();
+        for (char ch : listOfSymbols)
+            finalResult.append(String.valueOf(ch));
 
-        return String.valueOf(symbol).toUpperCase();
+        return finalResult.toString();
+    }
+
+    private void buildDescendingPart(char symbol, List<Character> listOfSymbols) {
+        int differenceWithStartingSymbol = (int) (String.valueOf(symbol).toUpperCase().charAt(0)) - (int) A_LETTER;
+        int i;
+        int a;
+        for (i = differenceWithStartingSymbol, a = (char) (symbol - 1); i > 1; i--) {
+            for (int w = differenceWithStartingSymbol - i + 1; w > 0; w--) {
+                listOfSymbols.add(WHITESPACE_SYMBOL);
+            }
+            listOfSymbols.add((char) (a));
+            for (int innerWhitespaceCounter = ((a - A_LETTER)) * 2 - 1; innerWhitespaceCounter > 0; innerWhitespaceCounter--) {
+                listOfSymbols.add(WHITESPACE_SYMBOL);
+            }
+            listOfSymbols.add((char) (a--));
+            listOfSymbols.add('\n');
+        }
+    }
+
+    private void buildAscendingPart(char symbol, List<Character> listOfSymbols) {
+        int differenceWithStartingSymbol = (int) (String.valueOf(symbol).toUpperCase().charAt(0)) - (int) A_LETTER;
+
+        listOfSymbols.add(NEXT_LINE_SYMBOL);
+        int number, letter;
+        for (number = 1, letter = B_LETTER; number < differenceWithStartingSymbol; number++) {
+            for (int w = differenceWithStartingSymbol - number; w > 0; w--) {
+                listOfSymbols.add(WHITESPACE_SYMBOL);
+            }
+            listOfSymbols.add((char) (letter));
+            for (int innerWhitespaceCounter = 0; innerWhitespaceCounter < ((letter - A_LETTER) - 1) * 2 + 1; innerWhitespaceCounter++) {
+                listOfSymbols.add(WHITESPACE_SYMBOL);
+            }
+            listOfSymbols.add((char) (letter++));
+            listOfSymbols.add(NEXT_LINE_SYMBOL);
+        }
+        listOfSymbols.add(symbol);
+        for (int w = 0; w < (differenceWithStartingSymbol * 2) - 1; w++) {
+            listOfSymbols.add(WHITESPACE_SYMBOL);
+        }
+        listOfSymbols.add(symbol);
+        listOfSymbols.add(NEXT_LINE_SYMBOL);
+    }
+
+    private void buildFirstAndLastRow(List<Character> listOfSymbols, char symbol) {
+        int differenceWithStartingSymbol = (int) (String.valueOf(symbol).toUpperCase().charAt(0)) - (int) A_LETTER;
+        for (int i = differenceWithStartingSymbol; i > 0; i--) {
+            listOfSymbols.add(WHITESPACE_SYMBOL);
+        }
+        listOfSymbols.add(A_LETTER);
     }
 }
