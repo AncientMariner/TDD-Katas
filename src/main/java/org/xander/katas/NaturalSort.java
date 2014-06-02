@@ -1,34 +1,37 @@
 package org.xander.katas;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class NaturalSort {
-    public List<String> sortForNumbers(List<String> unsortedList) {
+    private static NaturalSort naturalSort = new NaturalSort();
+    private MyNaturalSort myNaturalSort;
 
-//        sortNaturally(unsortedList);
-        Collections.sort(unsortedList);
-
-        return unsortedList;
+    private NaturalSort() {
+        myNaturalSort = new MyNaturalSort();
     }
 
-    private void sortNaturally(List<String> unsortedList) {
-        for (String element : unsortedList) {
-//            Comparator
+    public static NaturalSort getInstance() {
+        return naturalSort;
+    }
+
+    public List<String> sortNaturally(List<String> listToSort) {
+        for (int numberOfPasses = 1; numberOfPasses < listToSort.size(); numberOfPasses++) {
+            for (int i = 0; i < listToSort.size() - numberOfPasses; i++) {
+                if (myNaturalSort.compare(listToSort.get(i), listToSort.get(i + 1)) > 0) {
+                    String temp = listToSort.get(i);
+                    listToSort.set(i, listToSort.get(i + 1));
+                    listToSort.set(i + 1, temp);
+                }
+            }
         }
+        return listToSort;
     }
-
-
 }
 
-class Order implements Comparator<Order> {
-    String value;
-
-
+class MyNaturalSort implements Comparator<String> {
     @Override
-    public int compare(Order o1, Order o2) {
-//        return o1.value > o2.value;
-        return 0;
+    public int compare(String o1, String o2) {
+        return o1.compareTo(o2);
     }
 }

@@ -14,7 +14,7 @@ public class NaturalSortTest {
 
     @Before
     public void setUp() {
-        naturalSort = new NaturalSort();
+        naturalSort = NaturalSort.getInstance();
     }
 
     @Test
@@ -25,18 +25,34 @@ public class NaturalSortTest {
     @Test
     public void testBasicSort() {
         List<String> unsortedList = new ArrayList<>();
+        unsortedList.add("3");
+        unsortedList.add("38");
+        unsortedList.add("100");
         unsortedList.add("1");
+        unsortedList.add("4");
         unsortedList.add("2");
+        unsortedList.add("22");
         unsortedList.add("10");
-//        unsortedList.add("2s");
-//        unsortedList.add("3");
+        unsortedList.add("2s");
+        unsortedList.add("3");
+        unsortedList.add("a3");
+        unsortedList.add("13a");
 
-        List<String> sortedList = naturalSort.sortForNumbers(unsortedList);
+        List<String> sortedList = naturalSort.sortNaturally(unsortedList);
 
         List<String> expectedList = new ArrayList<>();
         expectedList.add("1");
-        expectedList.add("2");
         expectedList.add("10");
+        expectedList.add("100");
+        expectedList.add("13a");
+        expectedList.add("2");
+        expectedList.add("22");
+        expectedList.add("2s");
+        expectedList.add("3");
+        expectedList.add("3");
+        expectedList.add("38");
+        expectedList.add("4");
+        expectedList.add("a3");
 
         assertEquals(expectedList, sortedList);
     }
