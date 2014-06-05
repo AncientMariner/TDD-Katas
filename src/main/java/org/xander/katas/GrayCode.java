@@ -16,4 +16,15 @@ public class GrayCode {
         }
         return resultArray;
     }
+
+    public byte[] decode(byte[] originalEncodedArray) {
+        int arrayLength = originalEncodedArray.length;
+
+        byte[] decodedArray = new byte[arrayLength];
+        decodedArray[0] = originalEncodedArray[0];
+        for (int i = 1; i < arrayLength; i++) {
+            decodedArray[i] = (byte) (originalEncodedArray[i] ^ decodedArray[i - 1]);
+        }
+        return decodedArray;
+    }
 }
