@@ -314,3 +314,69 @@ For example: print-diamond 'C' prints
 	..| ..| |_|
 	
 ---
+
+### Prime Factors 
+
+	Factorize a positive integer number into its prime factors.
+
+	For example:
+
+		 2 -> [2]
+		 3 -> [3]
+		 4 -> [2,2]
+		 6 -> [2,3]
+		 9 -> [3,3]
+		12 -> [2,2,3]
+		15 -> [3,5]
+
+---
+
+### Word Wrap
+
+	Your task is to write a class called Wrapper, that has a
+	single static function named wrap that takes two arguments,
+	a string, and a column number.
+	The function returns the string, but with line breaks
+	inserted at just the right places to make sure that no line
+	is longer than the column number.
+	You try to break lines at word boundaries.
+	
+	Like a word processor, break the line by replacing
+	the last space in a line with a newline.
+
+---
+
+### Zeckendorf number
+
+	Just as numbers can be represented in a positional
+	notation as sums of multiples of the powers of ten
+	(decimal) or two (binary); all the positive integers
+	can be represented as the sum of one or zero times
+	the distinct members of the Fibonacci series.
+	
+	Recall that the first six distinct Fibonacci numbers
+	are: 1, 2, 3, 5, 8, 13.
+	The decimal number eleven can be written as
+	
+	  0*13 + 1*8 + 0*5 + 1*3 + 0*2 + 0*1
+	  
+	or 010100 in positional notation where the columns
+	represent multiplication by a particular member of the
+	sequence. Leading zeroes are dropped so that eleven
+	decimal becomes 10100.
+	
+	10100 is not the only way to make eleven from the
+	Fibonacci numbers however;
+	
+	  0*13 + 1*8 + 0*5 + 0*3 + 1*2 + 1*1
+	  
+	or 010011 would also represent decimal 11. For a true
+	Zeckendorf number there is the added restriction that
+	no two consecutive Fibonacci numbers can be used which
+	leads to the former unique solution.
+	
+	Your task is to generate and show here a table of the
+	Zeckendorf number representations of the decimal numbers
+	zero to twenty, in order.
+
+---
