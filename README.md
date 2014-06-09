@@ -383,7 +383,8 @@ For example: print-diamond 'C' prints
 
 ### Regex learning
 
-    Learning Java Regex API using tests
+    Learning  java.util.regex API for pattern matching
+    with regular expressions using tests
 
 ---
 
