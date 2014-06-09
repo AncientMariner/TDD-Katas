@@ -415,7 +415,7 @@ public class RegexLearnTest {
 
         boolean result1 = regexLearn.findTheResult(matcher1);
 
-        assertTrue(result1);
+        assertFalse(result1);
     }
 
  }
