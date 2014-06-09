@@ -381,6 +381,12 @@ For example: print-diamond 'C' prints
 
 ---
 
+### Regex learning
+
+    Learning Java Regex API using tests
+
+---
+
 ### Bowling Game
 
     Write a program, to score a game of Ten-Pin Bowling.
