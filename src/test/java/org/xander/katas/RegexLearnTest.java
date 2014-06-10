@@ -6,9 +6,7 @@ import org.junit.Test;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class RegexLearnTest {
     RegexLearn regexLearn;
@@ -395,6 +393,7 @@ public class RegexLearnTest {
         Pattern pattern = Pattern.compile(".*?foo");
         Matcher matcher1 = pattern.matcher("xfooxxxxxxfoo");
 
+
         boolean result1 = regexLearn.findTheResult(matcher1);
 
         assertTrue(result1);
@@ -418,4 +417,207 @@ public class RegexLearnTest {
         assertFalse(result1);
     }
 
- }
+    /** capturing groups---------------------------------------------*/
+
+    @Test
+    public void testCapruteGroup() {
+        Pattern pattern = Pattern.compile("((a)(b(c)))");
+        Matcher matcher1 = pattern.matcher("z");
+
+        assertEquals(4, matcher1.groupCount());
+    }
+
+    @Test
+    public void testBackReferencesAnyTwoDigits() {
+        Pattern pattern = Pattern.compile("(\\d\\d)\\1");
+        Matcher matcher1 = pattern.matcher("1212");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+    @Test
+    public void testBackReferencesAnyTwoDigitsNotFound() {
+        Pattern pattern = Pattern.compile("(\\d\\d)\\1");
+        Matcher matcher1 = pattern.matcher("1234");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertFalse(result1);
+    }
+
+    /** boundary mathers---------------------------------------------*/
+
+    @Test
+    public void testBeginningOfTheLineTheEndOfTheLine() {
+        Pattern pattern = Pattern.compile("^dog$");
+        Matcher matcher1 = pattern.matcher("dog");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void testBeginningOfTheLineTheEndOfTheLineAnotherOne() {
+        Pattern pattern = Pattern.compile("\\s*dog$");
+        Matcher matcher1 = pattern.matcher("     dog");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+    @Test
+    public void testBeginningOfTheLineTheEndOfTheLineAnotherOne1() {
+        Pattern pattern = Pattern.compile("^dog\\w*");
+        Matcher matcher1 = pattern.matcher("dogcatmouse");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void testBeginningOfTheLineTheEndOfTheLineFalse() {
+        Pattern pattern = Pattern.compile("^dog$");
+        Matcher matcher1 = pattern.matcher(" dog");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertFalse(result1);
+    }
+
+    @Test
+    public void testWordBoundary() {
+        Pattern pattern = Pattern.compile("\\bdog\\b");
+        Matcher matcher1 = pattern.matcher("cat and dog and cat");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void testWordBoundary1() {
+        Pattern pattern = Pattern.compile("\\bdog\\b");
+        Matcher matcher1 = pattern.matcher("cat and doggie and cat");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertFalse(result1);
+    }
+
+    @Test
+    public void testNonWordBoundary() {
+        Pattern pattern = Pattern.compile("\\bdog\\B");
+        Matcher matcher1 = pattern.matcher("cat and dog and cat");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertFalse(result1);
+    }
+
+    @Test
+    public void testNonWordBoundary1() {
+        Pattern pattern = Pattern.compile("\\bdog\\B");
+        Matcher matcher1 = pattern.matcher("cat and doggie and cat");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void testEndOfThePreviousMatch0() {
+        Pattern pattern = Pattern.compile("dog");
+        Matcher matcher1 = pattern.matcher("dog and dog");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+
+    @Test
+    public void testEndOfThePreviousMatch1() {
+        Pattern pattern = Pattern.compile("\\Gdog");
+        Matcher matcher1 = pattern.matcher("dog and dog");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+
+    @Test
+    public void testCaseInsensitiveAndOtherFlags() {
+//        Pattern pattern = Pattern.compile("dog", Pattern.CASE_INSENSITIVE  | Pattern.UNIX_LINES);
+        final int flags = Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
+        Pattern pattern = Pattern.compile("dog", flags);
+//        Pattern pattern = Pattern.compile("dog");
+
+        Matcher matcher1 = pattern.matcher("DoG and dOg");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void testCaseInsensitiveFlagsWithinExpression() {
+        Pattern pattern = Pattern.compile("(?i)foo");
+        Matcher matcher1 = pattern.matcher("FOOfooFoOfoO");
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
+
+    @Test
+    public void testOneLineMathes() {
+        assertTrue(Pattern.matches("\\d","1"));
+    }
+
+    @Test
+    public void testExtractWords() {
+
+        final String REGEX = ":";
+        final String INPUT = "one:two:three:four:five";
+
+        Pattern p = Pattern.compile(REGEX);
+        String[] items = p.split(INPUT);
+
+        assertEquals("one", items[0]);
+        assertEquals("two", items[1]);
+        assertEquals("three", items[2]);
+        assertEquals("four", items[3]);
+        assertEquals("five", items[4]);
+    }
+
+    @Test
+    public void testExtractWordsAnotherOne() {
+
+        final String REGEX = "\\d";
+        final String INPUT = "one9two4three7four1five";
+
+        Pattern p = Pattern.compile(REGEX);
+        String[] items = p.split(INPUT);
+//        String[] items = p.split(INPUT,2);  number is a limit
+
+        assertEquals("one", items[0]);
+        assertEquals("two", items[1]);
+        assertEquals("three", items[2]);
+        assertEquals("four", items[3]);
+        assertEquals("five", items[4]);
+    }
+
+    @Test
+    public void testGenerateRegexFromString() {
+        String quote = Pattern.quote("FOOfooFoOfoO");
+        assertEquals("\\QFOOfooFoOfoO\\E", quote);
+    }
+
+
+
+
+}
