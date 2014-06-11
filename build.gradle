@@ -6,4 +6,6 @@ repositories {
 }
 dependencies {
     testCompile "junit:junit:4.11"
+    compile 'com.github.stefanbirkner:system-rules:1.5.0'
+
 }

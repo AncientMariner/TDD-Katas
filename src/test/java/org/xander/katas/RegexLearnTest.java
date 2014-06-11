@@ -1,10 +1,13 @@
 package org.xander.katas;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.ExpectedSystemExit;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
 
 import static org.junit.Assert.*;
 
@@ -228,7 +231,6 @@ public class RegexLearnTest {
         assertTrue(result1);
     }
 
-
     @Test
     public void testNonWhiteSpaceChar() {
         Pattern pattern = Pattern.compile("\\S");
@@ -436,6 +438,7 @@ public class RegexLearnTest {
 
         assertTrue(result1);
     }
+
     @Test
     public void testBackReferencesAnyTwoDigitsNotFound() {
         Pattern pattern = Pattern.compile("(\\d\\d)\\1");
@@ -467,6 +470,7 @@ public class RegexLearnTest {
 
         assertTrue(result1);
     }
+
     @Test
     public void testBeginningOfTheLineTheEndOfTheLineAnotherOne1() {
         Pattern pattern = Pattern.compile("^dog\\w*");
@@ -537,7 +541,6 @@ public class RegexLearnTest {
         assertTrue(result1);
     }
 
-
     @Test
     public void testEndOfThePreviousMatch1() {
         Pattern pattern = Pattern.compile("\\Gdog");
@@ -547,7 +550,6 @@ public class RegexLearnTest {
 
         assertTrue(result1);
     }
-
 
     @Test
     public void testCaseInsensitiveAndOtherFlags() {
@@ -580,7 +582,6 @@ public class RegexLearnTest {
 
     @Test
     public void testExtractWords() {
-
         final String REGEX = ":";
         final String INPUT = "one:two:three:four:five";
 
@@ -596,7 +597,6 @@ public class RegexLearnTest {
 
     @Test
     public void testExtractWordsAnotherOne() {
-
         final String REGEX = "\\d";
         final String INPUT = "one9two4three7four1five";
 
@@ -617,7 +617,98 @@ public class RegexLearnTest {
         assertEquals("\\QFOOfooFoOfoO\\E", quote);
     }
 
+    @Test
+    public void testMatcherMethodsMatches() {
+        Pattern pattern = Pattern.compile("dog");
+        Matcher matcher1 = pattern.matcher("dog");
+
+        assertTrue(matcher1.matches());
+    }
+    //difference is that matches requires the entire input sequence
+    // to be matched, while lookingAt does not
+    @Test
+    public void testMatcherMethodsLookingAt() {
+        Pattern pattern = Pattern.compile("dog");
+        Matcher matcher1 = pattern.matcher("dog and cat");
+
+        assertTrue(matcher1.lookingAt());
+    }
+
+    @Test
+    public void testMatcherMethodsFind() {
+        Pattern pattern = Pattern.compile("dog");
+        Matcher matcher1 = pattern.matcher("cat and dog");
+
+        assertTrue(matcher1.find());
+    }
+
+    @Test
+    public void testMatcherMethodsReplace() {
+        Pattern pattern = Pattern.compile("dog");
+        Matcher matcher1 = pattern.matcher("cat and dog");
+        String actualResult = matcher1.replaceAll("cat");
+        assertEquals("cat and cat", actualResult);
+    }
+
+    @Test
+    public void testMatcherMethodsReplaceAnotherOne() {
+        Pattern pattern = Pattern.compile("a*b");
+        Matcher matcher1 = pattern.matcher("aabfooaabfooabfoob");
+        String actualResult = matcher1.replaceAll("-");
+        String actualResult1 = matcher1.replaceFirst("-");
+        assertEquals("-foo-foo-foo-", actualResult);
+        assertEquals("-fooaabfooabfoob", actualResult1);
+    }
+
+    @Test
+    public void testMatcherMethodsAppendReplacement() {
+        Pattern pattern = Pattern.compile("a*b");
+        Matcher matcher1 = pattern.matcher("aabfooaabfooabfoob");
 
 
+        StringBuffer sb = new StringBuffer();
+        while(matcher1.find()){
+            matcher1.appendReplacement(sb,"-");
+        }
+//        matcher1.appendTail(sb);
 
+        assertEquals("-foo-foo-foo-", sb.toString());
+    }
+
+    @Rule
+    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+
+    @Test
+    public void testRegexException() {
+        Pattern pattern = null;
+        Matcher matcher = null;
+
+        while (true) {
+            try{
+                pattern = Pattern.compile("\\?i)foo");
+                matcher = pattern.matcher("foo");
+            }
+            catch(PatternSyntaxException pse){
+                assertEquals("\\?i)foo", pse.getPattern());
+                assertEquals("Unmatched closing ')'", pse.getDescription());
+                assertEquals("Unmatched closing ')' near index 2\n\\?i)foo\n  ^", pse.getMessage());
+                assertEquals(2, pse.getIndex());
+
+                exit.expectSystemExitWithStatus(0);
+                System.exit(0);
+            }
+        }
+    }
+
+    @Test
+    public void testFirstAndLastNamesAreTheSame() {
+        String name = "dog";
+        String regex = name + "\\s" + name;
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher1 = pattern.matcher(name + " " + name);
+
+        boolean result1 = regexLearn.findTheResult(matcher1);
+
+        assertTrue(result1);
+    }
 }
