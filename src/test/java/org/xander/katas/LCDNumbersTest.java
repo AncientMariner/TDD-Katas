@@ -15,12 +15,12 @@ public class LCDNumbersTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(lcdNumbers);
     }
 
     @Test
-    public void testZero() {
+    public void Zero() {
         int zero = 0;
         String lcdNumber = lcdNumbers.generateLCDNumberFrom(zero);
         assertEquals("._. ._. ._.\n" +
@@ -29,7 +29,7 @@ public class LCDNumbersTest {
     }
 
     @Test
-    public void testOne() {
+    public void One() {
         int zero = 1;
         String lcdNumber = lcdNumbers.generateLCDNumberFrom(zero);
         assertEquals("._. ._. ...\n" +
@@ -38,7 +38,7 @@ public class LCDNumbersTest {
     }
 
     @Test
-    public void testAnyNumberBelow1000_910() {
+    public void AnyNumberBelow1000_910() {
         int number = 910;
         String lcdNumber = lcdNumbers.generateLCDNumberFrom(number);
         assertEquals("._. ... ._.\n" +
@@ -47,7 +47,7 @@ public class LCDNumbersTest {
     }
 
     @Test
-    public void testAnyNumberBelow1000_365() {
+    public void AnyNumberBelow1000_365() {
         int number = 365;
         String lcdNumber = lcdNumbers.generateLCDNumberFrom(number);
         assertEquals("._. ._. ._.\n" +

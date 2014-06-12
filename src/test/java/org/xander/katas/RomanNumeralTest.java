@@ -17,18 +17,18 @@ public class RomanNumeralTest {
     }
 
     @Test
-    public void testRomanNumeral() {
+    public void RomanNumeral() {
         assertNotNull(romanNumeral);
     }
 
     @Test
-    public void testNothing() {
+    public void Nothing() {
         String nothing = romanNumeral.convert();
         assertEquals("nothing was sent to convert", nothing);
     }
 
     @Test
-    public void testOneDigit() {
+    public void OneDigit() {
         String one = "1";
         String oneRoman = romanNumeral.convertOneDigit(one);
         assertEquals("I", oneRoman);
@@ -67,7 +67,7 @@ public class RomanNumeralTest {
     }
 
     @Test
-    public void testTwoDigit() {
+    public void TwoDigit() {
         String ten = "10";
         String tenRoman = romanNumeral.convertTwoDigit(ten);
         assertEquals("X", tenRoman);
@@ -106,7 +106,7 @@ public class RomanNumeralTest {
     }
 
     @Test
-    public void testThreeDigit() {
+    public void ThreeDigit() {
         String hundred = "100";
         String hundredRoman = romanNumeral.convertThreeDigit(hundred);
             assertEquals("C", hundredRoman);
@@ -145,14 +145,14 @@ public class RomanNumeralTest {
     }
 
     @Test
-    public void testFourDigit() {
+    public void FourDigit() {
         String thousand = "1000";
         String hundredRoman = romanNumeral.convertFourDigit(thousand);
         assertEquals("M", hundredRoman);
     }
 
     @Test
-    public void testNegative() {
+    public void Negative() {
         for (int i = 65; i < 91; i++) {
             String asciiToVerify = String.valueOf((char) i);
             String numberRoman = romanNumeral.convertFourDigit(asciiToVerify);
@@ -174,13 +174,13 @@ public class RomanNumeralTest {
     }
 
     @Test
-    public void testNull() {
+    public void Null() {
         String nullRoman = romanNumeral.convertFourDigit(null);
         assertEquals(ABSENT_NUMBER, nullRoman);
     }
 
     @Test
-    public void testWrongSizeOfDigits() {
+    public void WrongSizeOfDigits() {
         String oneSizeDigit = "1";
         String twoSizeDigit = "19";
         String threeSizeDigit = "432";
@@ -216,84 +216,84 @@ public class RomanNumeralTest {
     }
 
     @Test
-    public void testConvertCustomFourDigitNumber() {
+    public void ConvertCustomFourDigitNumber() {
         String customDigit = "3888";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMDCCCLXXXVIII", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomFourDigit3001Number() {
+    public void ConvertCustomFourDigit3001Number() {
         String customDigit = "3001";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMI", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomFourDigit1001Number() {
+    public void ConvertCustomFourDigit1001Number() {
         String customDigit = "1001";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MI", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomFourDigit3100Number() {
+    public void ConvertCustomFourDigit3100Number() {
         String customDigit = "3100";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMC", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomFourDigit3070Number() {
+    public void ConvertCustomFourDigit3070Number() {
         String customDigit = "3070";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMLXX", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomFourDigit9482Number() {
+    public void ConvertCustomFourDigit9482Number() {
         String customDigit = "9482";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMMMMMMMCDLXXXII", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomFourDigit3700Number() {
+    public void ConvertCustomFourDigit3700Number() {
         String customDigit = "3700";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("MMMDCC", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomThreeDigitNumber() {
+    public void ConvertCustomThreeDigitNumber() {
         String customDigit = "388";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("CCCLXXXVIII", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomThreeDigit800Number() {
+    public void ConvertCustomThreeDigit800Number() {
         String customDigit = "800";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("DCCC", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomThreeDigit801Number() {
+    public void ConvertCustomThreeDigit801Number() {
         String customDigit = "801";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("DCCCI", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomTwoDigit80Number() {
+    public void ConvertCustomTwoDigit80Number() {
         String customDigit   = "80";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("LXXX", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomTwoDigit10Number() {
+    public void ConvertCustomTwoDigit10Number() {
         String customDigit = "10";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("X", customNumberRoman);
@@ -301,35 +301,35 @@ public class RomanNumeralTest {
 
 
     @Test
-    public void testConvertCustomTwoDigit81Number() {
+    public void ConvertCustomTwoDigit81Number() {
         String customDigit = "81";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("LXXXI", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomTwoDigitNumber() {
+    public void ConvertCustomTwoDigitNumber() {
         String customDigit = "38";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("XXXVIII", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomOneDigitNumber() {
+    public void ConvertCustomOneDigitNumber() {
         String customDigit = "8";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals("VIII", customNumberRoman);
     }
 
     @Test
-    public void testConvertCustomBigDigitNumber() {
+    public void ConvertCustomBigDigitNumber() {
         String customDigit = "123123123218";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals(ABSENT_NUMBER, customNumberRoman);
     }
 
     @Test
-    public void testNegativeWhetherAllNumbersUpTo10000AreExisting() {
+    public void NegativeWhetherAllNumbersUpTo10000AreExisting() {
         File fileWithRomanNumbers = new File("fileWithRomanNumbers");
         PrintWriter writer = null;
         try {

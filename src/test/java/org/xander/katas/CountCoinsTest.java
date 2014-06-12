@@ -16,36 +16,36 @@ public class CountCoinsTest {
     }
 
     @Test
-    public void testBasicBehavior() {
+    public void BasicBehavior() {
         assertNotNull(countCoins);
     }
 
     @Test
-    public void testQuarter() {
+    public void Quarter() {
         String name = countCoins.countOneCoin(25);
         assertThat("quarter", is(name));
     }
 
     @Test
-    public void testDime() {
+    public void Dime() {
         String name = countCoins.countOneCoin(10);
         assertThat("dime", is(name));
     }
 
     @Test
-    public void testNickel() {
+    public void Nickel() {
         String name = countCoins.countOneCoin(5);
         assertThat("nickel", is(name));
     }
 
     @Test
-    public void testPenny() {
+    public void Penny() {
         String name = countCoins.countOneCoin(1);
         assertThat("penny", is(name));
     }
 
     @Test
-    public void testCustomQuarter() {
+    public void CustomQuarter() {
         String name = countCoins.countCustomCoin(25);
         assertThat(true, is(name.contains("25_penny")));
         assertThat(true, is(name.contains("5_nickel")));
@@ -69,7 +69,7 @@ public class CountCoinsTest {
     }
 
     @Test
-    public void test15Cents() {
+    public void fifteenCents() {
         String name = countCoins.countCustomCoin(15);
         assertThat(true, is(name.contains("15_penny")));
         assertThat(true, is(name.contains("3_nickel")));
@@ -80,7 +80,7 @@ public class CountCoinsTest {
     }
 
     @Test
-    public void test100Cents() {
+    public void hundredCents() {
         String name = countCoins.countCustomCoin(100);
         assertThat(true, is(name.contains("100_penny")));
         assertThat(true, is(name.contains("20_nickel")));
@@ -177,7 +177,7 @@ public class CountCoinsTest {
     }
 
     @Test
-    public void test26Cents() {
+    public void twentySixCents() {
         String name = countCoins.countCustomCoin(26);
         assertThat(true, is(name.contains("26_penny")));
         assertThat(true, is(name.contains("1_penny and 5_nickel")));

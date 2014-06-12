@@ -15,12 +15,12 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(primeFactors);
     }
 
     @Test
-    public void testSimpleNumber4() {
+    public void SimpleNumber4() {
         int inputNumber = 4;
 
         int[] result = primeFactors.factorize(inputNumber);
@@ -31,7 +31,7 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testSimpleNumber6() {
+    public void SimpleNumber6() {
         int inputNumber = 6;
 
         int[] result = primeFactors.factorize(inputNumber);
@@ -42,7 +42,7 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testSimpleNumber8() {
+    public void SimpleNumber8() {
         int inputNumber = 8;
 
         int[] result = primeFactors.factorize(inputNumber);
@@ -53,7 +53,7 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testSimpleNumber12() {
+    public void SimpleNumber12() {
         int inputNumber = 12;
 
         int[] result = primeFactors.factorize(inputNumber);
@@ -64,7 +64,7 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testSimpleNumber96() {
+    public void SimpleNumber96() {
         int inputNumber = 96;
 
         int[] result = primeFactors.factorize(inputNumber);
@@ -75,7 +75,7 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testSimpleNumber960() {
+    public void SimpleNumber960() {
         int inputNumber = 960;
 
         int[] result = primeFactors.factorize(inputNumber);
@@ -86,7 +86,7 @@ public class PrimeFactorsTest {
     }
 
     @Test
-    public void testSimpleNumber980() {
+    public void SimpleNumber980() {
         int inputNumber = 980;
 
         int[] result = primeFactors.factorize(inputNumber);

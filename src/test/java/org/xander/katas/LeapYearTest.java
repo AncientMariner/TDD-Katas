@@ -16,27 +16,27 @@ public class LeapYearTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(leapYear);
     }
 
     @Test
-    public void test1900NotLeapYear() {
+    public void notLeapYear1900() {
         assertFalse(leapYear.checkTheYear(1900));
     }
 
     @Test
-    public void test1999NotLeapYear() {
+    public void notLeapYear1999() {
         assertFalse(leapYear.checkTheYear(1999));
     }
 
     @Test
-    public void test2300NotLeapYear() {
+    public void notLeapYear2300() {
         assertFalse(leapYear.checkTheYear(2300));
     }
 
     @Test
-    public void testManyLeapYears() {
+    public void manyLeapYears() {
         assertTrue(leapYear.checkTheYear(1804));
         assertTrue(leapYear.checkTheYear(1808));
         assertTrue(leapYear.checkTheYear(1812));

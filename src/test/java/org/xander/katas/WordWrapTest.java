@@ -15,12 +15,12 @@ public class WordWrapTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(wordWrap);
     }
 
     @Test
-    public void testBasicBehaviour() {
+    public void BasicBehaviour() {
         String testString = "test test test";
         int columnNumber = 9;
 
@@ -30,7 +30,7 @@ public class WordWrapTest {
     }
 
     @Test
-    public void testBigWord() {
+    public void BigWord() {
         String testString = "test something important or should it be even more";
         int columnNumber = 9;
 
@@ -40,7 +40,7 @@ public class WordWrapTest {
     }
 
     @Test
-    public void testNegative() {
+    public void Negative() {
         String testString = "testtest";
         int columnNumber = 3;
 
@@ -50,7 +50,7 @@ public class WordWrapTest {
     }
 
     @Test
-    public void testSmallWords() {
+    public void SmallWords() {
         String testString = "test cat dog bird parrot cow whale";
         int columnNumber = 8;
 
@@ -60,7 +60,7 @@ public class WordWrapTest {
     }
 
     @Test
-    public void testSmallWordsSmallColumnNumber() {
+    public void SmallWordsSmallColumnNumber() {
         String testString = "test cat dog bird parrot cow whale";
         int columnNumber = 5;
 
@@ -70,7 +70,7 @@ public class WordWrapTest {
     }
 
     @Test
-    public void testWhiteSpacesWithWords() {
+    public void WhiteSpacesWithWords() {
         String testString = "test     cat        dog        bird         parrot      cow     whale";
         int columnNumber = 8;
 

@@ -17,12 +17,12 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(zeckendorfNumber);
     }
 
     @Test
-    public void testFibonacciMax20() {
+    public void FibonacciMax20() {
         int[] fibonacciArray = {1, 1, 2, 3, 5, 8, 13, 21, 34, 55,
                     89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765,
                     10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040,
@@ -39,7 +39,7 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testRepresentDistinctNumber3() {
+    public void RepresentDistinctNumber3() {
         int inputNumber = 3;
 
         zeckendorfNumber.generateFibonacci(threshold);
@@ -55,7 +55,7 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testRepresentDistinctNumber11() {
+    public void RepresentDistinctNumber11() {
         int inputNumber = 11;
 
         zeckendorfNumber.generateFibonacci(threshold);
@@ -71,7 +71,7 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testRepresentDistinctNumber13() {
+    public void RepresentDistinctNumber13() {
         int inputNumber = 13;
 
         zeckendorfNumber.generateFibonacci(threshold);
@@ -86,7 +86,7 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testRepresentDistinctNumber25() {
+    public void RepresentDistinctNumber25() {
         int inputNumber = 25;
 
         zeckendorfNumber.generateFibonacci(threshold);
@@ -103,7 +103,7 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testRepresentDistinctNumber4563() {
+    public void RepresentDistinctNumber4563() {
         int inputNumber = 4563;
 
         zeckendorfNumber.generateFibonacci(threshold);
@@ -120,7 +120,7 @@ public class ZeckendorfNumberTest {
     }
 
     @Test
-    public void testRepresentDistinctNumber45633() {
+    public void RepresentDistinctNumber45633() {
         int inputNumber = 45633;
 
         zeckendorfNumber.generateFibonacci(threshold);

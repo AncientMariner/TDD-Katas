@@ -18,12 +18,12 @@ public class NaturalSortTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(naturalSort);
     }
 
     @Test
-    public void testBasicSort() {
+    public void BasicSort() {
         List<String> unsortedList = new ArrayList<>();
         unsortedList.add("3");
         unsortedList.add("38");

@@ -20,13 +20,13 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBasic() {
+    public void Basic() {
         assertNotNull(regexLearn);
     }
 
     /** string literals---------------------------------------------*/
     @Test
-    public void testBeginning() {
+    public void Beginning() {
         Pattern pattern = Pattern.compile(" to ");
         Matcher matcher = pattern.matcher("regex to find");
 
@@ -36,7 +36,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBeginning1() {
+    public void Beginning1() {
         Pattern pattern = Pattern.compile("sea shells");
         Matcher matcher = pattern.matcher("She sells sea shells at the sea shore");
 
@@ -46,7 +46,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testFoo() {
+    public void Foo() {
         Pattern pattern = Pattern.compile("foo");
         Matcher matcher = pattern.matcher("foofoofoo");
 
@@ -58,7 +58,7 @@ public class RegexLearnTest {
     /**way to avoid meta character - precede with a backslash
      or enclose it with \Q(beginning) \E (end) */
     @Test
-    public void testCatWithMetacharacterDotMeansAnyCharacter() {
+    public void CatWithMetacharacterDotMeansAnyCharacter() {
         Pattern pattern = Pattern.compile("cat.");
         Matcher matcher = pattern.matcher("cats");
 
@@ -69,7 +69,7 @@ public class RegexLearnTest {
 
     /** character classes---------------------------------------------*/
     @Test
-    public void testCatWithMetacharacter_A_or_B_or_C() {
+    public void CatWithMetacharacter_A_or_B_or_C() {
         Pattern pattern = Pattern.compile("[abc]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -79,7 +79,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_except_A_or_B_or_C() {
+    public void CatWithMetacharacter_except_A_or_B_or_C() {
         Pattern pattern = Pattern.compile("[^abc]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -89,7 +89,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_a_z_A_Z_inclusive() {
+    public void CatWithMetacharacter_a_z_A_Z_inclusive() {
         Pattern pattern = Pattern.compile("[a-zA-Z]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -99,7 +99,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_a_d_or_m_p_union() {
+    public void CatWithMetacharacter_a_d_or_m_p_union() {
         Pattern pattern = Pattern.compile("[a-d[m-p]]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -109,7 +109,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_d_e_or_f_intersection() {
+    public void CatWithMetacharacter_d_e_or_f_intersection() {
         Pattern pattern = Pattern.compile("[a-z&&[def]]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -119,7 +119,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_a_z_except_b_or_c_ad_z_substraction() {
+    public void CatWithMetacharacter_a_z_except_b_or_c_ad_z_substraction() {
         Pattern pattern = Pattern.compile("[a-z&&[^bc]]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -129,7 +129,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_a_z_and_not_m_p__a_lq_z_substraction() {
+    public void CatWithMetacharacter_a_z_and_not_m_p__a_lq_z_substraction() {
         Pattern pattern = Pattern.compile("[a-z&&[^m-p]]");
         Matcher matcher = pattern.matcher("cats");
 
@@ -139,7 +139,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_bcr() {
+    public void CatWithMetacharacter_bcr() {
         Pattern pattern = Pattern.compile("[bcr]");
         Matcher matcher1 = pattern.matcher("cat");
         Matcher matcher2= pattern.matcher("bat");
@@ -158,7 +158,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_Combination() {
+    public void CatWithMetacharacter_Combination() {
         Pattern pattern = Pattern.compile("[cat[1-3]]");
         Matcher matcher1 = pattern.matcher("cat2");
 
@@ -168,7 +168,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_Intersection() {
+    public void CatWithMetacharacter_Intersection() {
         Pattern pattern = Pattern.compile("[a-z&&[e-z]]");
         Matcher matcher1 = pattern.matcher("cat2");
 
@@ -178,7 +178,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCatWithMetacharacter_Substraction() {
+    public void CatWithMetacharacter_Substraction() {
         Pattern pattern = Pattern.compile("[a-z&&[^a-e]]");
         Matcher matcher1 = pattern.matcher("cat2");
 
@@ -189,7 +189,7 @@ public class RegexLearnTest {
 
     /** predefined character classes---------------------------------------------*/
     @Test
-    public void testAnyChar() {
+    public void AnyChar() {
         Pattern pattern = Pattern.compile(".");
         Matcher matcher1 = pattern.matcher("cat");
 
@@ -199,7 +199,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testADigit() {
+    public void ADigit() {
         Pattern pattern = Pattern.compile("\\d");
 //        Pattern pattern = Pattern.compile("[0-9]");
         Matcher matcher1 = pattern.matcher("cat2");
@@ -210,7 +210,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testNonDigit() {
+    public void NonDigit() {
         Pattern pattern = Pattern.compile("\\D");
 //        Pattern pattern = Pattern.compile("[^0-9]");
         Matcher matcher1 = pattern.matcher("cat2");
@@ -221,7 +221,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testAWhiteSpaceChar() {
+    public void AWhiteSpaceChar() {
         Pattern pattern = Pattern.compile("\\s");
 //        Pattern pattern = Pattern.compile("\\t\\n\\x0B\\f\\r");
         Matcher matcher1 = pattern.matcher("cat2 ");
@@ -232,7 +232,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testNonWhiteSpaceChar() {
+    public void NonWhiteSpaceChar() {
         Pattern pattern = Pattern.compile("\\S");
 //        Pattern pattern = Pattern.compile("^\s");
         Matcher matcher1 = pattern.matcher("cat2 ");
@@ -243,7 +243,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testAWordChar() {
+    public void AWordChar() {
         Pattern pattern = Pattern.compile("\\w");
 //        Pattern pattern = Pattern.compile("[a-zA-Z_0-9]");
         Matcher matcher1 = pattern.matcher("cat2 ");
@@ -254,7 +254,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testNonWordChar() {
+    public void NonWordChar() {
         Pattern pattern = Pattern.compile("\\W");
 //        Pattern pattern = Pattern.compile("^\\w");
         Matcher matcher1 = pattern.matcher("cat2 ");
@@ -267,7 +267,7 @@ public class RegexLearnTest {
     /** quantifiers---------------------------------------------*/
 
     @Test
-    public void testQuentifierChar_once_or_not_at_all_Greedy1() {
+    public void QuentifierChar_once_or_not_at_all_Greedy1() {
         Pattern pattern = Pattern.compile("a?");
         Matcher matcher1 = pattern.matcher("aaaaa");
 
@@ -277,7 +277,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testQuentifierChar_zero_or_more_times_Greedy2() {
+    public void QuentifierChar_zero_or_more_times_Greedy2() {
         Pattern pattern = Pattern.compile("a*");
         Matcher matcher1 = pattern.matcher("aaaaa");
 
@@ -287,7 +287,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testQuentifierChar_one_or_more_times_Greedy3() {
+    public void QuentifierChar_one_or_more_times_Greedy3() {
         Pattern pattern = Pattern.compile("a+");
         Matcher matcher1 = pattern.matcher("cata2aa ");
 
@@ -297,7 +297,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testQuentifierCharMatchSpecificNumberOfTimesAtLeastTo2_6() {
+    public void QuentifierCharMatchSpecificNumberOfTimesAtLeastTo2_6() {
         Pattern pattern = Pattern.compile("aa{2,6}");
         Matcher matcher1 = pattern.matcher("cata2aa ");
 
@@ -307,7 +307,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testQuentifierCaptureGroupTwoTimes() {
+    public void QuentifierCaptureGroupTwoTimes() {
         Pattern pattern = Pattern.compile("(cat){2}");
         Matcher matcher1 = pattern.matcher("catcata2catacata ");
 
@@ -317,7 +317,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testQuentifierCaptureGroupTwoTimes1() {
+    public void QuentifierCaptureGroupTwoTimes1() {
         Pattern pattern = Pattern.compile("cat{2}"); // applies only to the near letter - 't'
         Matcher matcher1 = pattern.matcher("catcata2catacata ");
 
@@ -327,7 +327,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testQuentifierCaptureGroupTwoTimes2() {
+    public void QuentifierCaptureGroupTwoTimes2() {
         Pattern pattern = Pattern.compile("[abc]{2}");
         Matcher matcher1 = pattern.matcher("catcata2catacata ");
 
@@ -374,7 +374,7 @@ public class RegexLearnTest {
      * the rightmost occurrence of "foo" has been regurgitated,
      * at which point the match succeeds and the search ends.*/
     @Test
-    public void testQuentifierComparisonGreedy_0_or_more_times() {
+    public void QuentifierComparisonGreedy_0_or_more_times() {
         Pattern pattern = Pattern.compile(".*foo");
         Matcher matcher1 = pattern.matcher("xfooxxxxxxfoo");
 
@@ -391,7 +391,7 @@ public class RegexLearnTest {
      * Our test harness continues the process until the input string is exhausted.
      * It finds another match at 4 and 13. */
     @Test
-    public void testQuentifierComparisonReluctant_0_or_more_times() {
+    public void QuentifierComparisonReluctant_0_or_more_times() {
         Pattern pattern = Pattern.compile(".*?foo");
         Matcher matcher1 = pattern.matcher("xfooxxxxxxfoo");
 
@@ -410,7 +410,7 @@ public class RegexLearnTest {
      * it will outperform the equivalent greedy quantifier in cases
      * where the match is not immediately found*/
     @Test
-    public void testQuentifierComparisonPossessive_0_or_more_times() {
+    public void QuentifierComparisonPossessive_0_or_more_times() {
         Pattern pattern = Pattern.compile(".*+foo");
         Matcher matcher1 = pattern.matcher("xfooxxxxxxfoo");
 
@@ -422,7 +422,7 @@ public class RegexLearnTest {
     /** capturing groups---------------------------------------------*/
 
     @Test
-    public void testCapruteGroup() {
+    public void CapruteGroup() {
         Pattern pattern = Pattern.compile("((a)(b(c)))");
         Matcher matcher1 = pattern.matcher("z");
 
@@ -430,7 +430,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBackReferencesAnyTwoDigits() {
+    public void BackReferencesAnyTwoDigits() {
         Pattern pattern = Pattern.compile("(\\d\\d)\\1");
         Matcher matcher1 = pattern.matcher("1212");
 
@@ -440,7 +440,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBackReferencesAnyTwoDigitsNotFound() {
+    public void BackReferencesAnyTwoDigitsNotFound() {
         Pattern pattern = Pattern.compile("(\\d\\d)\\1");
         Matcher matcher1 = pattern.matcher("1234");
 
@@ -452,7 +452,7 @@ public class RegexLearnTest {
     /** boundary mathers---------------------------------------------*/
 
     @Test
-    public void testBeginningOfTheLineTheEndOfTheLine() {
+    public void BeginningOfTheLineTheEndOfTheLine() {
         Pattern pattern = Pattern.compile("^dog$");
         Matcher matcher1 = pattern.matcher("dog");
 
@@ -462,7 +462,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBeginningOfTheLineTheEndOfTheLineAnotherOne() {
+    public void BeginningOfTheLineTheEndOfTheLineAnotherOne() {
         Pattern pattern = Pattern.compile("\\s*dog$");
         Matcher matcher1 = pattern.matcher("     dog");
 
@@ -472,7 +472,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBeginningOfTheLineTheEndOfTheLineAnotherOne1() {
+    public void BeginningOfTheLineTheEndOfTheLineAnotherOne1() {
         Pattern pattern = Pattern.compile("^dog\\w*");
         Matcher matcher1 = pattern.matcher("dogcatmouse");
 
@@ -482,7 +482,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testBeginningOfTheLineTheEndOfTheLineFalse() {
+    public void BeginningOfTheLineTheEndOfTheLineFalse() {
         Pattern pattern = Pattern.compile("^dog$");
         Matcher matcher1 = pattern.matcher(" dog");
 
@@ -492,7 +492,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testWordBoundary() {
+    public void WordBoundary() {
         Pattern pattern = Pattern.compile("\\bdog\\b");
         Matcher matcher1 = pattern.matcher("cat and dog and cat");
 
@@ -502,7 +502,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testWordBoundary1() {
+    public void WordBoundary1() {
         Pattern pattern = Pattern.compile("\\bdog\\b");
         Matcher matcher1 = pattern.matcher("cat and doggie and cat");
 
@@ -512,7 +512,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testNonWordBoundary() {
+    public void NonWordBoundary() {
         Pattern pattern = Pattern.compile("\\bdog\\B");
         Matcher matcher1 = pattern.matcher("cat and dog and cat");
 
@@ -522,7 +522,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testNonWordBoundary1() {
+    public void NonWordBoundary1() {
         Pattern pattern = Pattern.compile("\\bdog\\B");
         Matcher matcher1 = pattern.matcher("cat and doggie and cat");
 
@@ -532,7 +532,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testEndOfThePreviousMatch0() {
+    public void EndOfThePreviousMatch0() {
         Pattern pattern = Pattern.compile("dog");
         Matcher matcher1 = pattern.matcher("dog and dog");
 
@@ -542,7 +542,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testEndOfThePreviousMatch1() {
+    public void EndOfThePreviousMatch1() {
         Pattern pattern = Pattern.compile("\\Gdog");
         Matcher matcher1 = pattern.matcher("dog and dog");
 
@@ -552,7 +552,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCaseInsensitiveAndOtherFlags() {
+    public void CaseInsensitiveAndOtherFlags() {
 //        Pattern pattern = Pattern.compile("dog", Pattern.CASE_INSENSITIVE  | Pattern.UNIX_LINES);
         final int flags = Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
         Pattern pattern = Pattern.compile("dog", flags);
@@ -566,7 +566,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testCaseInsensitiveFlagsWithinExpression() {
+    public void CaseInsensitiveFlagsWithinExpression() {
         Pattern pattern = Pattern.compile("(?i)foo");
         Matcher matcher1 = pattern.matcher("FOOfooFoOfoO");
 
@@ -576,12 +576,12 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testOneLineMathes() {
+    public void OneLineMathes() {
         assertTrue(Pattern.matches("\\d","1"));
     }
 
     @Test
-    public void testExtractWords() {
+    public void ExtractWords() {
         final String REGEX = ":";
         final String INPUT = "one:two:three:four:five";
 
@@ -596,7 +596,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testExtractWordsAnotherOne() {
+    public void ExtractWordsAnotherOne() {
         final String REGEX = "\\d";
         final String INPUT = "one9two4three7four1five";
 
@@ -612,13 +612,13 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testGenerateRegexFromString() {
+    public void GenerateRegexFromString() {
         String quote = Pattern.quote("FOOfooFoOfoO");
         assertEquals("\\QFOOfooFoOfoO\\E", quote);
     }
 
     @Test
-    public void testMatcherMethodsMatches() {
+    public void MatcherMethodsMatches() {
         Pattern pattern = Pattern.compile("dog");
         Matcher matcher1 = pattern.matcher("dog");
 
@@ -627,7 +627,7 @@ public class RegexLearnTest {
     //difference is that matches requires the entire input sequence
     // to be matched, while lookingAt does not
     @Test
-    public void testMatcherMethodsLookingAt() {
+    public void MatcherMethodsLookingAt() {
         Pattern pattern = Pattern.compile("dog");
         Matcher matcher1 = pattern.matcher("dog and cat");
 
@@ -635,7 +635,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testMatcherMethodsFind() {
+    public void MatcherMethodsFind() {
         Pattern pattern = Pattern.compile("dog");
         Matcher matcher1 = pattern.matcher("cat and dog");
 
@@ -643,7 +643,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testMatcherMethodsReplace() {
+    public void MatcherMethodsReplace() {
         Pattern pattern = Pattern.compile("dog");
         Matcher matcher1 = pattern.matcher("cat and dog");
         String actualResult = matcher1.replaceAll("cat");
@@ -651,7 +651,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testMatcherMethodsReplaceAnotherOne() {
+    public void MatcherMethodsReplaceAnotherOne() {
         Pattern pattern = Pattern.compile("a*b");
         Matcher matcher1 = pattern.matcher("aabfooaabfooabfoob");
         String actualResult = matcher1.replaceAll("-");
@@ -661,7 +661,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testMatcherMethodsAppendReplacement() {
+    public void MatcherMethodsAppendReplacement() {
         Pattern pattern = Pattern.compile("a*b");
         Matcher matcher1 = pattern.matcher("aabfooaabfooabfoob");
 
@@ -679,7 +679,7 @@ public class RegexLearnTest {
     public final ExpectedSystemExit exit = ExpectedSystemExit.none();
 
     @Test
-    public void testRegexException() {
+    public void RegexException() {
         Pattern pattern = null;
         Matcher matcher = null;
 
@@ -701,7 +701,7 @@ public class RegexLearnTest {
     }
 
     @Test
-    public void testFirstAndLastNamesAreTheSame() {
+    public void FirstAndLastNamesAreTheSame() {
         String name = "dog";
         String regex = name + "\\s" + name;
         Pattern pattern = Pattern.compile(regex);
