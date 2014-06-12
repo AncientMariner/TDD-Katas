@@ -15,12 +15,12 @@ public class CalcStatsTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(calcStats);
     }
 
     @Test
-    public void Input() {
+    public void input() {
         int[] arrayOfNumbers = {6, 9, 15, -2, 92, 11};
         CalcStats.Statistics statistics = calcStats.calculateNumbers(arrayOfNumbers);
 
@@ -30,7 +30,7 @@ public class CalcStatsTest {
         assertEquals(21.833333333333332, statistics.getAverageValue(), 0.00000001);
     }
     @Test
-    public void AnotherInput() {
+    public void anotherInput() {
         int[] arrayOfNumbers = {126, 54669, -242, -121, 392, 1111, 11, 77, 31415};
         CalcStats.Statistics statistics = calcStats.calculateNumbers(arrayOfNumbers);
 

@@ -15,12 +15,12 @@ public class DiversionTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(diversion);
     }
 
     @Test
-    public void CalculateAdjacentNumbers1() {
+    public void calculateAdjacentNumbers1() {
         int size = 1;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -28,7 +28,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers2() {
+    public void calculateAdjacentNumbers2() {
         int size = 2;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -36,7 +36,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers3() {
+    public void calculateAdjacentNumbers3() {
         int size = 3;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -44,7 +44,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers4() {
+    public void calculateAdjacentNumbers4() {
         int size = 4;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -52,7 +52,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers5() {
+    public void calculateAdjacentNumbers5() {
         int size = 5;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -60,7 +60,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers6() {
+    public void calculateAdjacentNumbers6() {
         int size = 6;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -68,7 +68,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers7() {
+    public void calculateAdjacentNumbers7() {
         int size = 7;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -76,7 +76,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers8() {
+    public void calculateAdjacentNumbers8() {
         int size = 8;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -84,7 +84,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers9() {
+    public void calculateAdjacentNumbers9() {
         int size = 9;
         int result = diversion.calculateAdjacentNumbers(size);
 
@@ -92,7 +92,7 @@ public class DiversionTest {
     }
 
     @Test
-    public void CalculateAdjacentNumbers10() {
+    public void calculateAdjacentNumbers10() {
         int size = 10;
         int result = diversion.calculateAdjacentNumbers(size);
 

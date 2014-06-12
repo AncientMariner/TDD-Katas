@@ -21,12 +21,12 @@ public class AnagramCalculationTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(anagramCalculation);
     }
 
     @Test
-    public void SimpleForwardAndReverseWord() {
+    public void simpleForwardAndReverseWord() {
         assertEquals(1, anagramCalculation.numberOfWordsFrom("ab"));
 
         Set<String> anagramsFromWord = calculateExecutionTimeAndGetAnagramsFrom("ab");
@@ -36,7 +36,7 @@ public class AnagramCalculationTest {
     }
 
     @Test
-    public void ThreeLettersWord() {
+    public void threeLettersWord() {
         assertEquals(5, anagramCalculation.numberOfWordsFrom("abc"));
 
         Set<String> anagramsFromWord = calculateExecutionTimeAndGetAnagramsFrom("abc");
@@ -51,7 +51,7 @@ public class AnagramCalculationTest {
     }
 
     @Test
-    public void FourLettersWord() {
+    public void fourLettersWord() {
         assertEquals(23, anagramCalculation.numberOfWordsFrom("abcd"));
 
         Set<String> anagramsFromWord = calculateExecutionTimeAndGetAnagramsFrom("abcd");
@@ -87,7 +87,7 @@ public class AnagramCalculationTest {
     }
 
     @Test
-    public void FiveLettersWord() {
+    public void fiveLettersWord() {
         String word = "abcde";
         assertEquals(119, anagramCalculation.numberOfWordsFrom(word));
 
@@ -220,7 +220,7 @@ public class AnagramCalculationTest {
     }
 
     @Test
-    public void SixLettersWord() {
+    public void sixLettersWord() {
         assertEquals(719, anagramCalculation.numberOfWordsFrom("abcdef"));
 
 //        Set<String> anagramsFromWord = anagramCalculation.getAnagramsFrom(word);

@@ -15,12 +15,12 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(gameOfLife);
     }
 
     @Test
-    public void OutPutEmptyCell() {
+    public void outPutEmptyCell() {
         String expectedCell = "........\n" + "........\n" + "........\n" + "........\n";
         int dimensionX = 8;
         int dimensionY = 4;
@@ -30,7 +30,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void FirstPositions() {
+    public void firstPositions() {
         String expectedCell = ".*......\n" + "........\n" + "........\n" + "........\n";
         String cell = gameOfLife.drawCell(4,8);
         int liveCellPositionX = 2;
@@ -55,7 +55,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void WholeGenerationAtOnce() {
+    public void wholeGenerationAtOnce() {
         String expectedCell = ".*......\n" + ".**.....\n" + "........\n" + "........\n";
         int[][] input = {{1,2}, {2,2}, {2,3}};
         String result = gameOfLife.buildTheWholeGeneration(input, gameOfLife.drawCell(4, 8));
@@ -63,7 +63,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void NextGenerationFirstRuleHorizontalNeighbours() {
+    public void nextGenerationFirstRuleHorizontalNeighbours() {
         int[][] firstGeneration = {{1,2}, {2,2}, {2,3}, {4,5}, {2,4}};
         String afterFirstGeneration = ".*......\n" + ".***....\n" + "........\n" + "....*...\n";
         String resultOfFirstGeneration = gameOfLife.buildTheWholeGeneration(firstGeneration, gameOfLife.drawCell(4, 8));
@@ -77,7 +77,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void NextGenerationFirstRuleHorizontalAndVerticalNeighbours() {
+    public void nextGenerationFirstRuleHorizontalAndVerticalNeighbours() {
         int[][] firstGeneration = {
                 {1,1}, {1,2}, {1,3}, {1,4}, {1,7}, {1,8},
                 {2,1}, {2,2}, {2,2}, {2,3}, {2,4},{2,8},
@@ -103,7 +103,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void NextGenerationSecondRule() {
+    public void nextGenerationSecondRule() {
         int[][] firstGeneration = {
                 {1,1}, {1,2}, {1,3}, {1,4}, {1,7}, {1,8},
                 {2,1}, {2,2}, {2,2}, {2,3}, {2,4},{2,8},
@@ -131,7 +131,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void NextGenerationThirdRule() {
+    public void nextGenerationThirdRule() {
         int[][] firstGeneration = {
                 {1,2}, {1,3}, {1,4}, {1,8},
                 {2,2}, {2,3},{2,7},{2,8},
@@ -152,7 +152,7 @@ public class GameOfLifeTest {
     }
     
     @Test
-    public void NextGenerationFourthRule() {
+    public void nextGenerationFourthRule() {
         int[][] firstGeneration = {
                 {1,2}, {1,3}, {1,4}, {1,8},
                 {2,2}, {2,3},{2,7},{2,8},
@@ -174,7 +174,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void AllRulesTogether() {
+    public void allRulesTogether() {
         int[][] firstGeneration = {
                 {1,2}, {1,4}, {1,8}, {1,13}, {1,14},
                 {2,2}, {2,3},{2,7},{2,8}, {2,12}, {2,13},

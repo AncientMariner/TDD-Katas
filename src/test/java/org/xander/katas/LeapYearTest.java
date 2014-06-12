@@ -16,7 +16,7 @@ public class LeapYearTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(leapYear);
     }
 

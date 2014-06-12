@@ -15,12 +15,12 @@ public class LetterDiamondTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(letterDiamond);
     }
 
     @Test
-    public void SimpleLetter() {
+    public void simpleLetter() {
         char a = 'A';
 
         String result = letterDiamond.buildADiamond(a);
@@ -28,7 +28,7 @@ public class LetterDiamondTest {
     }
 
     @Test
-    public void TwoLetters() {
+    public void twoLetters() {
         char aba = 'B';
 
         String result = letterDiamond.buildADiamond(aba);
@@ -36,7 +36,7 @@ public class LetterDiamondTest {
     }
 
     @Test
-    public void MoreLetters() {
+    public void moreLetters() {
         char aba = 'F';
 
         String result = letterDiamond.buildADiamond(aba);
@@ -55,7 +55,7 @@ public class LetterDiamondTest {
 
 
     @Test
-    public void q() {
+    public void letterQ() {
         char aba = 'Q';
 
         String result = letterDiamond.buildADiamond(aba);
@@ -95,7 +95,7 @@ public class LetterDiamondTest {
     }
 
     @Test
-    public void Z() {
+    public void letterZ() {
         char aba = 'Z';
 
         String result = letterDiamond.buildADiamond(aba);

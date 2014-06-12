@@ -15,12 +15,12 @@ public class GrayCodeTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(grayCode);
     }
 
     @Test
-    public void BasicEncode() {
+    public void basicEncode() {
         byte[] originalArray = new byte[5];
         originalArray[0] = 0;
         originalArray[1] = 1;
@@ -42,7 +42,7 @@ public class GrayCodeTest {
     }
 
     @Test
-    public void BasicDecode() {
+    public void basicDecode() {
         byte[] originalArray = new byte[5];
         originalArray[0] = 0;
         originalArray[1] = 1;
@@ -64,7 +64,7 @@ public class GrayCodeTest {
     }
 
     @Test
-    public void BasicEncodeAnotherOne() {
+    public void basicEncodeAnotherOne() {
         byte[] originalArray = new byte[5];
         originalArray[0] = 1;
         originalArray[1] = 0;
@@ -86,7 +86,7 @@ public class GrayCodeTest {
     }
 
     @Test
-    public void BasicDecodeAnotherOne() {
+    public void basicDecodeAnotherOne() {
         byte[] originalArray = new byte[5];
         originalArray[0] = 1;
         originalArray[1] = 1;

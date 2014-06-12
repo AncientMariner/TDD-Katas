@@ -16,36 +16,36 @@ public class CountCoinsTest {
     }
 
     @Test
-    public void BasicBehavior() {
+    public void basicBehavior() {
         assertNotNull(countCoins);
     }
 
     @Test
-    public void Quarter() {
+    public void quarter() {
         String name = countCoins.countOneCoin(25);
         assertThat("quarter", is(name));
     }
 
     @Test
-    public void Dime() {
+    public void dime() {
         String name = countCoins.countOneCoin(10);
         assertThat("dime", is(name));
     }
 
     @Test
-    public void Nickel() {
+    public void nickel() {
         String name = countCoins.countOneCoin(5);
         assertThat("nickel", is(name));
     }
 
     @Test
-    public void Penny() {
+    public void penny() {
         String name = countCoins.countOneCoin(1);
         assertThat("penny", is(name));
     }
 
     @Test
-    public void CustomQuarter() {
+    public void customQuarter() {
         String name = countCoins.countCustomCoin(25);
         assertThat(true, is(name.contains("25_penny")));
         assertThat(true, is(name.contains("5_nickel")));

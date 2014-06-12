@@ -11,19 +11,19 @@ public class OneHundredDoorsTest {
     OneHundredDoors oneHundredDoors = new OneHundredDoors();
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(oneHundredDoors);
     }
 
     @Test
-    public void AllAreClosedInitially() {
+    public void allAreClosedInitially() {
         for (Boolean door : oneHundredDoors.checkAllDoors()) {
             assertFalse(door);
         }
     }
 
     @Test
-    public void FirstGo() {
+    public void firstGo() {
         oneHundredDoors.go(1);
 
         for (Boolean door : oneHundredDoors.checkAllDoors()) {
@@ -32,7 +32,7 @@ public class OneHundredDoorsTest {
     }
 
     @Test
-    public void SecondGo() {
+    public void secondGo() {
         int second = 2;
         oneHundredDoors.go(second);
         List<Boolean> currentList = oneHundredDoors.getListOfDoors();
@@ -43,7 +43,7 @@ public class OneHundredDoorsTest {
     }
 
     @Test
-    public void ThirdGo() {
+    public void thirdGo() {
         int third = 3;
         oneHundredDoors.go(third);
         List<Boolean> currentList = oneHundredDoors.getListOfDoors();
@@ -54,7 +54,7 @@ public class OneHundredDoorsTest {
     }
 
     @Test
-    public void AllGoes() {
+    public void allGoes() {
         for (int goNumber = 1; goNumber < 100; goNumber++) {
             oneHundredDoors.go(goNumber);
         }

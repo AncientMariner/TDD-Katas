@@ -15,12 +15,12 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(spellOutANumber);
     }
 
     @Test
-    public void SimpleOneDigitNumber() {
+    public void simpleOneDigitNumber() {
         int nine = 9;
 
         String result = spellOutANumber.spellOutOneDigitNumber(nine);
@@ -28,7 +28,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void TwoDigitNumber() {
+    public void twoDigitNumber() {
         int nineteen = 19;
 
         String result = spellOutANumber.spellOutTwoDigitNumber(nineteen);
@@ -36,7 +36,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherTwoDigitNumber() {
+    public void anotherTwoDigitNumber() {
         int nineteen = 21;
 
         String result = spellOutANumber.spellOutTwoDigitNumberAbove20(nineteen);
@@ -44,7 +44,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherTwoDigitNumber77() {
+    public void anotherTwoDigitNumber77() {
         int nineteen = 77;
 
         String result = spellOutANumber.spellOutTwoDigitNumberAbove20(nineteen);
@@ -52,7 +52,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void ThreeDigitNumber177() {
+    public void threeDigitNumber177() {
         int number = 177;
 
         String result = spellOutANumber.spellOutThreeDigitNumber(number);
@@ -60,7 +60,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherThreeDigitNumber134() {
+    public void anotherThreeDigitNumber134() {
         int number = 134;
 
         String result = spellOutANumber.spellOutThreeDigitNumber(number);
@@ -68,7 +68,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherThreeDigitNumber100() {
+    public void anotherThreeDigitNumber100() {
         int number = 100;
 
         String result = spellOutANumber.spellOutThreeDigitNumber(number);
@@ -76,7 +76,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherThreeDigitNumber101() {
+    public void anotherThreeDigitNumber101() {
         int number = 101;
 
         String result = spellOutANumber.spellOutThreeDigitNumber(number);
@@ -84,7 +84,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherThreeDigitNumber110() {
+    public void anotherThreeDigitNumber110() {
         int number = 110;
 
         String result = spellOutANumber.spellOutThreeDigitNumber(number);
@@ -92,7 +92,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherThreeDigitNumber999() {
+    public void anotherThreeDigitNumber999() {
         int number = 999;
 
         String result = spellOutANumber.spellOutThreeDigitNumber(number);
@@ -100,7 +100,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherFourDigitNumber4529() {
+    public void anotherFourDigitNumber4529() {
         int number = 4529;
 
         String result = spellOutANumber.spellOutFourDigitNumber(number);
@@ -108,7 +108,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherFourDigitNumber1000() {
+    public void anotherFourDigitNumber1000() {
         int number = 1000;
 
         String result = spellOutANumber.spellOutFourDigitNumber(number);
@@ -116,7 +116,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherFourDigitNumber9999() {
+    public void anotherFourDigitNumber9999() {
         int number = 9999;
 
         String result = spellOutANumber.spellOutFourDigitNumber(number);
@@ -124,7 +124,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void FiveDigitNumber19999() {
+    public void fiveDigitNumber19999() {
         int number = 19999;
 
         String result = spellOutANumber.spellOutFiveDigitNumber(number);
@@ -132,7 +132,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void SixDigitNumber719999() {
+    public void sixDigitNumber719999() {
         int number = 719999;
 
         String result = spellOutANumber.spellOutSixDigitNumber(number);
@@ -140,7 +140,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void SevenDigitNumber1719999() {
+    public void sevenDigitNumber1719999() {
         int number = 1_719_999;
 
         String result = spellOutANumber.spellOutSevenDigitNumber(number);
@@ -148,7 +148,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void EightDigitNumber43719999() {
+    public void eightDigitNumber43719999() {
         int number = 43_112_603;
 
         String result = spellOutANumber.spellOutEightDigitNumber(number);
@@ -156,7 +156,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void NineDigitNumber143719999() {
+    public void nineDigitNumber143719999() {
         int number = 143_112_603;
 
         String result = spellOutANumber.spellOutNineDigitNumber(number);
@@ -165,7 +165,7 @@ public class SpellOutANumberTest {
 
 
     @Test
-    public void TenDigitNumber143719999() {
+    public void tenDigitNumber143719999() {
         long number = 15_143_112_603L;
 
         String result = spellOutANumber.spellOutTenDigitNumber(number);
@@ -173,7 +173,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnyNumberBelow100Billion() {
+    public void anyNumberBelow100Billion() {
         long number = 25_143_112_603L;
 
         String result = spellOutANumber.spellOutANumber(number);
@@ -181,7 +181,7 @@ public class SpellOutANumberTest {
     }
 
     @Test
-    public void AnotherAnyNumberBelow100Billion() {
+    public void anotherAnyNumberBelow100Billion() {
         long number = 25_131_263;
 
         String result = spellOutANumber.spellOutANumber(number);

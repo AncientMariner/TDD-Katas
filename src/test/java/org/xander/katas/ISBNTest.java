@@ -15,12 +15,12 @@ public class ISBNTest {
     }
 
     @Test
-    public void Basic() {
+    public void basic() {
         assertNotNull(isbn);
     }
 
     @Test
-    public void HyphensAreIgnored() {
+    public void hyphensAreIgnored() {
         String number = "9780471486480";
         String numberWithHyphens = "978-0-471-48648-0";
 
@@ -30,7 +30,7 @@ public class ISBNTest {
     }
 
     @Test
-    public void CalculateCheckDigitForISBN10() {
+    public void calculateCheckDigitForISBN10() {
         String number = "0 471 60695 2";
         String checkDigit = String.valueOf(242 % 11);
 
@@ -38,7 +38,7 @@ public class ISBNTest {
     }
 
     @Test
-    public void CalculateCheckDigitForISBN13() {
+    public void calculateCheckDigitForISBN13() {
         String number = "978-0-13-149505-0";
         int sum = 100;
         String checkDigit = String.valueOf((10 - (sum % 10)) % 10);
