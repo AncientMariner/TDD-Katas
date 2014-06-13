@@ -81,7 +81,7 @@ public class GameOfLife {
         Set<Integer> livingElements = new TreeSet<>();
         for (int y = 0; y < dimensionY; y++) {
             for (int x = 0; x < dimensionX; x++) {
-                if (twoNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
+                if (twoNeighboursLiving(livingCell, dimensionY, dimensionX, y, x)) {
                     livingElements.add(y * (dimensionX + 1) + x);
                 }
             }
@@ -89,7 +89,7 @@ public class GameOfLife {
         return livingElements;
     }
 
-    private boolean twoNeighboursLiving(char[] livingCell, int dimensionY, int dimensionX, Set<Integer> livingElements, int y, int x) {
+    private boolean twoNeighboursLiving(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
         return currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
                 && (ensureHorizontalBoundaries(livingCell, dimensionX, y, x) && elementIsLivingOnVerticalBorders(livingCell, dimensionY, dimensionX, y, x)
 
@@ -106,7 +106,7 @@ public class GameOfLife {
                 || cornerElementsAreLiving(livingCell, dimensionY, dimensionX, y, x)
 
                 || (ensureVerticalBoundaries(livingCell, dimensionX, y, x)
-                    && elementIsLivingOnHorizontalBorders(livingCell, dimensionY, dimensionX, y, x)));
+                    && elementIsLivingOnHorizontalBorders(livingCell, dimensionX, y, x)));
     }
 
     private void secondRule(char[] livingCell, int dimensionY, int dimensionX, Set<Integer> livingElements) {
@@ -130,7 +130,7 @@ public class GameOfLife {
         for (int y = 0; y < dimensionY; y++) {
             for (int x = 0; x < dimensionX; x++) {
                 if (livingElements.contains(y * (dimensionX + 1) + x)) {
-                        if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
+                        if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, y, x)) {
                             livingElements.add(y * (dimensionX + 1) + x);
                     }
                 }
@@ -142,7 +142,7 @@ public class GameOfLife {
         for (int y = 0; y < dimensionY; y++) {
             for (int x = 0; x < dimensionX; x++) {
                 if (!livingElements.contains(y * (dimensionX + 1) + x)) {
-                    if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, livingElements, y, x)) {
+                    if (threeNeighboursLiving(livingCell, dimensionY, dimensionX, y, x)) {
                         livingElements.add(y * (dimensionX + 1) + x);
                     }
                 }
@@ -150,11 +150,11 @@ public class GameOfLife {
         }
     }
 
-    private boolean threeNeighboursLiving(char[] livingCell, int dimensionY, int dimensionX, Set<Integer> livingElements, int y, int x) {
+    private boolean threeNeighboursLiving(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
         return !cornerElementsAreLiving(livingCell, dimensionY, dimensionX, y, x)
                     && (
                     (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x])
-                    && (threeElementsAreLivingOnHorizontalBorders(livingCell, dimensionY, dimensionX, y, x)
+                    && (threeElementsAreLivingOnHorizontalBorders(livingCell, dimensionX, y, x)
                     || threeElementsAreLivingOnVerticalBorders(livingCell, dimensionY, dimensionX, y, x)))
 
                     || (ensureHorizontalBoundaries(livingCell, dimensionX, y, x)
@@ -225,7 +225,7 @@ public class GameOfLife {
                 && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)]))));
     }
 
-    private boolean elementIsLivingOnHorizontalBorders(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
+    private boolean elementIsLivingOnHorizontalBorders(char[] livingCell, int dimensionX, int y, int x) {
         if (x == 0) {
             return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
                     && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])
@@ -241,7 +241,7 @@ public class GameOfLife {
         return false;
     }
 
-    private boolean threeElementsAreLivingOnHorizontalBorders(char[] livingCell, int dimensionY, int dimensionX, int y, int x) {
+    private boolean threeElementsAreLivingOnHorizontalBorders(char[] livingCell, int dimensionX, int y, int x) {
         if (x == 0) {
             return (currentElementIsLiving(livingCell[y * (dimensionX + 1) + x + 1])
                     && currentElementIsLiving(livingCell[y * (dimensionX + 1) + x - (dimensionX + 1)])

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class OddEvenPrime {
     static final int range = 10000;
-    static boolean[] sieveOfEratosthenes=new boolean[range];
+    static boolean[] sieveOfEratosthenes = new boolean[range];
 
     static {
         Arrays.fill(sieveOfEratosthenes, true);

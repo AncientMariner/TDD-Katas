@@ -21,8 +21,4 @@ public class OneHundredDoors {
             listOfDoors.set(i, !listOfDoors.get(i));
         }
     }
-
-    public List<Boolean> getListOfDoors() {
-        return listOfDoors;
-    }
 }

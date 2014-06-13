@@ -1,8 +1,6 @@
 package org.xander.katas;
 
 public class CalcStats {
-
-
     public Statistics calculateNumbers(int[] arrayOfNumbers) {
         int counterOfElements = 0;
         for (int elementInArray : arrayOfNumbers) {
@@ -32,7 +30,7 @@ public class CalcStats {
         return new Statistics(minimumValue, maximumValue, counterOfElements, averageValue);
     }
 
-    public class Statistics {
+    class Statistics {
         private int minimumValue;
         private int maximumValue;
         private int numberOfElementsInSequence;

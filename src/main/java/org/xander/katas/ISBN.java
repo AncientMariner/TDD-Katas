@@ -3,7 +3,6 @@ package org.xander.katas;
 import java.util.regex.Pattern;
 
 public class ISBN {
-
     public String checkNumber(String numberWithHyphens) {
         String numberWithoutHypens = "";
 

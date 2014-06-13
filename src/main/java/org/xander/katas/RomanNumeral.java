@@ -100,7 +100,6 @@ public class RomanNumeral {
             return convertOneDigit(customDigit);
         } else {
 
-
             if (customDigitLength == 4) {
                 int fourNumber = Integer.valueOf(customDigit) / THOUSAND;
                 while (fourNumber > 0) {
