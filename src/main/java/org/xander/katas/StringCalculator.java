@@ -15,22 +15,22 @@ public class StringCalculator {
         return calculateNumber(number);
     }
 
-    public Integer add(String number1, String number2) {
+    public Integer add(String numberOne, String numberTwo) {
 
-        if (validateElementForNegativity(number1.toCharArray())
-                && validateElementForNegativity(number2.toCharArray()))
-            throw new NumberFormatException(negativeNumberMessage + "\'" + number1 + "\'" + " " + "\'" + number2 + "\'");
-        else if (!validateElementForNegativity(number1.toCharArray())
-                && validateElementForNegativity(number2.toCharArray()))
-            throw new NumberFormatException(negativeNumberMessage + "\'" + number2 + "\'");
-        else if (validateElementForNegativity(number1.toCharArray())
-                && !validateElementForNegativity(number2.toCharArray()))
-            throw new NumberFormatException(negativeNumberMessage + "\'" + number1 + "\'");
+        if (validateElementForNegativity(numberOne.toCharArray())
+                && validateElementForNegativity(numberTwo.toCharArray()))
+            throw new NumberFormatException(negativeNumberMessage + "\'" + numberOne + "\'" + " " + "\'" + numberTwo + "\'");
+        else if (!validateElementForNegativity(numberOne.toCharArray())
+                && validateElementForNegativity(numberTwo.toCharArray()))
+            throw new NumberFormatException(negativeNumberMessage + "\'" + numberTwo + "\'");
+        else if (validateElementForNegativity(numberOne.toCharArray())
+                && !validateElementForNegativity(numberTwo.toCharArray()))
+            throw new NumberFormatException(negativeNumberMessage + "\'" + numberOne + "\'");
 
-        return (verifyNumberIsZero(number1) && verifyNumberIsZero(number2)) ? 0 :
-                (verifyNumberIsZero(number1)) ? calculateNumber(number2) :
-                        (verifyNumberIsZero(number2)) ? calculateNumber(number1) :
-                                calculateNumber(number1) + calculateNumber(number2);
+        return (verifyNumberIsZero(numberOne) && verifyNumberIsZero(numberTwo)) ? 0 :
+                (verifyNumberIsZero(numberOne)) ? calculateNumber(numberTwo) :
+                        (verifyNumberIsZero(numberTwo)) ? calculateNumber(numberOne) :
+                                calculateNumber(numberOne) + calculateNumber(numberTwo);
     }
 
     private boolean validateElementForNegativity(char[] elementInArray1) {
@@ -44,7 +44,8 @@ public class StringCalculator {
         if (stringContainsOnlyNumbers(number) && Integer.valueOf(number) > 1000) {
             return zero;
         } else {
-            if (number.trim().equals("")) return zero;
+            if (number.trim().equals(""))
+                return zero;
             String result = "0";
 
             for (int elementInArray : number.toCharArray()) {

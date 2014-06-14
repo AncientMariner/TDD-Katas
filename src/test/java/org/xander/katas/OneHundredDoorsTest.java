@@ -35,10 +35,10 @@ public class OneHundredDoorsTest {
     public void secondGo() {
         int second = 2;
         oneHundredDoors.go(second);
-        List<Boolean> currentList = oneHundredDoors.getListOfDoors();
+        boolean[] currentList = oneHundredDoors.checkAllDoors();
 
-        for (int i = 0; i < currentList.size() ; i = i + second) {
-            assertTrue(currentList.get(i));
+        for (int i = 0; i < currentList.length ; i = i + second) {
+            assertTrue(currentList[i]);
         }
     }
 
@@ -46,10 +46,10 @@ public class OneHundredDoorsTest {
     public void thirdGo() {
         int third = 3;
         oneHundredDoors.go(third);
-        List<Boolean> currentList = oneHundredDoors.getListOfDoors();
+        boolean[] currentList = oneHundredDoors.checkAllDoors();
 
-        for (int i = 0; i < currentList.size() ; i = i + third) {
-            assertTrue(currentList.get(i));
+        for (int i = 0; i < currentList.length ; i = i + third) {
+            assertTrue(currentList[i]);
         }
     }
 
@@ -65,7 +65,7 @@ public class OneHundredDoorsTest {
         List<Boolean> positiveNumbers = new ArrayList<>();
         List<Boolean> negativeNumbers = new ArrayList<>();
 
-        for (Boolean element : oneHundredDoors.getListOfDoors()) {
+        for (Boolean element : oneHundredDoors.checkAllDoors()) {
             if (element.booleanValue()) {
                 positiveNumbers.add(element);
             } else {
@@ -79,16 +79,16 @@ public class OneHundredDoorsTest {
 
 
         System.out.println("\nPositive : ");
-        List<Boolean> listOfDoors = oneHundredDoors.getListOfDoors();
-        for (int i = 0 ; i < listOfDoors.size() ; i++) {
-            if (listOfDoors.get(i))
+        boolean[] listOfDoors = oneHundredDoors.checkAllDoors();
+        for (int i = 0 ; i < listOfDoors.length ; i++) {
+            if (listOfDoors[i])
                 System.out.print(i + ", ");
 
         }
         System.out.println("\nNegative : ");
 
-        for (int i = 0 ; i < listOfDoors.size() ; i++) {
-            if (!listOfDoors.get(i))
+        for (int i = 0 ; i < listOfDoors.length ; i++) {
+            if (!listOfDoors[i])
                 System.out.print(i + ", ");
         }
     }

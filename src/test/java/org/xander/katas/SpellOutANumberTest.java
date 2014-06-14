@@ -163,7 +163,6 @@ public class SpellOutANumberTest {
         assertEquals("one hundred forty three million one hundred twelve thousand six hundred three", result);
     }
 
-
     @Test
     public void tenDigitNumber143719999() {
         long number = 15_143_112_603L;
@@ -187,6 +186,4 @@ public class SpellOutANumberTest {
         String result = spellOutANumber.spellOutANumber(number);
         assertEquals("twenty five million one hundred thirty one thousand two hundred sixty three", result);
     }
-
-
 }

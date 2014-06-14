@@ -65,8 +65,5 @@ public class BowlingGameTest {
     public void perfectGame() {
         rollMany(12, 10);
         assertEquals(300, bowlingGame.score());
-
     }
-
-
 }

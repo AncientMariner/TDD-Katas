@@ -11,14 +11,12 @@ public class NaturalSort {
     }
 
     public List<String> sortNaturally(List<String> listToSort) {
-        class MyNaturalSort implements Comparator<String> {
+        Comparator<String> myNaturalSort = new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 return o1.compareTo(o2);
             }
-        }
-
-        MyNaturalSort myNaturalSort = new MyNaturalSort() ;
+        };
 
         for (int numberOfPasses = 1; numberOfPasses < listToSort.size(); numberOfPasses++) {
             for (int i = 0; i < listToSort.size() - numberOfPasses; i++) {
