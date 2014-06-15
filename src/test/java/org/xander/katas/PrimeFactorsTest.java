@@ -19,15 +19,19 @@ public class PrimeFactorsTest {
         assertNotNull(primeFactors);
     }
 
+    private void assertAllNumbersAreEqual(int[] result, int[] expectedResult) {
+        for (int i = 0; i < expectedResult.length; i++) {
+            assertEquals(expectedResult[i] , result[i]);
+        }
+    }
+
     @Test
     public void simpleNumber4() {
         int inputNumber = 4;
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 2};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 
     @Test
@@ -36,9 +40,7 @@ public class PrimeFactorsTest {
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 3};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 
     @Test
@@ -47,9 +49,7 @@ public class PrimeFactorsTest {
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 2, 2};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 
     @Test
@@ -58,9 +58,7 @@ public class PrimeFactorsTest {
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 2, 3};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 
     @Test
@@ -69,9 +67,7 @@ public class PrimeFactorsTest {
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 2, 2, 2, 2, 3};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 
     @Test
@@ -80,9 +76,7 @@ public class PrimeFactorsTest {
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 2, 2, 2, 2, 2, 3, 5};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 
     @Test
@@ -91,8 +85,6 @@ public class PrimeFactorsTest {
 
         int[] result = primeFactors.factorize(inputNumber);
         int[] expectedResult = {2, 2, 5, 7, 7};
-        for (int i = 0; i < expectedResult.length; i++) {
-            assertEquals(expectedResult[i] , result[i]);
-        }
+        assertAllNumbersAreEqual(result, expectedResult);
     }
 }

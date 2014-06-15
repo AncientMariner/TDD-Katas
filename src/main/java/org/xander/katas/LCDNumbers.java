@@ -2,17 +2,20 @@ package org.xander.katas;
 
 public class LCDNumbers {
     public String generateLCDNumberFrom(int number) {
-        String hundreds = generateNumberFromSingleDigit(number / 100);
-        String tens = generateNumberFromSingleDigit(number % 100 / 10);
-        String ones = generateNumberFromSingleDigit(number % 10  / 1);
+        int lengthOfNumberSequence = "999".toCharArray().length;
+        int lengthOfTheLine = 9;
+        String result = "";
 
-        String firstLine = hundreds.substring(0, 3) + " " + tens.substring(0, 3) + " " + ones.substring(0, 3);
-        String secondLine = hundreds.substring(4, 7) + " " + tens.substring(4, 7) + " " + ones.substring(4, 7);
-        String thirdLine = hundreds.substring(8) + " " + tens.substring(8) + " " + ones.substring(8);
-
-        String result = firstLine + "\n" + secondLine + "\n" + thirdLine;
-
-        return result;
+        for (int i = 0; i < lengthOfTheLine; i += 4) {
+            int a = lengthOfNumberSequence;
+            for (int size = 2; size >= 0; size--) {
+                int numberInEachRange = number % (int) Math.pow(10, a--) / ((int) Math.pow(10, size));
+                result += generateNumberFromSingleDigit(numberInEachRange).substring(i, i + lengthOfNumberSequence) + " ";
+            }
+            result = result.trim();
+            result += "\n";
+        }
+        return result.substring(0, result.length() - 1);
     }
 
     private String generateNumberFromSingleDigit(int number) {

@@ -29,17 +29,17 @@ public class LetterDiamondTest {
 
     @Test
     public void twoLetters() {
-        char aba = 'B';
+        char b = 'B';
 
-        String result = letterDiamond.buildADiamond(aba);
+        String result = letterDiamond.buildADiamond(b);
         assertEquals(" A\nB B\n A", result);
     }
 
     @Test
     public void moreLetters() {
-        char aba = 'F';
+        char f = 'F';
 
-        String result = letterDiamond.buildADiamond(aba);
+        String result = letterDiamond.buildADiamond(f);
         assertEquals("     A\n" +
                      "    B B\n" +
                      "   C   C\n" +
@@ -56,9 +56,9 @@ public class LetterDiamondTest {
 
     @Test
     public void letterQ() {
-        char aba = 'Q';
+        char q = 'Q';
 
-        String result = letterDiamond.buildADiamond(aba);
+        String result = letterDiamond.buildADiamond(q);
         assertEquals("                A\n" +
                      "               B B\n" +
                      "              C   C\n" +
@@ -96,9 +96,9 @@ public class LetterDiamondTest {
 
     @Test
     public void letterZ() {
-        char aba = 'Z';
+        char z = 'Z';
 
-        String result = letterDiamond.buildADiamond(aba);
+        String result = letterDiamond.buildADiamond(z);
         assertEquals("                         A\n" +
                      "                        B B\n" +
                      "                       C   C\n" +
