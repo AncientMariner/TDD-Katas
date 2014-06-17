@@ -20,7 +20,7 @@ public class GameOfLifeTest {
     }
 
     @Test
-    public void outPutEmptyCell() {
+    public void outputEmptyCell() {
         String expectedCell = "........\n" + "........\n" + "........\n" + "........\n";
         int dimensionX = 8;
         int dimensionY = 4;
