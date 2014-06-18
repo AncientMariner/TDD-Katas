@@ -19,6 +19,12 @@ public class MineFieldsTest {
         assertNotNull(mineFields);
     }
 
+    private String drawEmptyCell() {
+        int dimensionX = 8;
+        int dimensionY = 4;
+        return mineFields.drawCell(dimensionX, dimensionY);
+    }
+
     @Test
     public void emptyCell() {
         assertEquals("........\n" + "........\n" + "........\n" + "........\n", drawEmptyCell());
@@ -27,13 +33,17 @@ public class MineFieldsTest {
     @Test
     public void outputCellWithMineAtCertainPosition() {
         drawEmptyCell();
-
-        assertEquals(".*......\n" + "........\n" + "........\n" + "........\n", mineFields.placeMineAt(1, 2));
+        mineFields.placeMineAt(1, 2);
+        assertEquals(".*......\n" + "........\n" + "........\n" + "........\n", mineFields.getCell());
     }
 
-    private String drawEmptyCell() {
-        int dimensionX = 8;
-        int dimensionY = 4;
-        return mineFields.drawCell(dimensionX, dimensionY);
+    @Test
+    public void horizontalMembers() {
+        drawEmptyCell();
+        mineFields.placeMineAt(3, 2);
+        assertEquals("........\n" + "........\n" + ".*......\n" + "........\n", mineFields.getCell());
+        assertEquals("........\n" + ".1......\n" + "1*1.....\n" + "........\n", mineFields.generateHints());
+
     }
+
 }
