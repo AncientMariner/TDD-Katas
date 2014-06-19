@@ -38,12 +38,45 @@ public class MineFieldsTest {
     }
 
     @Test
-    public void horizontalMembers() {
+    public void horizontalAndVerticalMembers() {
         drawEmptyCell();
         mineFields.placeMineAt(3, 2);
         assertEquals("........\n" + "........\n" + ".*......\n" + "........\n", mineFields.getCell());
-        assertEquals("........\n" + ".1......\n" + "1*1.....\n" + "........\n", mineFields.generateHints());
 
+        mineFields.generateHints();
+        assertEquals("........\n" + "111.....\n" + "1*1.....\n" + "111.....\n", mineFields.getCell());
+
+        mineFields.placeMineAt(3, 6);
+        assertEquals("........\n" + "111.....\n" + "1*1..*..\n" + "111.....\n", mineFields.getCell());
+        mineFields.generateHints();
+
+        assertEquals("........\n" + "111.111.\n" + "1*1.1*1.\n" + "111.111.\n", mineFields.getCell());
+    }
+
+    @Test
+    public void diagonalMembers() {
+        drawEmptyCell();
+        mineFields.placeMineAt(3, 2);
+        assertEquals("........\n" + "........\n" + ".*......\n" + "........\n", mineFields.getCell());
+
+        mineFields.generateHints();
+        assertEquals("........\n" + "111.....\n" + "1*1.....\n" + "111.....\n", mineFields.getCell());
+    }
+
+
+    @Test(expected = NullPointerException.class)
+    public void negativePlaceMineAtNoField() {
+        mineFields.placeMineAt(1,1);
+    }
+
+    @Test
+    public void negativePlaceMineAtEmptyField1() {
+        mineFields.drawCell(0, 0);
+        try {
+            mineFields.placeMineAt(1, 1);
+        } catch (UnsupportedOperationException e) {
+            assertEquals("It is not possible to place mine at no field", e.getMessage());
+        }
     }
 
 }

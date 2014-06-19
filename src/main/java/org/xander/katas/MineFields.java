@@ -16,18 +16,28 @@ public class MineFields {
     }
 
     public void placeMineAt(int horizontal, int vertical) {
-        String result = "";
+        if (cell.isEmpty()) {
+            throw new UnsupportedOperationException("It is not possible to place mine at no field");
+        }
+
+        StringBuilder result = new StringBuilder(cell);
         for (int y = 0; y < calculateYSize(cell); y++) {
             for (int x = 0; x < calculateXSize(cell); x++) {
                 if (y == horizontal - 1 && x == vertical - 1) {
-                    result += "*";
-                } else {
-                    result += ".";
+                    result.replace(elementAtPosition(y, x), elementAtPosition(y, x) + 1, "*");
                 }
             }
-            result += "\n";
+            result.replace(lastElementInHorizontalRow(y), lastElementInHorizontalRow(y) + 1, "\n");
         }
-        cell = result;
+        cell = result.toString();
+    }
+
+    private int lastElementInHorizontalRow(int y) {
+        return elementAtPosition(y, calculateXSize(cell));
+    }
+
+    private int elementAtPosition(int y, int x) {
+        return y * (calculateXSize(cell) + 1) + x;
     }
 
     private int calculateXSize(String cell) {
@@ -50,19 +60,59 @@ public class MineFields {
         return size;
     }
 
-    public String generateHints() {
-
-
+    public void generateHints() {
         plaveNextHorizontalHints();
         placePreviousHorizontalHints();
         placeAboveVerticalHints();
+        placeBelowVerticalHints();
+        placeDiagonalHints();
+    }
 
-        return cell;
+    private void placeDiagonalHints() {
+        char[] elements = cell.toCharArray();
+
+        for (int i = 0; i < elements.length - (calculateXSize(cell) + 1) - 1; i++) {
+
+            char theElementLeftBelow = elements[i + (calculateXSize(cell) + 1) - 1];
+            char theElementRightBelow = elements[i + (calculateXSize(cell) + 1) + 1];
+
+            if (elements[i] != '*' && theElementLeftBelow == '*') {
+                elements[i] = '1';
+            }
+            if (elements[i] != '*' && theElementRightBelow == '*') {
+                elements[i] = '1';
+            }
+        }
+
+        for (int i = (calculateXSize(cell) + 1) + 1; i < elements.length; i++) {
+            char theElementLeftAbove = elements[i - (calculateXSize(cell) + 1) - 1];
+            char theElementRightAbove = elements[i - (calculateXSize(cell) + 1) + 1];
+
+            if (elements[i] != '*' && theElementLeftAbove == '*') {
+                elements[i] = '1';
+            }
+            if (elements[i] != '*' && theElementRightAbove == '*') {
+                elements[i] = '1';
+            }
+
+        }
+        cell = String.valueOf(elements);
     }
 
     private void placeAboveVerticalHints() {
         char[] elements = cell.toCharArray();
-        int elementBelowDifference = calculateXSize(cell) + 1;
+
+        for (int i = (calculateXSize(cell) + 1); i < elements.length; i++) {
+            char theElementBelow = elements[i - (calculateXSize(cell) + 1)];
+            if (elements[i] != '*' && theElementBelow == '*') {
+                elements[i] = '1';
+            }
+        }
+        cell = String.valueOf(elements);
+    }
+
+    private void placeBelowVerticalHints() {
+        char[] elements = cell.toCharArray();
 
         for (int i = 0; i < elements.length - (calculateXSize(cell) + 1); i++) {
             char theElementBelow = elements[i + (calculateXSize(cell) + 1)];
@@ -93,7 +143,6 @@ public class MineFields {
         }
         cell = String.valueOf(elements);
     }
-
 
     public String getCell() {
         return cell;
