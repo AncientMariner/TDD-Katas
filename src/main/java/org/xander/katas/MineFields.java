@@ -1,25 +1,32 @@
 package org.xander.katas;
 
-public class MineFields {
-    String cell;
+import java.util.Objects;
+import java.util.regex.Pattern;
 
-    public String drawCell(int sizeOfXDimension, int sizeOfYDimension) {
-        String result = "";
+public class MineFields {
+    private String cell;
+
+    public String getCell() {
+        return cell;
+    }
+
+    public String drawCell(int sizeOfYDimension, int sizeOfXDimension) {
+        StringBuilder result = new StringBuilder("");
         for (int y = 0; y < sizeOfYDimension; y++) {
             for (int x = 0; x < sizeOfXDimension; x++) {
-                result += ".";
+                result.append(".");
             }
-            result += "\n";
+            result.append("\n");
         }
-        cell = result;
-        return result;
+        cell = result.toString();
+        return cell;
     }
 
     public void placeMineAt(int horizontal, int vertical) {
+        Objects.requireNonNull(cell);
         if (cell.isEmpty()) {
-            throw new UnsupportedOperationException("It is not possible to place mine at no field");
+            throw new UnsupportedOperationException("It is not possible to place a mine at no field");
         }
-
         StringBuilder result = new StringBuilder(cell);
         for (int y = 0; y < calculateYSize(cell); y++) {
             for (int x = 0; x < calculateXSize(cell); x++) {
@@ -61,7 +68,7 @@ public class MineFields {
     }
 
     public void generateHints() {
-        plaveNextHorizontalHints();
+        placeNextHorizontalHints();
         placePreviousHorizontalHints();
         placeAboveVerticalHints();
         placeBelowVerticalHints();
@@ -70,81 +77,70 @@ public class MineFields {
 
     private void placeDiagonalHints() {
         char[] elements = cell.toCharArray();
-
         for (int i = 0; i < elements.length - (calculateXSize(cell) + 1) - 1; i++) {
-
             char theElementLeftBelow = elements[i + (calculateXSize(cell) + 1) - 1];
             char theElementRightBelow = elements[i + (calculateXSize(cell) + 1) + 1];
-
-            if (elements[i] != '*' && theElementLeftBelow == '*') {
-                elements[i] = '1';
-            }
-            if (elements[i] != '*' && theElementRightBelow == '*') {
-                elements[i] = '1';
-            }
+            placeHint(elements, i, theElementLeftBelow);
+            placeHint(elements, i, theElementRightBelow);
         }
-
         for (int i = (calculateXSize(cell) + 1) + 1; i < elements.length; i++) {
             char theElementLeftAbove = elements[i - (calculateXSize(cell) + 1) - 1];
             char theElementRightAbove = elements[i - (calculateXSize(cell) + 1) + 1];
-
-            if (elements[i] != '*' && theElementLeftAbove == '*') {
-                elements[i] = '1';
-            }
-            if (elements[i] != '*' && theElementRightAbove == '*') {
-                elements[i] = '1';
-            }
-
+            placeHint(elements, i, theElementLeftAbove);
+            placeHint(elements, i, theElementRightAbove);
         }
         cell = String.valueOf(elements);
     }
 
     private void placeAboveVerticalHints() {
         char[] elements = cell.toCharArray();
-
         for (int i = (calculateXSize(cell) + 1); i < elements.length; i++) {
             char theElementBelow = elements[i - (calculateXSize(cell) + 1)];
-            if (elements[i] != '*' && theElementBelow == '*') {
-                elements[i] = '1';
-            }
+            placeHint(elements, i, theElementBelow);
         }
         cell = String.valueOf(elements);
     }
 
     private void placeBelowVerticalHints() {
         char[] elements = cell.toCharArray();
-
         for (int i = 0; i < elements.length - (calculateXSize(cell) + 1); i++) {
             char theElementBelow = elements[i + (calculateXSize(cell) + 1)];
-            if (elements[i] != '*' && theElementBelow == '*') {
-                elements[i] = '1';
-            }
+            placeHint(elements, i, theElementBelow);
         }
         cell = String.valueOf(elements);
     }
 
-    private void plaveNextHorizontalHints() {
+    private void placeNextHorizontalHints() {
         char[] elements = cell.toCharArray();
         for (int i = 0; i < elements.length - 1; i++) {
-            if (elements[i] != '*' && elements[i + 1] == '*') {
-                elements[i] = '1';
-            }
+            char nextElement = elements[i + 1];
+            placeHint(elements, i, nextElement);
         }
         cell = String.valueOf(elements);
     }
 
     private void placePreviousHorizontalHints() {
         char[] elements = cell.toCharArray();
-
         for (int i = 1; i < elements.length; i++) {
-            if (elements[i] != '*' && elements[i - 1] == '*') {
-                elements[i] = '1';
-            }
+            char previousElement = elements[i - 1];
+            placeHint(elements, i, previousElement);
         }
         cell = String.valueOf(elements);
     }
 
-    public String getCell() {
-        return cell;
+    private void placeHint(char[] elements, int currentNumber, char neighbourElement) {
+        if (neighbourElement == '*') {
+            if (elements[currentNumber] != '*' && elements[currentNumber] != '\n') {
+                if (stringContainsOnlyNumbers(String.valueOf(elements[currentNumber]))) {
+                    elements[currentNumber] = (char) (elements[currentNumber] + 1);
+                } else {
+                    elements[currentNumber] = '1';
+                }
+            }
+        }
+    }
+
+    private boolean stringContainsOnlyNumbers(String number) {
+        return Pattern.compile("[1-9]").matcher(number).matches();
     }
 }

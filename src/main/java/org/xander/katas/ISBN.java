@@ -15,7 +15,7 @@ public class ISBN {
     }
 
     private boolean stringContainsOnlyNumbers(String number) {
-        return !Pattern.compile(".*[^0-9].*").matcher(number).matches();
+        return Pattern.compile(".*[0-9].*").matcher(number).matches();
     }
 
     public String calculateCheckDigitIsbn10(String number) {
