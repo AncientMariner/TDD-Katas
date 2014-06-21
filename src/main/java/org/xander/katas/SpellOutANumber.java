@@ -1,10 +1,10 @@
 package org.xander.katas;
 
 public class SpellOutANumber {
-    final int hundred = 100;
-    final int thousand = 1000;
-    final int million = 1_000_000;
-    final int billion = 1_000_000_000;
+    final static int hundred = 100;
+    final static int thousand = 1000;
+    final static int million = 1_000_000;
+    final static int billion = 1_000_000_000;
 
     public String spellOutOneDigitNumber(int number) {
         String result = "";
@@ -18,6 +18,7 @@ public class SpellOutANumber {
             case 7: result += "seven"; break;
             case 8: result += "eight"; break;
             case 9: result += "nine"; break;
+            default: result += "";
         }
         return result;
     }

@@ -30,7 +30,7 @@ public class CalcStats {
         return new Statistics(minimumValue, maximumValue, counterOfElements, averageValue);
     }
 
-    class Statistics {
+    static class Statistics {
         private int minimumValue;
         private int maximumValue;
         private int numberOfElementsInSequence;

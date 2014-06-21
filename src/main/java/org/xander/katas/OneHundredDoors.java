@@ -1,10 +1,12 @@
 package org.xander.katas;
 
+import java.util.Arrays;
+
 public class OneHundredDoors {
-    boolean[] listOfDoors = new boolean[100];
+    private boolean[] listOfDoors = new boolean[100];
 
     public boolean[] checkAllDoors() {
-        return listOfDoors;
+        return Arrays.copyOf(listOfDoors, listOfDoors.length);
     }
 
     public void go(int j) {

@@ -69,9 +69,7 @@ public class SpellOutANumberTest {
 
     @Test
     public void anotherThreeDigitNumber100() {
-        int number = 100;
-
-        String result = spellOutANumber.spellOutThreeDigitNumber(number);
+        String result = spellOutANumber.spellOutThreeDigitNumber(SpellOutANumber.hundred);
         assertEquals("one hundred", result);
     }
 
@@ -109,9 +107,7 @@ public class SpellOutANumberTest {
 
     @Test
     public void anotherFourDigitNumber1000() {
-        int number = 1000;
-
-        String result = spellOutANumber.spellOutFourDigitNumber(number);
+        String result = spellOutANumber.spellOutFourDigitNumber(SpellOutANumber.thousand);
         assertEquals("one thousand", result);
     }
 

@@ -4,14 +4,14 @@ import java.util.regex.Pattern;
 
 public class ISBN {
     public String checkNumber(String numberWithHyphens) {
-        String numberWithoutHypens = "";
+        StringBuilder numberWithoutHyphens = new StringBuilder();
 
         for (int element : numberWithHyphens.toCharArray()) {
             if (stringContainsOnlyNumbers(String.valueOf((char) ((int) element)))) {
-                numberWithoutHypens += String.valueOf((char) ((int) element));
+                numberWithoutHyphens.append(String.valueOf((char) ((int) element)));
             }
         }
-        return numberWithoutHypens;
+        return numberWithoutHyphens.toString();
     }
 
     private boolean stringContainsOnlyNumbers(String number) {
@@ -22,7 +22,7 @@ public class ISBN {
         String numberToCalculate = checkNumber(number);
         int checkDigit = 0;
         for (int i = 0; i < numberToCalculate.length(); i++) {
-            checkDigit += Integer.valueOf(String.valueOf(((char) (int) numberToCalculate.charAt(i)))) * (i + 1);
+            checkDigit += Integer.parseInt(String.valueOf(((char) (int) numberToCalculate.charAt(i)))) * (i + 1);
         }
 
         return String.valueOf(checkDigit % 11);
@@ -33,9 +33,9 @@ public class ISBN {
         int checkDigit = 0;
         for (int i = 0; i < numberToCalculate.length(); i++) {
             if ((i + 1) % 2 != 0) {
-                checkDigit += Integer.valueOf(String.valueOf(((char) (int) numberToCalculate.charAt(i))));
+                checkDigit += Integer.parseInt(String.valueOf(((char) (int) numberToCalculate.charAt(i))));
             } else {
-                checkDigit += Integer.valueOf(String.valueOf(((char) (int) numberToCalculate.charAt(i)) )) * 3;
+                checkDigit += Integer.parseInt(String.valueOf(((char) (int) numberToCalculate.charAt(i)) )) * 3;
             }
         }
         return String.valueOf(((10 - (checkDigit % 10)) % 10));

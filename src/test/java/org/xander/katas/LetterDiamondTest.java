@@ -21,17 +21,13 @@ public class LetterDiamondTest {
 
     @Test
     public void simpleLetter() {
-        char a = 'A';
-
-        String result = letterDiamond.buildADiamond(a);
+        String result = letterDiamond.buildADiamond(LetterDiamond.A_LETTER);
         assertEquals("A\nAA\nA", result);
     }
 
     @Test
     public void twoLetters() {
-        char b = 'B';
-
-        String result = letterDiamond.buildADiamond(b);
+        String result = letterDiamond.buildADiamond(LetterDiamond.B_LETTER);
         assertEquals(" A\nB B\n A", result);
     }
 

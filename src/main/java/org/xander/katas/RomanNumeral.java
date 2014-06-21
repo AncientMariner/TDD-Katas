@@ -1,10 +1,10 @@
 package org.xander.katas;
 
 public class RomanNumeral {
-    final String ABSENT_NUMBER = "there is no such a number";
-    final int THOUSAND = 1000;
-    final int HUNDRED = 100;
-    final int TEN = 10;
+    static final String ABSENT_NUMBER = "there is no such a number";
+    static final int THOUSAND = 1000;
+    static final int HUNDRED = 100;
+    static final int TEN = 10;
 
     public static void main(String[] args) {
         System.out.println("Arabic numerals into Roman Numbers");
@@ -94,44 +94,44 @@ public class RomanNumeral {
     }
 
     private String convertNumber(String customDigit) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         int customDigitLength = customDigit.length();
         if (customDigitLength == 1) {
             return convertOneDigit(customDigit);
         } else {
 
             if (customDigitLength == 4) {
-                int fourNumber = Integer.valueOf(customDigit) / THOUSAND;
+                int fourNumber = Integer.parseInt(customDigit) / THOUSAND;
                 while (fourNumber > 0) {
-                    result += convertFourDigit(String.valueOf(THOUSAND));
+                    result.append(convertFourDigit(String.valueOf(THOUSAND)));
                     fourNumber--;
                 }
-                result = threeDigitsNumberConvert(customDigit, result);
+                result = new StringBuilder(threeDigitsNumberConvert(customDigit, result.toString()));
             } else if (customDigitLength == 3) {
-                result = threeDigitsNumberConvert(customDigit, result);
+                result = new StringBuilder(threeDigitsNumberConvert(customDigit, result.toString()));
             } else if (customDigitLength == 2) {
-                result = twoDigitsNumberConvert(customDigit, result);
+                result = new StringBuilder(twoDigitsNumberConvert(customDigit, result.toString()));
             } else if (customDigitLength == 1) {
-                result = oneDigitNumberConvert(customDigit, result);
+                result = new StringBuilder(oneDigitNumberConvert(customDigit, result.toString()));
             } else {
-                result = ABSENT_NUMBER;
+                result = new StringBuilder(ABSENT_NUMBER);
             }
         }
-        return result;
+        return result.toString();
     }
 
     private String oneDigitNumberConvert(String customDigit, String result) {
         int theLowestDigit = customDigit.length() - 1;
-        if (customDigit.substring(theLowestDigit) != null && Integer.valueOf(customDigit.substring(theLowestDigit)) != 0) {
+        if (customDigit.substring(theLowestDigit) != null && Integer.parseInt(customDigit.substring(theLowestDigit)) != 0) {
             result += convertOneDigit(customDigit.substring(theLowestDigit));
         }
         return result;
     }
 
     private String twoDigitsNumberConvert(String customDigit, String result) {
-        if ((Integer.valueOf(customDigit) % HUNDRED) != 0) {
-            if((Integer.valueOf(customDigit) % HUNDRED) >= 10) {
-                int twoNumber = (Integer.valueOf(customDigit) % HUNDRED) / TEN;
+        if ((Integer.parseInt(customDigit) % HUNDRED) != 0) {
+            if((Integer.parseInt(customDigit) % HUNDRED) >= 10) {
+                int twoNumber = (Integer.parseInt(customDigit) % HUNDRED) / TEN;
                 result += convertTwoDigit(String.valueOf(twoNumber * TEN));
             }
             result = oneDigitNumberConvert(customDigit, result);
@@ -140,8 +140,8 @@ public class RomanNumeral {
     }
 
     private String threeDigitsNumberConvert(String customDigit, String result) {
-        if ((Integer.valueOf(customDigit) % THOUSAND) != 0) {
-            int threeNumber = (Integer.valueOf(customDigit) % THOUSAND) / HUNDRED;
+        if ((Integer.parseInt(customDigit) % THOUSAND) != 0) {
+            int threeNumber = (Integer.parseInt(customDigit) % THOUSAND) / HUNDRED;
             if (threeNumber != 0) {
                 result += convertThreeDigit(String.valueOf(threeNumber * HUNDRED));
             }

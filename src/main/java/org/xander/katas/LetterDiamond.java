@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LetterDiamond {
-    final char A_LETTER = 'A';
-    final char B_LETTER = 'B';
-    final char WHITESPACE_SYMBOL = ' ';
-    final char NEXT_LINE_SYMBOL = '\n';
-
+    static final char A_LETTER = 'A';
+    static final char B_LETTER = 'B';
+    static final char WHITESPACE_SYMBOL = ' ';
+    static final char NEXT_LINE_SYMBOL = '\n';
 
     public String buildADiamond(char symbol) {
         List<Character> listOfSymbols = new ArrayList<>();

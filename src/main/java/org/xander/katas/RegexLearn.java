@@ -8,7 +8,7 @@ public class RegexLearn {
         while (matcher.find()) {
             System.out.printf("The following text is found:" +
                                 " \"%s\"; starting at " +
-                                "index %d and ending at index %d.%n\n",
+                                "index %d and ending at index %d.%n%n",
                                 matcher.group(),
                                 matcher.start(),
                                 matcher.end());

@@ -7,14 +7,14 @@ public class GameOfLife {
     private String currentState;
 
     public String drawCell(int sizeOfXDimension, int sizeOfYDimension) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int y = 0; y < sizeOfYDimension; y++) {
             for (int x = 0; x < sizeOfXDimension; x++) {
-                result += ".";
+                result.append(".");
             }
-            result += "\n";
+            result.append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     public String buildTheBeginning(int liveCellPositionX, int liveCellPositionY, String cell) {
@@ -321,17 +321,17 @@ public class GameOfLife {
     }
 
     private String formNewGeneration(int sizeOfXDimension, int sizeOfYDimension, Set<Integer> livingElements) {
-        String newGeneration = "";
+        StringBuilder newGeneration = new StringBuilder();
         for (int y = 0; y < sizeOfYDimension; y++) {
             for (int x = 0; x < sizeOfXDimension; x++) {
                 if (livingElements.contains(y * (lengthOfXDimension(sizeOfXDimension)) + x))
-                    newGeneration += "*";
+                    newGeneration.append("*");
                 else
-                    newGeneration += ".";
+                    newGeneration.append(".");
             }
-            newGeneration += "\n";
+            newGeneration.append("\n");
         }
-        return newGeneration;
+        return newGeneration.toString();
     }
 
     private void printCellContent() {

@@ -1,10 +1,11 @@
 package org.xander.katas;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ZeckendorfNumber {
-    int[] fibonacciRow = new int[40];
+    private int[] fibonacciRow = new int[40];
 
     public int[] generateFibonacci(final int threshold) {
         final int initialNumber = 1;
@@ -15,7 +16,7 @@ public class ZeckendorfNumber {
         for (int i = 2; i < threshold; i++) {
             fibonacciRow[i] = fibonacciRow[i - 2] + fibonacciRow[i - 1];
         }
-        return fibonacciRow;
+        return Arrays.copyOf(fibonacciRow, fibonacciRow.length);
     }
 
     public List<Integer> representNumber(int inputNumber) {

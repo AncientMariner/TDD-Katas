@@ -3,8 +3,8 @@ package org.xander.katas;
 import java.util.regex.Pattern;
 
 public class StringCalculator {
-    final int zero = 0;
-    final String negativeNumberMessage = "Negative number is not allowed ";
+    static final int zero = 0;
+    static final String negativeNumberMessage = "Negative number is not allowed ";
 
     public int add() {
         return zero;
@@ -41,7 +41,7 @@ public class StringCalculator {
 
     private int calculateNumber(String number) {
         int sum = zero;
-        if (stringContainsOnlyNumbers(number) && Integer.valueOf(number) > 1000) {
+        if (stringContainsOnlyNumbers(number) && Integer.parseInt(number) > 1000) {
             return zero;
         } else {
             if (number.trim().equals(""))
@@ -50,13 +50,13 @@ public class StringCalculator {
 
             for (int elementInArray : number.toCharArray()) {
                 if (stringContainsOnlyNumbers(String.valueOf((char) ((int) elementInArray))))
-                    result += Integer.valueOf(String.valueOf((char) ((int) elementInArray)));
+                    result += Integer.parseInt(String.valueOf((char) ((int) elementInArray)));
                 else {
-                    sum += Integer.valueOf(result);
+                    sum += Integer.parseInt(result);
                     result = "0";
                 }
             }
-            sum += Integer.valueOf(result);
+            sum += Integer.parseInt(result);
         }
         return sum;
     }
