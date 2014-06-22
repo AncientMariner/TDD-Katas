@@ -484,8 +484,6 @@ For example: print-diamond 'C' prints
 
 ### Recently Used List
 
-Recently Used List :
-
    Develop a recently-used-list class to hold strings uniquely
    in Last-In-First-Out order.
 
