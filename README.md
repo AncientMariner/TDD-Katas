@@ -503,7 +503,7 @@ For example: print-diamond 'C' prints
 
    Additional
 
-    While getting items by index, supplied index-value should be within the bounds of List [eg.
+   --- While getting items by index, supplied index-value should be within the bounds of List [eg.
     if maximum item counts of list is 5 then supplied index is less than 4 as index starts from 0 (zero)]
     Negative index value not allowed [>0]
     Size limit is must if not supplied make 5 as default [0-4]
