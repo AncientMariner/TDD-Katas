@@ -24,8 +24,7 @@ public class RecentlyUsedListTest {
         String stringToHold = "test string";
         recentlyUsedList.pushAString(stringToHold);
 
-        assertEquals(stringToHold, recentlyUsedList.getLastString());
-        assertEquals(stringToHold, recentlyUsedList.getFirstString());
+        checkHeadAndTail(stringToHold, stringToHold);
         assertEquals(recentlyUsedList.getLastString(), recentlyUsedList.getFirstString());
     }
 
@@ -41,8 +40,7 @@ public class RecentlyUsedListTest {
         recentlyUsedList.pushAString(stringToHold);
         recentlyUsedList.pushAString(anotherStringToHold);
 
-        assertEquals(stringToHold, recentlyUsedList.getFirstString());
-        assertEquals(anotherStringToHold, recentlyUsedList.getLastString());
+        checkHeadAndTail(stringToHold, anotherStringToHold);
     }
 
     @Test
@@ -56,8 +54,7 @@ public class RecentlyUsedListTest {
         recentlyUsedList.pushAString(anotherStringToHold2);
         recentlyUsedList.pushAString(anotherStringToHold);
 
-        assertEquals(stringToHold, recentlyUsedList.getFirstString());
-        assertEquals(anotherStringToHold, recentlyUsedList.getLastString());
+        checkHeadAndTail(stringToHold, anotherStringToHold);
     }
 
     @Test
@@ -68,33 +65,35 @@ public class RecentlyUsedListTest {
     @Test
     public void ensureUniqueness() {
         String stringToHold = "test string";
-        String anotherStringToHold = "test string";
+        String anotherStringToHold = stringToHold;
         String anotherStringToHold1 = anotherStringToHold;
         recentlyUsedList.pushAString(stringToHold);
         recentlyUsedList.pushAString(anotherStringToHold);
         recentlyUsedList.pushAString(anotherStringToHold1);
 
         assertEquals(1, recentlyUsedList.getSizeOfList());
-        assertEquals(stringToHold, recentlyUsedList.getLastString());
-        assertEquals(stringToHold, recentlyUsedList.getFirstString());
+        checkHeadAndTail(stringToHold, anotherStringToHold);
         assertEquals(recentlyUsedList.getLastString(), recentlyUsedList.getFirstString());
     }
 
+    private void checkHeadAndTail(String stringToHold, String anotherStringToHold) {
+        assertEquals(stringToHold, recentlyUsedList.getFirstString());
+        assertEquals(anotherStringToHold, recentlyUsedList.getLastString());
+    }
+
     @Test
-    public void getByIndex() {
+    public void unsecureGetByIndex() {
         String stringToHold = "test string";
         String anotherStringToHold = "test one more string";
         String anotherStringToHold1 = "and one more string";
-        String anotherStringToHold2= "another string";
+        String anotherStringToHold21 = "another string";
         recentlyUsedList.pushAString(stringToHold);
         recentlyUsedList.pushAString(anotherStringToHold);
         recentlyUsedList.pushAString(anotherStringToHold1);
-        recentlyUsedList.pushAString(anotherStringToHold2);
+        recentlyUsedList.pushAString(anotherStringToHold21);
 
-        assertEquals(stringToHold, recentlyUsedList.getElementNumber(0));
-        assertEquals(anotherStringToHold, recentlyUsedList.getElementNumber(1));
-        assertEquals(anotherStringToHold1, recentlyUsedList.getElementNumber(2));
-        assertEquals(anotherStringToHold2, recentlyUsedList.getElementNumber(3));
+        checkElementsPresent(stringToHold, anotherStringToHold, anotherStringToHold1);
+        assertEquals(anotherStringToHold21, recentlyUsedList.getElementNumber(3));
     }
 
     @Test(expected = UnsupportedOperationException.class)
@@ -121,10 +120,37 @@ public class RecentlyUsedListTest {
         recentlyUsedList.pushAString(anotherStringToHold2);
 
         assertEquals(3, recentlyUsedList.getSizeOfList());
+        checkElementsPresent(anotherStringToHold, anotherStringToHold1, anotherStringToHold2);
+    }
+
+    private void checkElementsPresent(String anotherStringToHold, String anotherStringToHold1, String anotherStringToHold2) {
         assertEquals(anotherStringToHold, recentlyUsedList.getElementNumber(0));
         assertEquals(anotherStringToHold1, recentlyUsedList.getElementNumber(1));
         assertEquals(anotherStringToHold2, recentlyUsedList.getElementNumber(2));
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    public void secureGetByIndex() {
+        String stringToHold = "test string";
+        String anotherStringToHold = "test one more string";
+        recentlyUsedList.pushAString(stringToHold);
+        recentlyUsedList.pushAString(anotherStringToHold);
 
+        assertEquals("not reachable element", recentlyUsedList.getElementNumber(recentlyUsedList.getSizeOfList()));
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void negativeIndexIsNotSupported() {
+        recentlyUsedList.getElementNumber(-1);
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
+    public void getAnUnexistingElementByIndex() {
+        recentlyUsedList.getElementNumber(0);
+    }
+
+    @Test
+    public void defaultSizeLimitIsFive() {
+        assertEquals(5, recentlyUsedList.getCapacity());
+    }
 }

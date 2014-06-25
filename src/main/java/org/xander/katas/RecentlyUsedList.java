@@ -5,12 +5,12 @@ import java.util.List;
 
 public class RecentlyUsedList {
     private static final String LIST_IS_EMPTY = "list is empty";
-    private List<String> stringContainer = new ArrayList<>();
-    private int capacity;
+    private int capacity = 5;
+    private List<String> stringContainer = new ArrayList<>(capacity);
 
     public void pushAString(String stringToHold) {
         if (stringToHold == null || stringToHold.isEmpty()) {
-            throw new UnsupportedOperationException("it is not possible to add a null or emty size string");
+            throw new UnsupportedOperationException("it is not possible to add a null or empty size string");
         }
 
         if (getCapacity() == stringContainer.size() && itIsPossibleToGetAnElement()) {
@@ -38,7 +38,7 @@ public class RecentlyUsedList {
         int lastElement = 0;
         if (itIsPossibleToGetAnElement())
             return getReversedStringContainer().get(lastElement);
-        throw new UnsupportedOperationException("list is empty");
+        throw new UnsupportedOperationException(LIST_IS_EMPTY);
     }
 
     public String getFirstString() {
@@ -68,6 +68,10 @@ public class RecentlyUsedList {
     }
 
     public String getElementNumber(int index) {
+        if (index < 0 || index >= stringContainer.size()) {
+            throw new UnsupportedOperationException("the index value you entered is not reachable");
+        }
+
         String elementToGet = "";
         for (int i = 0; i < stringContainer.size(); i++) {
             if (i == index)
