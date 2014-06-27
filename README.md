@@ -510,3 +510,22 @@ For example: print-diamond 'C' prints
     Size limit is must if not supplied make 5 as default [0-4]
 
 ---
+
+### Tennis
+
+    You task is to implement a tennis scoring program.
+    Summary of tennis scoring:
+
+    A game is won by the first player to have won at
+    least four points in total and at least two points
+    more than the opponent.
+
+    If at least three points have been scored by each
+    player, and the scores are equal, the score is "deuce".
+
+    If at least three points have been scored by each
+    side and a player has one more point than his opponent,
+    the score of the game is "advantage" for the player
+    in the lead.
+
+---
