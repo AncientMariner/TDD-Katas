@@ -1,7 +1,6 @@
 package org.xander.katas;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -29,73 +28,73 @@ public class TennisTest {
     }
 
     @Test
-    public void onePlayerScore() {
+    public void onePlayerdisplayResult() {
         Tennis firstPlayer = tennis;
         int times = 1;
-        int result = firstPlayer.score(times);
+        int result = firstPlayer.displayResult(times);
         assertEquals(15, result);
 
         int times1 = 2;
-        int result1 = firstPlayer.score(times1);
+        int result1 = firstPlayer.displayResult(times1);
         assertEquals(30, result1);
 
         int times2 = 3;
-        int result2 = firstPlayer.score(times2);
+        int result2 = firstPlayer.displayResult(times2);
         assertEquals(40, result2);
     }
 
     @Test
-    public void twoPlayersScore15() {
+    public void twoPlayersdisplayResult15() {
         Tennis firstPlayer = tennis;
         int times = 1;
-        int result1 = firstPlayer.score(times);
+        int result1 = firstPlayer.displayResult(times);
         assertEquals(15, result1);
 
         Tennis secondPlayer = tennis;
-        int result2 = secondPlayer.score(times);
+        int result2 = secondPlayer.displayResult(times);
         assertEquals(15, result2);
 
         assertEquals("15 - 15", tennis.compareResults(result1, result2));
     }
 
     @Test
-    public void twoPlayersScore30() {
+    public void twoPlayersdisplayResult30() {
         Tennis firstPlayer = tennis;
         int times = 2;
-        int result1 = firstPlayer.score(times);
+        int result1 = firstPlayer.displayResult(times);
         assertEquals(30, result1);
 
         Tennis secondPlayer = tennis;
-        int result2 = secondPlayer.score(times);
+        int result2 = secondPlayer.displayResult(times);
         assertEquals(30, result2);
 
         assertEquals("30 - 30", tennis.compareResults(result1, result2));
     }
 
     @Test
-    public void twoPlayersScoreDeuce() {
+    public void twoPlayersdisplayResultDeuce() {
         Tennis firstPlayer = tennis;
         int times = 3;
-        int result1 = firstPlayer.score(times);
+        int result1 = firstPlayer.displayResult(times);
         assertEquals(40, result1);
 
         Tennis secondPlayer = tennis;
-        int result2 = secondPlayer.score(times);
+        int result2 = secondPlayer.displayResult(times);
         assertEquals(40, result2);
 
         assertEquals("Deuce", tennis.compareResults(result1, result2));
     }
 
     @Test
-    public void twoPlayersScoreDifferently() {
+    public void twoPlayersdisplayResultDifferently() {
         Tennis firstPlayer = tennis;
         int times1 = 0;
-        int result1 = firstPlayer.score(times1);
+        int result1 = firstPlayer.displayResult(times1);
         assertEquals(0, result1);
 
         Tennis secondPlayer = tennis;
         int times2 = 2;
-        int result2 = secondPlayer.score(times2);
+        int result2 = secondPlayer.displayResult(times2);
         assertEquals(30, result2);
 
         assertEquals("0 - 30", tennis.compareResults(result1, result2));
@@ -105,28 +104,27 @@ public class TennisTest {
     public void gameIsWonBy1() {
         Tennis firstPlayer = tennis;
         int times1 = 4;
-        int result1 = firstPlayer.score(times1);
-//        assertEquals(4, result1);
+        int result1 = firstPlayer.displayResult(times1);
+        assertEquals(4, result1);
 
         Tennis secondPlayer = tennis;
         int times2 = 0;
-        int result2 = secondPlayer.score(times2);
+        int result2 = secondPlayer.displayResult(times2);
 
         assertEquals(0, result2);
         assertEquals("first has won", tennis.compareResults(result1, result2));
     }
 
-
     @Test
     public void gameIsWonBy2() {
         Tennis firstPlayer = tennis;
         int times1 = 0;
-        int result1 = firstPlayer.score(times1);
+        int result1 = firstPlayer.displayResult(times1);
         assertEquals(0, result1);
 
         Tennis secondPlayer = tennis;
         int times2 = 4;
-        int result2 = secondPlayer.score(times2);
+        int result2 = secondPlayer.displayResult(times2);
 
         assertEquals(4, result2);
         assertEquals("second has won", tennis.compareResults(result1, result2));
@@ -136,31 +134,38 @@ public class TennisTest {
     public void gameIsNotWon() {
         Tennis firstPlayer = tennis;
         int times1 = 2;
-        int result1 = firstPlayer.score(times1);
+        int result1 = firstPlayer.displayResult(times1);
         assertEquals(30, result1);
 
         Tennis secondPlayer = tennis;
         int times2 = 3;
-        int result2 = secondPlayer.score(times2);
+        int result2 = secondPlayer.displayResult(times2);
         assertEquals(40, result2);
         assertEquals("30 - 40", tennis.compareResults(result1, result2));
     }
 
-    @Ignore
+    @Test
+    public void gameIsNotWonInManyStrikes() {
+        Tennis firstPlayer = tennis;
+        int times1 = 6;
+        int result1 = firstPlayer.displayResult(times1);
+
+        Tennis secondPlayer = tennis;
+        int times2 = 7;
+        int result2 = secondPlayer.displayResult(times2);
+        assertEquals("game is in progress", tennis.compareResults(result1, result2));
+    }
+
     @Test
     public void gameIsWonInManyStrikes() {
         Tennis firstPlayer = tennis;
         int times1 = 6;
-        int result1 = firstPlayer.score(times1);
-//        assertEquals(30, result1);
+        int result1 = firstPlayer.displayResult(times1);
 
         Tennis secondPlayer = tennis;
-        int times2 = 7;
-        int result2 = secondPlayer.score(times2);
-//        assertEquals(40, result2);
+        int times2 = 8;
+        int result2 = secondPlayer.displayResult(times2);
         assertEquals("second has won", tennis.compareResults(result1, result2));
     }
-
-
 }
 
