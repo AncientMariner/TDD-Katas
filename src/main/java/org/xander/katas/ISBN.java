@@ -7,8 +7,8 @@ public class ISBN {
         StringBuilder numberWithoutHyphens = new StringBuilder();
 
         for (int element : numberWithHyphens.toCharArray()) {
-            if (stringContainsOnlyNumbers(String.valueOf((char) ((int) element)))) {
-                numberWithoutHyphens.append(String.valueOf((char) ((int) element)));
+            if (stringContainsOnlyNumbers(String.valueOf((char) element))) {
+                numberWithoutHyphens.append(String.valueOf((char) element));
             }
         }
         return numberWithoutHyphens.toString();

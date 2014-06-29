@@ -35,7 +35,7 @@ public class StringCalculator {
 
     private boolean validateElementForNegativity(char[] elementInArray1) {
         for (int elementInArray : elementInArray1)
-            return String.valueOf((char) ((int) elementInArray)).equals("-");
+            return String.valueOf((char) elementInArray).equals("-");
         return false;
     }
 
@@ -49,8 +49,8 @@ public class StringCalculator {
             String result = "0";
 
             for (int elementInArray : number.toCharArray()) {
-                if (stringContainsOnlyNumbers(String.valueOf((char) ((int) elementInArray))))
-                    result += Integer.parseInt(String.valueOf((char) ((int) elementInArray)));
+                if (stringContainsOnlyNumbers(String.valueOf((char) elementInArray)))
+                    result += Integer.parseInt(String.valueOf((char)elementInArray));
                 else {
                     sum += Integer.parseInt(result);
                     result = "0";

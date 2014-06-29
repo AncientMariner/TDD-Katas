@@ -49,8 +49,8 @@ public class ZeckendorfNumberTest {
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(3);
 
-        Collection expected = new ArrayList(expectedArray);
-        Collection actual = new ArrayList(resultArrayOfNumbers);
+        List<Integer> expected = new ArrayList<>(expectedArray);
+        List<Integer> actual = new ArrayList<>(resultArrayOfNumbers);
 
         assertFalse(expected.retainAll(actual));
     }
@@ -65,8 +65,8 @@ public class ZeckendorfNumberTest {
         expectedArray.add(8);
         expectedArray.add(3);
 
-        Collection expected = new ArrayList(expectedArray);
-        Collection actual = new ArrayList(resultArrayOfNumbers);
+        List<Integer> expected = new ArrayList<>(expectedArray);
+        List<Integer> actual = new ArrayList<>(resultArrayOfNumbers);
 
         assertFalse(expected.retainAll(actual));
     }
@@ -80,8 +80,8 @@ public class ZeckendorfNumberTest {
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(13);
 
-        Collection expected = new ArrayList(expectedArray);
-        Collection actual = new ArrayList(resultArrayOfNumbers);
+        List<Integer> expected = new ArrayList<>(expectedArray);
+        List<Integer> actual = new ArrayList<>(resultArrayOfNumbers);
 
         assertFalse(expected.retainAll(actual));
     }
@@ -97,8 +97,8 @@ public class ZeckendorfNumberTest {
         expectedArray.add(3);
         expectedArray.add(1);
 
-        Collection expected = new ArrayList(expectedArray);
-        Collection actual = new ArrayList(resultArrayOfNumbers);
+        List<Integer> expected = new ArrayList<>(expectedArray);
+        List<Integer> actual = new ArrayList<>(resultArrayOfNumbers);
 
         assertFalse(expected.retainAll(actual));
     }
@@ -114,8 +114,8 @@ public class ZeckendorfNumberTest {
         expectedArray.add(377);
         expectedArray.add(5);
 
-        Collection expected = new ArrayList(expectedArray);
-        Collection actual = new ArrayList(resultArrayOfNumbers);
+        List<Integer> expected = new ArrayList<>(expectedArray);
+        List<Integer> actual = new ArrayList<>(resultArrayOfNumbers);
 
         assertFalse(expected.retainAll(actual));
     }
@@ -135,8 +135,8 @@ public class ZeckendorfNumberTest {
         expectedArray.add(5);
         expectedArray.add(1);
 
-        Collection expected = new ArrayList(expectedArray);
-        Collection actual = new ArrayList(resultArrayOfNumbers);
+        List<Integer> expected = new ArrayList<>(expectedArray);
+        List<Integer> actual = new ArrayList<>(resultArrayOfNumbers);
 
         assertFalse(expected.retainAll(actual));
     }
