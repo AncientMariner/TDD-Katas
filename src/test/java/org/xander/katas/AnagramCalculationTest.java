@@ -223,7 +223,6 @@ public class AnagramCalculationTest {
     public void sixLettersWord() {
         assertEquals(719, anagramCalculation.numberOfWordsFrom("abcdef"));
 
-//        Set<String> anagramsFromWord = anagramCalculation.getAnagramsFrom(word);
         Set<String> anagramsFromWord = calculateExecutionTimeAndGetAnagramsFrom("abcdef");
 
         assertNotNull(anagramsFromWord);

@@ -19,7 +19,8 @@ public class LetterDiamond {
         buildDescendingPart(symbol, listOfSymbols);
 
         buildFirstAndLastRow(listOfSymbols, symbol);
-//
+
+//      uncomment for test generation
 //        for (char ch : listOfSymbols) {
 //            System.out.print(ch);
 //        }

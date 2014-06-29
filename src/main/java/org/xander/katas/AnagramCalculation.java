@@ -37,7 +37,7 @@ public class AnagramCalculation {
     private void formWordsForTwoAndMoreLetters(String leftPart, String rightPart, Set<String> listOfWords) {
         Set<String> workOnWords = new HashSet<>();
 
-        //need to move pointer not only from side to side, but also at specific index
+        // need to move pointer not only from side to side, but also at specific index
         for (int pointer = 0; pointer < rightPart.length(); pointer++) {
             StringBuilder rightPartToWorkOn = new StringBuilder(rightPart);
             workOnWords.addAll(formWordsForAnyNumberOfLetters(String.valueOf(rightPartToWorkOn.charAt(pointer)),
