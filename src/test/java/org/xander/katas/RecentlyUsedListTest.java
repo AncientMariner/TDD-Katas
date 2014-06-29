@@ -29,6 +29,11 @@ public class RecentlyUsedListTest {
     }
 
     @Test(expected = UnsupportedOperationException.class)
+    public void getFirstEmptyString() {
+        recentlyUsedList.getFirstString();
+    }
+
+    @Test(expected = UnsupportedOperationException.class)
     public void holdOneStringNegative() {
         assertEquals("test string", recentlyUsedList.getLastString());
     }

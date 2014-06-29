@@ -147,8 +147,33 @@ public class RomanNumeralTest {
     @Test
     public void fourDigit() {
         String thousand = "1000";
-        String hundredRoman = romanNumeral.convertFourDigit(thousand);
-        assertEquals("M", hundredRoman);
+        String thousandRoman = romanNumeral.convertFourDigit(thousand);
+        assertEquals("M", thousandRoman);
+    }
+
+    @Test
+    public void absentCustomDigit() {
+        assertEquals("there is no such a number", romanNumeral.convertCustomDigit(null));
+    }
+
+    @Test
+    public void absentCustomOneDigit() {
+        assertEquals("there is no such a number", romanNumeral.convertOneDigit(null));
+    }
+
+    @Test
+    public void absentCustomTwoDigit() {
+        assertEquals("there is no such a number", romanNumeral.convertTwoDigit(null));
+    }
+
+    @Test
+    public void absentCustomThreeDigit() {
+        assertEquals("there is no such a number", romanNumeral.convertThreeDigit(null));
+    }
+
+    @Test
+    public void absentCustomFourDigit() {
+        assertEquals("there is no such a number", romanNumeral.convertFourDigit(null));
     }
 
     @Test
@@ -299,7 +324,6 @@ public class RomanNumeralTest {
         assertEquals("X", customNumberRoman);
     }
 
-
     @Test
     public void convertCustomTwoDigit81Number() {
         String customDigit = "81";
@@ -323,7 +347,7 @@ public class RomanNumeralTest {
 
     @Test
     public void convertCustomBigDigitNumber() {
-        String customDigit = "123123123218";
+        String customDigit = "1231231239";
         String customNumberRoman = romanNumeral.convertCustomDigit(customDigit);
         assertEquals(ABSENT_NUMBER, customNumberRoman);
     }

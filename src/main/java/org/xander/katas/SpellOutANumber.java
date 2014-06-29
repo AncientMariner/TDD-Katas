@@ -43,21 +43,21 @@ public class SpellOutANumber {
 
     public String spellOutTwoDigitNumberAbove20(int number) {
         String result = "";
-        if (number - 90 > 0) {
+        if (number - 90 >= 0) {
             result += "ninety" + " " + spellOutOneDigitNumber(number - 90);
-        } else if (number - 80 > 0) {
+        } else if (number - 80 >= 0) {
             result += "eighty" + " " + spellOutOneDigitNumber(number - 80);
-        } else if (number - 70 > 0) {
+        } else if (number - 70 >= 0) {
             result += "seventy" + " " + spellOutOneDigitNumber(number - 70);
-        } else if (number - 60 > 0) {
+        } else if (number - 60 >= 0) {
             result += "sixty" + " " + spellOutOneDigitNumber(number - 60);
-        } else if (number - 50 > 0) {
+        } else if (number - 50 >= 0) {
             result += "fifty" + " " + spellOutOneDigitNumber(number - 50);
-        } else if (number - 40 > 0) {
+        } else if (number - 40 >= 0) {
             result += "forty" + " " + spellOutOneDigitNumber(number - 40);
-        } else if (number - 30 > 0) {
+        } else if (number - 30 >= 0) {
             result += "thirty" + " " + spellOutOneDigitNumber(number - 30);
-        } else if (number - 20 > 0) {
+        } else if (number - 20 >= 0) {
             result += "twenty" + " " + spellOutOneDigitNumber(number - 20);
         } else if (number % 10 >= 0) {
             result += spellOutTwoDigitNumber(number);

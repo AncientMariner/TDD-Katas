@@ -54,4 +54,30 @@ public class LCDNumbersTest {
                      "._| |_. |_.\n" +
                      "._| |_| ._|", lcdNumber);
     }
+
+
+    @Test
+    public void anyNumberBelow1000_247() {
+        int number = 247;
+        String lcdNumber = lcdNumbers.generateLCDNumberFrom(number);
+        assertEquals("._. ... ._.\n" +
+                     "._| |_| ..|\n" +
+                     "|_. ..| ./.", lcdNumber);
+    }
+
+    @Test
+    public void anyNumberBelow1000_478() {
+        int number = 478;
+        String lcdNumber = lcdNumbers.generateLCDNumberFrom(number);
+        assertEquals("... ._. ._.\n" +
+                     "|_| ..| |_|\n" +
+                     "..| ./. |_|", lcdNumber);
+    }
+
+    @Test
+    public void notPresentNumber() {
+        int number = -304;
+        String lcdNumber = lcdNumbers.generateLCDNumberFrom(number);
+        assertEquals("number is not present", lcdNumber);
+    }
 }

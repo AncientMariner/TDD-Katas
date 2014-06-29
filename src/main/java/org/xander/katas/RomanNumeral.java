@@ -6,9 +6,9 @@ public class RomanNumeral {
     static final int HUNDRED = 100;
     static final int TEN = 10;
 
-    public static void main(String[] args) {
-        System.out.println("Arabic numerals into Roman Numbers");
-    }
+//    public static void main(String[] args) {
+//        System.out.println("Arabic numerals into Roman Numbers");
+//    }
 
     public String convert() {
         return "nothing was sent to convert";
@@ -56,21 +56,21 @@ public class RomanNumeral {
 
     public String convertThreeDigit(String threeDigitNumber) {
         if (threeDigitNumber != null) {
-        String romanNumber;
-        switch (threeDigitNumber) {
-            case "100": romanNumber = "C"; break;
-            case "200": romanNumber = "CC"; break;
-            case "300": romanNumber = "CCC"; break;
-            case "400": romanNumber = "CD"; break;
-            case "500": romanNumber = "D"; break;
-            case "600": romanNumber = "DC"; break;
-            case "700": romanNumber = "DCC"; break;
-            case "800": romanNumber = "DCCC"; break;
-            case "900": romanNumber = "CM"; break;
-            default: romanNumber = ABSENT_NUMBER;
-        }
-        return romanNumber;
-        }
+            String romanNumber;
+            switch (threeDigitNumber) {
+                case "100": romanNumber = "C"; break;
+                case "200": romanNumber = "CC"; break;
+                case "300": romanNumber = "CCC"; break;
+                case "400": romanNumber = "CD"; break;
+                case "500": romanNumber = "D"; break;
+                case "600": romanNumber = "DC"; break;
+                case "700": romanNumber = "DCC"; break;
+                case "800": romanNumber = "DCCC"; break;
+                case "900": romanNumber = "CM"; break;
+                default: romanNumber = ABSENT_NUMBER;
+            }
+            return romanNumber;
+            }
         return ABSENT_NUMBER;
     }
 
@@ -87,7 +87,7 @@ public class RomanNumeral {
     }
 
     public String convertCustomDigit(String customDigit) {
-        if (customDigit != null) {
+        if (customDigit != null && Integer.parseInt(customDigit) > 0) {
             return convertNumber(customDigit);
         }
         return ABSENT_NUMBER;
@@ -111,9 +111,12 @@ public class RomanNumeral {
                 result = new StringBuilder(threeDigitsNumberConvert(customDigit, result.toString()));
             } else if (customDigitLength == 2) {
                 result = new StringBuilder(twoDigitsNumberConvert(customDigit, result.toString()));
-            } else if (customDigitLength == 1) {
-                result = new StringBuilder(oneDigitNumberConvert(customDigit, result.toString()));
-            } else {
+            }
+//            else
+//            if (customDigitLength == 1) {
+//                result = new StringBuilder(oneDigitNumberConvert(customDigit, result.toString()));
+//            }
+            else {
                 result = new StringBuilder(ABSENT_NUMBER);
             }
         }

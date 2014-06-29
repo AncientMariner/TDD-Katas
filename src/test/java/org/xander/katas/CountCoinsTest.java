@@ -45,6 +45,12 @@ public class CountCoinsTest {
     }
 
     @Test
+    public void nothing() {
+        String name = countCoins.countOneCoin(-1);
+        assertThat("nothing", is(name));
+    }
+
+    @Test
     public void customQuarter() {
         String name = countCoins.countCustomCoin(25);
         assertThat(true, is(name.contains("25_penny")));
