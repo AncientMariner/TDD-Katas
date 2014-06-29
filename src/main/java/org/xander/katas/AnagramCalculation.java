@@ -71,7 +71,7 @@ public class AnagramCalculation {
 
         while(length > 0) result *= length--;
 
-        int originalWordShouldNotBeCount = result -  1;
+        int originalWordShouldNotBeCount = result - 1;
         return originalWordShouldNotBeCount;
     }
 
