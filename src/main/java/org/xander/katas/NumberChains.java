@@ -1,103 +1,111 @@
 package org.xander.katas;
 
 public class NumberChains {
-    public String formAscendingOrder(int number) {
-        char[] arrayOfSymbols = formAnArrayWithoutZeros(number);
+    private StringBuilder headLinkOfChain = new StringBuilder("Original number was ");
+    private String tailLinkOfChain = "\nChain length is ";
 
-        String result = bubbleSortAsc(arrayOfSymbols);
-
-        String ascendingArray = result;
-        return String.valueOf(ascendingArray);
+    public int formAscOrder(int number) {
+        if (thereIsNoNeedToSort(number)) {
+            return number;
+        }
+        return Integer.parseInt(bubbleSortAsc(number));
     }
 
-    public String formDescendingOrder(int number) {
-        char[] arrayOfSymbols = formAnArrayWithoutZeros(number);
-
-        String result = bubbleSortDesc(arrayOfSymbols);
-
-        String descendingArray = result;
-        return String.valueOf(descendingArray);
+    public int formDescOrder(int number) {
+        if (thereIsNoNeedToSort(number)) {
+            return number;
+        }
+        return Integer.parseInt(bubbleSortDesc(number));
     }
 
-    public int formSubstraction(int number) {
-        char[] arrayOfSymbols = formAnArrayWithoutZeros(number);
+    private boolean thereIsNoNeedToSort(int number) {
+        return String.valueOf(number).length() == 1;
+    }
 
-        String resultAsc = bubbleSortAsc(arrayOfSymbols);
-        String resultDesc = bubbleSortDesc(arrayOfSymbols);
-
-        return Integer.parseInt(resultAsc) - Integer.parseInt(resultDesc);
+    public int formASubstraction(int number) {
+        if (thereIsNoNeedToSort(number)) {
+            return 0;
+        }
+        return Integer.parseInt(bubbleSortDesc(number)) - Integer.parseInt(bubbleSortAsc(number));
     }
 
     public String formAChain(int number) {
-        int substraction = formSubstraction(number);
+        boolean chainHasLinks = true;
+        int lengthOfChain = 0;
+        headLinkOfChain.append(number);
 
-
-        String desc = formDescendingOrder(substraction);
-        String asc = formAscendingOrder(substraction);
-
-        boolean chainActual = true;
-        while (chainActual) {
-
+        while (chainHasLinks) {
+            if (number != formASubstraction(number)) {
+                formALinkOfChain(number, headLinkOfChain);
+                number = formASubstraction(number);
+            } else {
+                formALinkOfChain(number, headLinkOfChain);
+                chainHasLinks = false;
+            }
+            lengthOfChain++;
         }
+        headLinkOfChain.append(tailLinkOfChain + lengthOfChain);
 
-        return null;
+        return headLinkOfChain.toString();
     }
 
-    private char[] formAnArrayWithoutZeros(int number) {
+    private void formALinkOfChain(int number, StringBuilder originalChain) {
+        String linkOfChain = "\n" + formDescOrder(number) + " - " + formAscOrder(number) + " = " + formASubstraction(number);
+        originalChain.append(linkOfChain);
+    }
+
+    private String bubbleSortDesc(int number) {
+        char[] arrayOfSymbols = String.valueOf(number).toCharArray();
+        boolean needToSwap = true;
+        int j = 0;
+        char temp;
+        while (needToSwap) {
+            needToSwap = false;
+            j++;
+            for (int i = 0; i < arrayOfSymbols.length - j; i++) {
+                if (arrayOfSymbols[i] < arrayOfSymbols[i + 1]) {
+                    temp = arrayOfSymbols[i + 1];
+                    arrayOfSymbols[i + 1] = arrayOfSymbols[i];
+                    arrayOfSymbols[i] = temp;
+                    needToSwap = true;
+                }
+            }
+        }
+        return returnAResult(arrayOfSymbols);
+    }
+
+    private String bubbleSortAsc(int number) {
+        char[] arrayOfSymbols = formAnAscArrayWithoutLeadingZeros(number);
+        boolean needToSwap = true;
+        int j = 0;
+        char temp;
+        while (needToSwap) {
+            needToSwap = false;
+            j++;
+            for (int i = 0; i < arrayOfSymbols.length - j; i++) {
+                if (arrayOfSymbols[i] > arrayOfSymbols[i + 1]) {
+                    temp = arrayOfSymbols[i + 1];
+                    arrayOfSymbols[i + 1] = arrayOfSymbols[i];
+                    arrayOfSymbols[i] = temp;
+                    needToSwap = true;
+                }
+            }
+        }
+        return returnAResult(arrayOfSymbols);
+    }
+
+    private char[] formAnAscArrayWithoutLeadingZeros(int number) {
         StringBuilder resultString = new StringBuilder(String.valueOf(number));
         for (int i = 0; i < resultString.length(); i++) {
-            if (resultString.charAt(i)== '0') {
+            if (resultString.charAt(i) == '0') {
                 resultString.deleteCharAt(i);
             }
         }
         return resultString.toString().toCharArray();
     }
 
-    private String bubbleSortAsc(char[] arrayOfSymbols) {
-        boolean swapped = true;
-        int j = 0;
-        char temp;
-        while (swapped) {
-            swapped = false;
-            j++;
-            for (int i = 0; i < arrayOfSymbols.length - j; i++) {
-                if (arrayOfSymbols[i] > arrayOfSymbols[i + 1]) {
-                    if (arrayOfSymbols[i] != '0' && arrayOfSymbols[i + 1] != '0') {
-                        temp = arrayOfSymbols[i + 1];
-                        arrayOfSymbols[i + 1] = arrayOfSymbols[i];
-                        arrayOfSymbols[i] = temp;
-                        swapped = true;
-                    }
-                }
-            }
-        }
-        return returnAResult(arrayOfSymbols);
-    }
-
-    private String bubbleSortDesc(char[] arrayOfSymbols) {
-        boolean swapped = true;
-        int j = 0;
-        char temp;
-        while (swapped) {
-            swapped = false;
-            j++;
-            for (int i = 0; i < arrayOfSymbols.length - j; i++) {
-                if (arrayOfSymbols[i] < arrayOfSymbols[i + 1]) {
-                    if (arrayOfSymbols[i] != '0' && arrayOfSymbols[i + 1] != '0') {
-                        temp = arrayOfSymbols[i + 1];
-                        arrayOfSymbols[i + 1] = arrayOfSymbols[i];
-                        arrayOfSymbols[i] = temp;
-                        swapped = true;
-                    }
-                }
-            }
-        }
-        return returnAResult(arrayOfSymbols);
-    }
-
     private String returnAResult(char[] arrayOfSymbols) {
         StringBuilder secureCopyOfTheArray = new StringBuilder();
-
         for (char element : arrayOfSymbols) {
             secureCopyOfTheArray.append(element);
         }

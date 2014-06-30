@@ -1,7 +1,6 @@
 package org.xander.katas;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -23,80 +22,92 @@ public class NumberChainsTest {
     @Test
     public void numberChainAsc() {
         int number = 561374;
-
-        String numberChain = numberChains.formAscendingOrder(number);
-        assertEquals("134567", numberChain);
+        assertEquals(134567, numberChains.formAscOrder(number));
     }
+
     @Test
     public void numberChainDesc() {
         int number = 561374;
-
-        String numberChain = numberChains.formDescendingOrder(number);
-        assertEquals("765431", numberChain);
+        assertEquals(765431, numberChains.formDescOrder(number));
     }
 
     @Test
     public void numberChainAnotherOneAsc() {
         int number = 314765;
-
-        String numberChain = numberChains.formAscendingOrder(number);
-        assertEquals("134567", numberChain);
+        assertEquals(134567, numberChains.formAscOrder(number));
     }
 
     @Test
     public void numberChainAnotherOneAsc3087() {
         int number = 3087;
+        assertEquals(378, numberChains.formAscOrder(number));
+    }
 
-        String numberChain = numberChains.formAscendingOrder(number);
-        assertEquals("378", numberChain);
+    @Test
+    public void numberChainAnotherOneDesc3087() {
+        int number = 3087;
+        assertEquals(8730, numberChains.formDescOrder(number));
     }
 
     @Test
     public void numberChainAnotherOneDes() {
         int number = 314765;
-
-        String numberChain = numberChains.formDescendingOrder(number);
-        assertEquals("765431", numberChain);
+        assertEquals(765431, numberChains.formDescOrder(number));
     }
 
     @Test
     public void numberChainAnotherReallyBigOneAsc() {
         int number = 629340530;
-
-        String numberChain = numberChains.formAscendingOrder(number);
-        assertEquals("2334569", numberChain);
+        assertEquals(2334569, numberChains.formAscOrder(number));
     }
 
     @Test
     public void numberChainAnotherReallyBigOneDes() {
         int number = 620934530;
-
-        String numberChain = numberChains.formDescendingOrder(number);
-        assertEquals("9654332", numberChain);
+        assertEquals(965433200, numberChains.formDescOrder(number));
     }
 
     @Test
     public void substractAscFromDesc() {
         int number = 123456789;
+        int numberChainAsc = numberChains.formAscOrder(number);
+        int numberChainDesc = numberChains.formDescOrder(number);
 
-        String numberChainAsc = numberChains.formAscendingOrder(number);
-        String numberChainDesc = numberChains.formDescendingOrder(number);
-
-        int substraction = numberChains.formSubstraction(number);
-
-        assertEquals(Integer.parseInt(numberChainAsc) - Integer.parseInt(numberChainDesc), substraction);
+        assertEquals(numberChainDesc - numberChainAsc, numberChains.formASubstraction(number));
     }
 
-    @Ignore
     @Test
-    public void chainOfSubstraction() {
-        int number = 1234;
-
-        String numberChainAsc = numberChains.formAscendingOrder(number);
-        String numberChainDesc = numberChains.formDescendingOrder(number);
-
+    public void chainOfSubstraction444() {
+        int number = 444;
         String chainOfSubstraction = numberChains.formAChain(number);
+
+        assertEquals("Original number was 444\n" +
+                "444 - 444 = 0\n" +
+                "0 - 0 = 0\n" +
+                "Chain length is 2", chainOfSubstraction);
     }
 
+    @Test
+    public void chainOfSubstraction1234() {
+        int number = 1234;
+        String chainOfSubstraction = numberChains.formAChain(number);
 
+        assertEquals("Original number was 1234\n" +
+                "4321 - 1234 = 3087\n" +
+                "8730 - 378 = 8352\n" +
+                "8532 - 2358 = 6174\n" +
+                "7641 - 1467 = 6174\n" +
+                "Chain length is 4", chainOfSubstraction);
+    }
+
+    @Test
+    public void chainOfSubstraction123456789() {
+        int number = 123456789;
+        String chainOfSubstraction = numberChains.formAChain(number);
+
+        assertEquals("Original number was 123456789\n" +
+                "987654321 - 123456789 = 864197532\n" +
+                "987654321 - 123456789 = 864197532\n" +
+                "Chain length is 2", chainOfSubstraction);
+    }
 }
