@@ -685,6 +685,7 @@ public class RegexLearnTest {
 
         while (true) {
             try{
+                //noinspection MalformedRegex specifically made for error check
                 pattern = Pattern.compile("\\?i)foo");
                 matcher = pattern.matcher("foo");
             }

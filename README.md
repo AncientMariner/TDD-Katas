@@ -589,3 +589,9 @@ For example: print-diamond 'C' prints
     Chain length 2
 
 ---
+
+### Merge lists
+
+    Merge two sorted lists of integers in one list with the minimal complexity
+
+---
