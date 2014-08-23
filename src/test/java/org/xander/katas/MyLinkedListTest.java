@@ -23,71 +23,195 @@ public class MyLinkedListTest {
     public void head() {
         MyLinkedList.Node node = new MyLinkedList.Node(5);
         myLinkedList.addToHead(node);
+
         assertEquals(5, myLinkedList.getHead().value);
         assertEquals(1, myLinkedList.getSize());
     }
 
     @Test
     public void addSecondHead() {
-        MyLinkedList.Node node1 = new MyLinkedList.Node(5);
-        MyLinkedList.Node node2 = new MyLinkedList.Node(15);
-        myLinkedList.addToHead(node1);
-        myLinkedList.addToHead(node2);
+        prepareListOfTwoNodesFromHeadSide();
+
         assertEquals(15, myLinkedList.getHead().value);
         assertEquals(5, myLinkedList.getHead().next.value);
         assertEquals(2, myLinkedList.getSize());
     }
 
     @Test
+    public void addSecondTail() {
+        prepareListOfTwoNodesFromTailSide();
+
+        assertEquals(15, myLinkedList.getTail().value);
+        assertEquals(5, myLinkedList.getTail().prev.value);
+        assertEquals(2, myLinkedList.getSize());
+    }
+
+    private void prepareListOfTwoNodesFromHeadSide() {
+        MyLinkedList.Node node1 = new MyLinkedList.Node(5);
+        MyLinkedList.Node node2 = new MyLinkedList.Node(15);
+        myLinkedList.addToHead(node1);
+        myLinkedList.addToHead(node2);
+    }
+
+    private void prepareListOfTwoNodesFromTailSide() {
+        MyLinkedList.Node node1 = new MyLinkedList.Node(5);
+        MyLinkedList.Node node2 = new MyLinkedList.Node(15);
+        myLinkedList.addToTail(node1);
+        myLinkedList.addToTail(node2);
+    }
+
+    @Test
     public void addThirdHead() {
+        prepareListOfThreeNodesFromHeadSide();
+
+        assertEquals(25, myLinkedList.getHead().value);
+        assertEquals(15, myLinkedList.getHead().next.value);
+        assertEquals(5, myLinkedList.getHead().next.next.value);
+        assertEquals(5, myLinkedList.getTail().value);
+        assertEquals(3, myLinkedList.getSize());
+    }
+
+    @Test
+    public void addThirdTail() {
+        prepareListOfThreeNodesFromTailSide();
+
+        assertEquals(25, myLinkedList.getTail().value);
+        assertEquals(15, myLinkedList.getTail().prev.value);
+        assertEquals(5, myLinkedList.getTail().prev.prev.value);
+        assertEquals(5, myLinkedList.getHead().value);
+        assertEquals(3, myLinkedList.getSize());
+    }
+
+    @Test
+    public void addToTail() {
+        prepareListOfThreeNodesFromHeadSide();
+
+        assertEquals(5, myLinkedList.getTail().value);
+        assertEquals(15, myLinkedList.getTail().prev.value);
+        assertEquals(25, myLinkedList.getTail().prev.prev.value);
+        assertEquals(25, myLinkedList.getHead().value);
+        assertEquals(3, myLinkedList.getSize());
+    }
+
+    @Test
+    public void getAtIndex() {
+        prepareListOfThreeNodesFromHeadSide();
+
+        assertEquals(25, myLinkedList.getAt(1).value);
+        assertEquals(15, myLinkedList.getAt(2).value);
+        assertEquals(5, myLinkedList.getAt(3).value);
+        assertEquals(3, myLinkedList.getSize());
+    }
+
+    private void prepareListOfThreeNodesFromHeadSide() {
         MyLinkedList.Node node1 = new MyLinkedList.Node(5);
         MyLinkedList.Node node2 = new MyLinkedList.Node(15);
         MyLinkedList.Node node3 = new MyLinkedList.Node(25);
         myLinkedList.addToHead(node1);
         myLinkedList.addToHead(node2);
         myLinkedList.addToHead(node3);
-        assertEquals(25, myLinkedList.getHead().value);
-        assertEquals(15, myLinkedList.getHead().next.value);
-        assertEquals(5, myLinkedList.getHead().next.next.value);
-
-        assertEquals(5, myLinkedList.getTail().value);
-
-        assertEquals(3, myLinkedList.getSize());
     }
 
-    @Test
-    public void addToTail() {
+    private void prepareListOfThreeNodesFromTailSide() {
         MyLinkedList.Node node1 = new MyLinkedList.Node(5);
         MyLinkedList.Node node2 = new MyLinkedList.Node(15);
         MyLinkedList.Node node3 = new MyLinkedList.Node(25);
         myLinkedList.addToTail(node1);
         myLinkedList.addToTail(node2);
         myLinkedList.addToTail(node3);
-        assertEquals(25, myLinkedList.getTail().value);
-        assertEquals(15, myLinkedList.getTail().prev.value);
-        assertEquals(5, myLinkedList.getTail().prev.prev.value);
+    }
 
-        assertEquals(5, myLinkedList.getHead().value);
+    @Test
+    public void addAtIndex() {
+        prepareListOfThreeNodesFromHeadSide();
 
+        MyLinkedList.Node nodeForIndex = new MyLinkedList.Node(100);
+
+        myLinkedList.addAtIndex(2, nodeForIndex);
+
+        assertEquals(100, myLinkedList.getAt(2).value);
+        assertEquals(25, myLinkedList.getAt(1).value);
+        assertEquals(15, myLinkedList.getAt(3).value);
+        assertEquals(5, myLinkedList.getAt(4).value);
+        assertEquals(4, myLinkedList.getSize());
+    }
+
+    @Test
+    public void addAtIndexCornerCaseAtHead() {
+        MyLinkedList.Node node1 = new MyLinkedList.Node(5);
+        myLinkedList.addToHead(node1);
+
+        MyLinkedList.Node nodeForIndex = new MyLinkedList.Node(100);
+        int index = 1;
+
+        myLinkedList.addAtIndex(index, nodeForIndex);
+
+        assertEquals(100, myLinkedList.getAt(index).value);
+        assertEquals(5, myLinkedList.getAt(2).value);
+    }
+
+    @Test
+    public void addAtIndexCornerCaseAtTail() {
+        prepareListOfTwoNodesFromHeadSide();
+
+        MyLinkedList.Node nodeForIndex = new MyLinkedList.Node(100);
+
+        myLinkedList.addAtIndex(2, nodeForIndex);
+
+        assertEquals(100, myLinkedList.getAt(2).value);
+        assertEquals(15, myLinkedList.getAt(1).value);
+        assertEquals(5, myLinkedList.getAt(3).value);
         assertEquals(3, myLinkedList.getSize());
     }
 
     @Test
-    public void getAtIndex() {
-        MyLinkedList.Node node1 = new MyLinkedList.Node(5);
-        MyLinkedList.Node node2 = new MyLinkedList.Node(15);
-        MyLinkedList.Node node3 = new MyLinkedList.Node(25);
-        myLinkedList.addToHead(node1);
-        myLinkedList.addToHead(node2);
-        myLinkedList.addToHead(node3);
+    public void addAtZeroPositionUsingNonExistingIndex() {
+        myLinkedList.addToHead(new MyLinkedList.Node(5));
 
-        int index1 = 1;
-        int index2 = 2;
-        int index3 = 3;
+        myLinkedList.addAtIndex(0, new MyLinkedList.Node(100));
 
-        assertEquals(25, myLinkedList.getAt(index1).value);
-        assertEquals(15, myLinkedList.getAt(index2).value);
-        assertEquals(5, myLinkedList.getAt(index3).value);
+        assertEquals(100, myLinkedList.getAt(1).value);
+        assertEquals(5, myLinkedList.getAt(2).value);
+        assertEquals(2, myLinkedList.getSize());
     }
 
+    @Test
+    public void addAtLastPlusOnePositionUsingNonExistingIndex() {
+        myLinkedList.addToHead(new MyLinkedList.Node(5));
+
+        myLinkedList.addAtIndex(2, new MyLinkedList.Node(100));
+
+        assertEquals(5, myLinkedList.getAt(1).value);
+        assertEquals(100, myLinkedList.getAt(2).value);
+        assertEquals(2, myLinkedList.getSize());
+    }
+
+    @Test
+    public void addToListWithoutNodes() {
+        myLinkedList.addAtIndex(1, new MyLinkedList.Node(100));
+
+        checkOneElementSizeList();
+        assertEquals(1, myLinkedList.getSize());
+    }
+
+    @Test
+    public void addToListWithoutNodesUsingZeroIndex() {
+        myLinkedList.addAtIndex(0, new MyLinkedList.Node(100));
+
+        checkOneElementSizeList();
+        assertEquals(1, myLinkedList.getSize());
+    }
+
+    private void checkOneElementSizeList() {
+        assertEquals(100, myLinkedList.getAt(1).value);
+        assertEquals(100, myLinkedList.getHead().value);
+        assertEquals(100, myLinkedList.getTail().value);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void addUsingNonExistingIndex() {
+        myLinkedList.addToHead(new MyLinkedList.Node(5));
+
+        myLinkedList.addAtIndex(123, new MyLinkedList.Node(100));
+    }
 }

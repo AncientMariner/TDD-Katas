@@ -15,7 +15,6 @@ public class MyLinkedList {
         } else {
             oldHead.prev = newHead;
         }
-
         size++;
     }
 
@@ -29,7 +28,6 @@ public class MyLinkedList {
         } else {
             oldTail.next = newTail;
         }
-
         size++;
     }
 
@@ -53,6 +51,35 @@ public class MyLinkedList {
         }
 
         return head;
+    }
+
+    public void addAtIndex(int index, Node nodeForIndex) {
+        if (index >= 0 && index - size > 1) {
+            throw new IndexOutOfBoundsException("it is not possible to insert to the non-existing index");
+        }
+
+        if (index - size == 1) {
+            addToTail(nodeForIndex);
+        } else if (index == 0) {
+            addToHead(nodeForIndex);
+        } else {
+            Node currentAtIndex = getAt(index);
+            Node theOneBeforeAtIndex = currentAtIndex.prev;
+
+            Node newElement = new Node(theOneBeforeAtIndex, nodeForIndex.value, currentAtIndex);
+
+            if (theOneBeforeAtIndex != null) {
+                theOneBeforeAtIndex.next = newElement;
+            }
+
+            if (index == size) {
+                if (head == tail) {
+                    head = newElement;
+                }
+            }
+            currentAtIndex.prev = newElement;
+            size++;
+        }
     }
 
     public static class Node {
