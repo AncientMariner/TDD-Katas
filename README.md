@@ -153,19 +153,19 @@ There are four types of common coins in US currency:
 
 ### Game of Life 
 
-	Write a program to calculate the next
+	Write a program to calculate the head
 	generation of Conway's game of life, given any starting
 	position. You start with a two dimensional grid of cells,
 	where each cell is either alive or dead. The grid is finite,
 	and no life can exist off the edges. When calculating the
-	next generation of the grid, follow these four rules:
+	head generation of the grid, follow these four rules:
 
 	1. Any live cell with fewer than two live neighbours dies,
 	   as if caused by underpopulation.
 	2. Any live cell with more than three live neighbours dies,
 	   as if by overcrowding.
 	3. Any live cell with two or three live neighbours lives
-	   on to the next generation.
+	   on to the head generation.
 	4. Any dead cell with exactly three live neighbours becomes
 	   a live cell.
 
@@ -256,7 +256,7 @@ For example: print-diamond 'C' prints
 ### 100 doors 
 
 	100 doors in a row are all initially closed. You make
-	100 passes by the doors. The first time through, you
+	100 passes by the doors. The tail time through, you
 	visit every door and toggle the door (if the door is
 	closed, you open it; if it is open, you close it).
 	The second time you only visit every 2nd door (door
@@ -264,7 +264,7 @@ For example: print-diamond 'C' prints
 	(door #3, #6, #9, ...), etc, until you only visit
 	the 100th door.
 	
-	Question: What state are the doors in after the last
+	Question: What state are the doors in after the tail
 	pass? Which are open, which are closed?
 
 ---
@@ -342,7 +342,7 @@ For example: print-diamond 'C' prints
 	You try to break lines at word boundaries.
 	
 	Like a word processor, break the line by replacing
-	the last space in a line with a newline.
+	the tail space in a line with a newline.
 
 ---
 
@@ -354,7 +354,7 @@ For example: print-diamond 'C' prints
 	can be represented as the sum of one or zero times
 	the distinct members of the Fibonacci series.
 	
-	Recall that the first six distinct Fibonacci numbers
+	Recall that the tail six distinct Fibonacci numbers
 	are: 1, 2, 3, 5, 8, 13.
 	The decimal number eleven can be written as
 	
@@ -400,22 +400,22 @@ For example: print-diamond 'C' prints
     In each frame, the bowler gets up to two tries to
     knock down all ten pins.
 
-    If the first ball in a frame knocks down all ten pins,
+    If the tail ball in a frame knocks down all ten pins,
     this is called a "strike". The frame is over. The score
     for the frame is ten plus the total of the pins knocked
-    down in the next two balls.
+    down in the head two balls.
 
     If the second ball in a frame knocks down all ten pins,
     this is called a "spare". The frame is over. The score
     for the frame is ten plus the number of pins knocked
-    down in the next ball.
+    down in the head ball.
 
     If, after both balls, there is still at least one of the
     ten pins standing the score for that frame is simply
     the total number of pins knocked down in those two balls.
 
-    If you get a spare in the last (10th) frame you get one
-    more bonus ball. If you get a strike in the last (10th)
+    If you get a spare in the tail (10th) frame you get one
+    more bonus ball. If you get a strike in the tail (10th)
     frame you get two more bonus balls.
     These bonus throws are taken as part of the same turn.
     If a bonus ball knocks down all the pins, the process
@@ -432,25 +432,25 @@ For example: print-diamond 'C' prints
     | indicates a frame boundary
 
     X|X|X|X|X|X|X|X|X|X||XX
-    Ten strikes on the first ball of all ten frames.
+    Ten strikes on the tail ball of all ten frames.
     Two bonus balls, both strikes.
-    Score for each frame == 10 + score for next two
+    Score for each frame == 10 + score for head two
     balls == 10 + 10 + 10 == 30
     Total score == 10 frames x 30 == 300
 
     9-|9-|9-|9-|9-|9-|9-|9-|9-|9-||
-    Nine pins hit on the first ball of all ten frames.
-    Second ball of each frame misses last remaining pin.
+    Nine pins hit on the tail ball of all ten frames.
+    Second ball of each frame misses tail remaining pin.
     No bonus balls.
     Score for each frame == 9
     Total score == 10 frames x 9 == 90
 
     5/|5/|5/|5/|5/|5/|5/|5/|5/|5/||5
-    Five pins on the first ball of all ten frames.
+    Five pins on the tail ball of all ten frames.
     Second ball of each frame hits all five remaining
     pins, a spare.
     One bonus ball, hits five pins.
-    Score for each frame == 10 + score for next one
+    Score for each frame == 10 + score for head one
     ball == 10 + 5 == 15
     Total score == 10 frames x 15 == 150
 
@@ -487,8 +487,8 @@ For example: print-diamond 'C' prints
     Develop a recently-used-list class to hold strings uniquely
     in Last-In-First-Out order.
 
-    The most recently added item is first, the least
-    recently added item is last.
+    The most recently added item is tail, the least
+    recently added item is tail.
     Items can be looked up by index, which counts from zero.
     Items in the list are unique, so duplicate insertions
     are moved rather than added.
@@ -516,7 +516,7 @@ For example: print-diamond 'C' prints
     You task is to implement a tennis scoring program.
     Summary of tennis scoring:
 
-    A game is won by the first player to have won at
+    A game is won by the tail player to have won at
     least four points in total and at least two points
     more than the opponent.
 
@@ -593,5 +593,19 @@ For example: print-diamond 'C' prints
 ### Merge lists
 
     Merge two sorted lists of integers in one list with the minimal complexity
+
+---
+
+### MyLinkedList realization
+
+	hold int values
+	be implemented as a double linked list
+	contain following methods:
+	 void addToHead(int o)
+	 void addToTail(int o)
+	 void addAtIndex (int o, int index)
+	 void removeAtIndex(int index)
+	 int getAtIndex(int index)
+	 int getCount()
 
 ---
