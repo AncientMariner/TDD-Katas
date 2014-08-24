@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class MyLinkedListTest {
     MyLinkedList myLinkedList;
@@ -211,7 +212,111 @@ public class MyLinkedListTest {
     @Test(expected = IndexOutOfBoundsException.class)
     public void addUsingNonExistingIndex() {
         myLinkedList.addToHead(new MyLinkedList.Node(5));
-
         myLinkedList.addAtIndex(123, new MyLinkedList.Node(100));
+    }
+
+    @Test
+    public void removeElementAtIndexOneFromOneElementList() {
+        MyLinkedList.Node node1 = new MyLinkedList.Node(25);
+        myLinkedList.addToTail(node1);
+
+        int index = 1;
+
+        myLinkedList.removeAtIndex(index);
+
+        assertNull(myLinkedList.getHead());
+        assertNull(myLinkedList.getTail());
+        assertEquals(0, myLinkedList.getSize());
+    }
+
+    @Test
+    public void removeElementAtIndexOneFromTwoElementsList() {
+        prepareListOfTwoNodesFromHeadSide();
+
+        int index = 1;
+
+        myLinkedList.removeAtIndex(index);
+
+        assertEquals(5, myLinkedList.getHead().value);
+        assertNull(myLinkedList.getHead().next);
+        assertNull(myLinkedList.getHead().prev);
+        assertEquals(5, myLinkedList.getTail().value);
+        assertNull(myLinkedList.getTail().next);
+        assertNull(myLinkedList.getTail().prev);
+        assertEquals(1, myLinkedList.getSize());
+    }
+
+    @Test
+    public void removeElementAtIndexTwoFromTwoElementsList() {
+        prepareListOfTwoNodesFromHeadSide();
+
+        int index = 2;
+
+        myLinkedList.removeAtIndex(index);
+
+        assertEquals(15, myLinkedList.getHead().value);
+        assertNull(myLinkedList.getHead().next);
+        assertNull(myLinkedList.getHead().prev);
+        assertEquals(15, myLinkedList.getTail().value);
+        assertNull(myLinkedList.getTail().next);
+        assertNull(myLinkedList.getTail().prev);
+        assertEquals(1, myLinkedList.getSize());
+    }
+
+    @Test
+    public void removeElementAtIndexInTheMiddleFromThreeElementsList() {
+        prepareListOfThreeNodesFromHeadSide();
+
+        int index = 2;
+
+        myLinkedList.removeAtIndex(index);
+
+        assertEquals(25, myLinkedList.getHead().value);
+        assertEquals(5, myLinkedList.getHead().next.value);
+        assertEquals(5, myLinkedList.getTail().value);
+        assertEquals(25, myLinkedList.getTail().prev.value);
+        assertEquals(2, myLinkedList.getSize());
+    }
+
+    @Test
+    public void removeElementAtIndexInTheBeginningFromThreeElementsList() {
+        prepareListOfThreeNodesFromHeadSide();
+
+        int index = 1;
+
+        myLinkedList.removeAtIndex(index);
+
+        assertEquals(15, myLinkedList.getHead().value);
+        assertEquals(5, myLinkedList.getHead().next.value);
+        assertEquals(5, myLinkedList.getTail().value);
+        assertEquals(15, myLinkedList.getTail().prev.value);
+        assertEquals(15, myLinkedList.getAt(1).value);
+        assertEquals(5, myLinkedList.getAt(2).value);
+        assertEquals(2, myLinkedList.getSize());
+    }
+
+    @Test
+    public void removeElementAtIndexInTheEndFromThreeElementsList() {
+        prepareListOfThreeNodesFromHeadSide();
+
+        int index = 3;
+
+        myLinkedList.removeAtIndex(index);
+
+        assertEquals(25, myLinkedList.getHead().value);
+        assertEquals(15, myLinkedList.getHead().next.value);
+        assertEquals(15, myLinkedList.getTail().value);
+        assertEquals(25, myLinkedList.getTail().prev.value);
+        assertEquals(2, myLinkedList.getSize());
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void removeElementAtNonExistingIndex() {
+        myLinkedList.removeAtIndex(myLinkedList.getSize() + 10);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void removeElementAtNonExistingZeroIndex() {
+        myLinkedList.removeAtIndex(0);
     }
 }

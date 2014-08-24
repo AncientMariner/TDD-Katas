@@ -82,6 +82,42 @@ public class MyLinkedList {
         }
     }
 
+    public void removeAtIndex(int index) {
+        if (index == 0 || index > size) {
+            throw new IndexOutOfBoundsException("it is not possible to remove an element at the non-existing index");
+        }
+
+        Node currentAtIndex = getAt(index);
+        Node previous = currentAtIndex.prev;
+        Node next = currentAtIndex.next;
+
+        if (size == 1) {
+            tail = null;
+            head = null;
+        } else if (size == 2) {
+            if (index == 1) {
+                head = tail;
+                tail.prev = null;
+            } else if (index == 2) {
+                tail = head;
+                head.next = null;
+            }
+        } else if (previous == null) {
+            next.prev = null;
+            currentAtIndex.next = null;
+            head = next;
+        } else if (next == null) {
+            previous.next = null;
+            currentAtIndex.prev = null;
+            tail = previous;
+        } else {
+            previous.next = next;
+            next.prev = previous;
+        }
+        currentAtIndex = null;
+        size--;
+    }
+
     public static class Node {
         int value;
         Node next;
