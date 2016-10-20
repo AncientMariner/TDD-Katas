@@ -11,3 +11,10 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
+
+notifications:
+#  email:
+#    recipients:
+#      - other@example.com
+    on_success: never # default: change
+    on_failure: always # default: always
