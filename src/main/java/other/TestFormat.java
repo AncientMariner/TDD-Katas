@@ -1,4 +1,4 @@
-package org.xander.katas;
+package other;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,7 +13,6 @@ public class TestFormat {
 
         int index = 1;
         for (int i = symbols.length - 1 ; i >= 0; i--) {
-
             if (index++ % 3 == 0) {
                 numbers.add(symbols[i]);
                 if (i > 0) {
@@ -33,7 +32,6 @@ public class TestFormat {
                 builder.append(character);
             }
             builder.append(")");
-
         } else {
             for (Character character : shallowCopy) {
                 builder.append(character);

@@ -1,4 +1,4 @@
-package org.xander.katas;
+package other;
 
 import org.junit.Test;
 
@@ -77,34 +77,34 @@ public class TestFormatTest {
     }
 
     @Test
-    public void testFormat1000() {
-        int number = 1000;
+    public void testFormat2Negative() {
+        int number = -23;
         TestFormat testFormat = new TestFormat();
         String format = testFormat.format(number);
-        assertEquals("1 000", format);
+        assertEquals("(23)", format);
     }
 
     @Test
-    public void testFormatNegativea() {
-        int number = -00;
+    public void testFormat2Positive() {
+        int number = 23;
         TestFormat testFormat = new TestFormat();
         String format = testFormat.format(number);
-        assertEquals("0", format);
+        assertEquals("23", format);
     }
 
     @Test
-    public void testFormatNegativeMin() {
-        int number = Integer.MIN_VALUE + 1;
+    public void testFormat1Negative() {
+        int number = -3;
         TestFormat testFormat = new TestFormat();
         String format = testFormat.format(number);
-        assertEquals("(2 147 483 647)", format);
+        assertEquals("(3)", format);
     }
 
     @Test
-    public void testFormatNegativeMax() {
-        int number = Integer.MAX_VALUE;
+    public void testFormat1Positive() {
+        int number = 3;
         TestFormat testFormat = new TestFormat();
         String format = testFormat.format(number);
-        assertEquals("2 147 483 647", format);
+        assertEquals("3", format);
     }
 }
