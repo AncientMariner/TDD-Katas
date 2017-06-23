@@ -1,7 +1,7 @@
 package org.xander.katas;
 
 public class TestA {
-    public char findFirstUnique(String s) {
+   public char findFirstUnique(String s) {
         int number = -1;
         if (s.length() == 1) {
             return s.charAt(0);
@@ -17,6 +17,11 @@ public class TestA {
                     && s.charAt(i - 1) != s.charAt(i)
                     && i + 1 < s.length()
                     && s.charAt(i + 1) != s.charAt(i)) {
+                number = i;
+                break;
+            }
+            if (i == s.length() - 1
+                    && s.charAt(i - 1) != s.charAt(i) ) {
                 number = i;
                 break;
             }
