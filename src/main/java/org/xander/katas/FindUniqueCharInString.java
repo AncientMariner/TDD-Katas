@@ -1,6 +1,6 @@
 package org.xander.katas;
 
-public class TestA {
+public class FindUniqueCharInString {
    public char findFirstUnique(String s) {
         int number = -1;
         if (s.length() == 1) {
