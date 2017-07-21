@@ -12,9 +12,6 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     
-script:
-- mvn clean install -Pcobertura -Pcobertura-report -Pcoveralls -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID
-
 notifications:
 #  email:
 #    recipients:
