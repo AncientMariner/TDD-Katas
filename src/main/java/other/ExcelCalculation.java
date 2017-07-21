@@ -5,12 +5,6 @@ public class ExcelCalculation {
                 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
                 'u', 'v', 'w', 'x', 'y', 'z'};
 
-    public static void main(String[] args) {
-        ExcelCalculation excelCalculation = new ExcelCalculation();
-        String calculate = excelCalculation.calculate(702);
-        System.out.println(calculate);
-    }
-
     public String calculate(int number) {
         if (number == 0) { return ""; }
 
