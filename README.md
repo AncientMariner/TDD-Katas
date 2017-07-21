@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/AncientMariner/TDD-Katas.svg?branch=master)](https://travis-ci.org/AncientMariner/TDD-Katas)
-[![Coverage Status](https://coveralls.io/repos/github/AncientMariner/TDD-Katas/badge.svg?branch=master)](https://coveralls.io/github/AncientMariner/TDD-Katas?branch=master)
 
 Learning TDD. Katas development
 ===================
