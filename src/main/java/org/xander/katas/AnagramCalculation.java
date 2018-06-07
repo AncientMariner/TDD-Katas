@@ -75,12 +75,12 @@ public class AnagramCalculation {
         return originalWordShouldNotBeCount;
     }
 
-    private void generateAssertsForTest(Set<String> listOfWords) {
-        int counter = 0;
-        for (Iterator<String> iterator = listOfWords.iterator(); iterator.hasNext(); ) {
-            System.out.println("assertTrue(anagramsFromWord.contains(\"" + iterator.next() + "\"));");
-            counter++;
-        }
-        System.out.println("\n" + counter + " asserts generated");
-    }
+//    private void generateAssertsForTest(Set<String> listOfWords) {
+//        int counter = 0;
+//        for (Iterator<String> iterator = listOfWords.iterator(); iterator.hasNext(); ) {
+//            System.out.println("assertTrue(anagramsFromWord.contains(\"" + iterator.next() + "\"));");
+//            counter++;
+//        }
+//        System.out.println("\n" + counter + " asserts generated");
+//    }
 }
