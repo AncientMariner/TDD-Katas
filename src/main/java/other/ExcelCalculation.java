@@ -10,17 +10,22 @@ public class ExcelCalculation {
 
         String result = "";
 
-        if (number % 26 == 0 && number != 26) {
-            result += a[((((number - (number % 26)) / 26))) - 2] + "" + a[25];
-        } else
-        if (number > 25) {
-            if ((((number - (number % 26)) / 26)) > 26) {
-                result += a[(((((number - (number % 26)) / 26))) - 1) / 26 - 1] + "" + a[((((number - (number % 26)) / 26)) % 26) - 1] + calculate((number % 26));
+        if (number % 26 == 0) {
+            if (number != 26) {
+                result += a[((((number - (number % 26)) / 26))) - 2] + "" + a[25];
             } else {
-                result += a[((((number - (number % 26)) / 26))) - 1] + calculate((number % 26));
+                result += a[25];
             }
         } else {
-            result = String.valueOf(a[number - 1]) + result;
+            if (number > 25) {
+                if ((((number - (number % 26)) / 26)) > 26) {
+                    result += a[(((((number - (number % 26)) / 26))) - 1) / 26 - 1] + "" + a[((((number - (number % 26)) / 26)) % 26) - 1] + calculate((number % 26));
+                } else {
+                    result += a[((((number - (number % 26)) / 26))) - 1] + calculate((number % 26));
+                }
+            } else {
+                result = String.valueOf(a[number - 1]) + result;
+            }
         }
         return result;
     }
