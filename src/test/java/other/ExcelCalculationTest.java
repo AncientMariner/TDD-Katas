@@ -26,6 +26,17 @@ public class ExcelCalculationTest {
     }
 
     @Test
+    public void testOneLetter25() {
+        String result = excelCalculation.calculate(25);
+        assertEquals("y", result);
+    }
+    @Test
+    public void testOneLetter26() {
+        String result = excelCalculation.calculate(26);
+        assertEquals("z", result);
+    }
+
+    @Test
     public void testTwoLetters() {
         String result = excelCalculation.calculate(27);
         assertEquals("aa", result);
