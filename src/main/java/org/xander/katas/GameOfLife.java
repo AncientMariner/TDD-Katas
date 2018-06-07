@@ -334,12 +334,12 @@ public class GameOfLife {
         return newGeneration.toString();
     }
 
-    private void printCellContent() {
-        int i = 0;
-        for (char a : currentState.toCharArray()) {
-            System.out.println("counter= " + i++ + " element= " + a);
-        }
-    }
+//    private void printCellContent() {
+//       int i = 0;
+//        for (char a : currentState.toCharArray()) {
+//            System.out.println("counter= " + i++ + " element= " + a);
+//        }
+//    }
 
     public String getCurrentState() {
         return currentState;
