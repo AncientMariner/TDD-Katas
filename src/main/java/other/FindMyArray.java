@@ -33,12 +33,12 @@ public class FindMyArray implements FindArray{
 //                    }
 
                     //element found second time
-                    if (startingIndex >= 0) {
+                   // if (startingIndex >= 0) {
                         if (array.length - i >= subArray.length) {
                             if (i - startingIndex > 1 && j == 0)
                                 startingIndex = i;
                         }
-                    }
+                  //  }
                 }
 
 
