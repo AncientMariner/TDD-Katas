@@ -26,17 +26,17 @@ public class OddEvenPrime {
                 : "odd";
     }
 
-    private static void printResultsForTest() {
-        int primeCounter = 0;
-        System.out.print("{");
-        for (int a = 0; a < sieveOfEratosthenes.length; a++) {
-            if (sieveOfEratosthenes[a]) {
-                primeCounter++;
-                System.out.print(a + ", ");
-            }
-        }
-        System.out.print("}");
-
-        System.out.println("\n\nThere are " + primeCounter + " prime numbers in the range from \'0\' to \'" + range + "\'");
-    }
+//    private static void printResultsForTest() {
+//        int primeCounter = 0;
+//        System.out.print("{");
+//        for (int a = 0; a < sieveOfEratosthenes.length; a++) {
+//            if (sieveOfEratosthenes[a]) {
+//                primeCounter++;
+//                System.out.print(a + ", ");
+//           }
+//        }
+//        System.out.print("}");
+//
+//       System.out.println("\n\nThere are " + primeCounter + " prime numbers in the range from \'0\' to \'" + range + "\'");
+//    }
 }
