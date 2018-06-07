@@ -20,31 +20,32 @@ public class SumInArray {
     public boolean checkWithMap(int[] nums, int sum) {
         checkArray(nums);
         Map<Integer, Integer> numbers = new HashMap<>();
+        boolean found = false;
 
         for (int i = 0; i < nums.length; i++) {
             if (numbers.containsKey(nums[i])) {
 //                System.out.println(nums[i] + ", " + numbers.get(nums[i]));
-                return true;
+                found = true;
             } else {
                 numbers.put(sum - nums[i], nums[i]);
             }
         }
-        return false;
+        return found;
     }
 
     public boolean checkWithSet(int[] nums, int sum) {
         checkArray(nums);
 
         Arrays.sort(nums);
-
+        boolean found = false;
         for (int i = 0; i < nums.length; i++) {
-            int found = Arrays.binarySearch(nums, sum - nums[i]);
-            if (found > 0) {
+            int foundIndex = Arrays.binarySearch(nums, sum - nums[i]);
+            if (foundIndex > 0) {
 //                System.out.println(nums[i] + ", " + nums[found]);
-                return true;
+                found = true;
             }
         }
-        return false;
+        return found;
     }
 
     private void checkArray(int[] nums) {
