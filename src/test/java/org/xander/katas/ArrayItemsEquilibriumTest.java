@@ -125,8 +125,115 @@ public class ArrayItemsEquilibriumTest {
     }
 
     @Test
-    public void calculateRightCornerCase() {
-        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumBruteForce(new int[]{2, -2, 1});
+    public void calculateRightCornerCaseFastWay() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{2, -2, 1});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(2));
+    }
+
+    @Test
+    public void calculateFastWay0() {
+        assertEquals(Collections.emptySet(), arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{}));
+    }
+
+    @Test
+    public void calculateFastWayNull() {
+        assertEquals(Collections.emptySet(), arrayItemsEquilibrium.calculateEquilibriumFastSolution(null));
+    }
+
+    @Test
+    public void calculateFastWayBigNumber() {
+        assertEquals(Collections.emptySet(), arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[100001]));
+    }
+
+    @Test
+    public void calculateFastWay1() {
+        int one = 1;
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{one});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(one));
+    }
+
+    @Test
+    public void calculateFastWay2() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 1});
+        values.containsAll(new HashSet<Integer>(){{add(1);add(1);}});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(1));
+    }
+
+    @Test
+    public void calculateFastWay2Negative() {
+        assertEquals(Collections.emptySet(), arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2}));
+    }
+
+    @Test
+    public void calculateFastWay() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2, 1});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(1));
+    }
+
+    @Test
+    public void calculateFastWay4() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2, -1, 3});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(2));
+    }
+    @Test
+    public void calculateFastWay44() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2, -2, 3});
+        assertTrue(values.size() == 2);
+        assertTrue(values.contains(1));
+        assertTrue(values.contains(2));
+    }
+
+    @Test
+    public void calculateFastWay5() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2, -2, 0, 3});
+        assertTrue(values.size() == 2);
+        assertTrue(values.contains(1));
+        assertTrue(values.contains(2));
+    }
+
+    @Test
+    public void calculateFastWay55() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{3, 2, -6, 0, 5});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(2));
+    }
+
+    @Test
+    public void calculateFastWayObviousCase() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 0, 1});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(1));
+    }
+
+    @Test
+    public void calculateFastWayLeftCornerCase() {
+        assertTrue(arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2, -1}).size() == 0);
+    }
+
+    @Test
+    public void calculateFastWayEightElements() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{-1, 3, -4, 5, 1, -6, 2, 1});
+        assertTrue(values.size() == 3);
+        assertTrue(values.contains(1));
+        assertTrue(values.contains(3));
+        assertTrue(values.contains(7));
+    }
+
+    @Test
+    public void calculateFastWayLeftCornerC1ase() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{1, 2, -2});
+        assertTrue(values.size() == 1);
+        assertTrue(values.contains(0));
+    }
+
+    @Test
+    public void calculateFastWayRightCornerCase() {
+        Set<Integer> values = arrayItemsEquilibrium.calculateEquilibriumFastSolution(new int[]{2, -2, 1});
         assertTrue(values.size() == 1);
         assertTrue(values.contains(2));
     }
