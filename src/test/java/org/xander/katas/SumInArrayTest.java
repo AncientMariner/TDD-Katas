@@ -42,6 +42,11 @@ public class SumInArrayTest {
     }
 
     @Test
+    public void testMapNegative() {
+        assertTrue("Sum not found", new SumInArray().checkWithMap(new int[]{1, 3, 5, 0, 8}, 11));
+    }
+    
+    @Test
     public void testSet() {
         assertTrue("Sum not found", new SumInArray().checkWithSet(new int[]{1, 3, 5, 0, 8}, 11));
     }
