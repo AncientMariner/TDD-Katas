@@ -13,6 +13,13 @@ public class FindMyArrayTest {
     }
 
     @Test
+    public void testFindArraySubArrayIsNull() throws Exception {
+        FindArray findArray = new FindMyArray();
+        int array = findArray.findArray(new int[]{4,9,3,7,8}, null);
+        assertEquals(-1, array);
+    }
+    
+    @Test
     public void test1() {
         FindArray findArray = new FindMyArray();
         int array = findArray.findArray(new int[]{4,9,3,7,8}, new int[]{3,7});
