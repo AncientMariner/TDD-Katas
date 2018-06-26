@@ -52,7 +52,9 @@ public class MineFields {
         for (char element : cell.toCharArray()) {
             if (element != '\n') {
                 size++;
-            } else break;
+            } else {
+                break;
+            }
         }
         return size;
     }
