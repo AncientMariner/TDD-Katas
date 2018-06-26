@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 
 public class ZeckendorfNumberTest {
     ZeckendorfNumber zeckendorfNumber;
-    final int threshold = 40;
+    private static final int THRESHOLD = 40;
 
     @Before
     public void setUp() {
@@ -32,9 +32,9 @@ public class ZeckendorfNumberTest {
                                 5702887, 9227465, 14930352, 24157817,
                                 39088169, 63245986, 102334155};
 
-        int[] resultFibonacciRow = zeckendorfNumber.generateFibonacci(threshold);
+        int[] resultFibonacciRow = zeckendorfNumber.generateFibonacci(THRESHOLD);
 
-        assertEquals(threshold, resultFibonacciRow.length);
+        assertEquals(THRESHOLD, resultFibonacciRow.length);
 
         for (int i = 0; i < fibonacciArray.length; i++) {
             assertEquals(fibonacciArray[i], resultFibonacciRow[i]);
@@ -45,7 +45,7 @@ public class ZeckendorfNumberTest {
     public void representDistinctNumber3() {
         int inputNumber = 3;
 
-        zeckendorfNumber.generateFibonacci(threshold);
+        zeckendorfNumber.generateFibonacci(THRESHOLD);
         List<Integer> resultArrayOfNumbers = zeckendorfNumber.representNumber(inputNumber);
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(3);
@@ -60,7 +60,7 @@ public class ZeckendorfNumberTest {
     public void representDistinctNumber11() {
         int inputNumber = 11;
 
-        zeckendorfNumber.generateFibonacci(threshold);
+        zeckendorfNumber.generateFibonacci(THRESHOLD);
         List<Integer> resultArrayOfNumbers = zeckendorfNumber.representNumber(inputNumber);
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(8);
@@ -76,7 +76,7 @@ public class ZeckendorfNumberTest {
     public void representDistinctNumber13() {
         int inputNumber = 13;
 
-        zeckendorfNumber.generateFibonacci(threshold);
+        zeckendorfNumber.generateFibonacci(THRESHOLD);
         List<Integer> resultArrayOfNumbers = zeckendorfNumber.representNumber(inputNumber);
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(13);
@@ -91,7 +91,7 @@ public class ZeckendorfNumberTest {
     public void representDistinctNumber25() {
         int inputNumber = 25;
 
-        zeckendorfNumber.generateFibonacci(threshold);
+        zeckendorfNumber.generateFibonacci(THRESHOLD);
         List<Integer> resultArrayOfNumbers = zeckendorfNumber.representNumber(inputNumber);
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(21);
@@ -108,7 +108,7 @@ public class ZeckendorfNumberTest {
     public void representDistinctNumber4563() {
         int inputNumber = 4563;
 
-        zeckendorfNumber.generateFibonacci(threshold);
+        zeckendorfNumber.generateFibonacci(THRESHOLD);
         List<Integer> resultArrayOfNumbers = zeckendorfNumber.representNumber(inputNumber);
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(4181);
@@ -125,7 +125,7 @@ public class ZeckendorfNumberTest {
     public void representDistinctNumber45633() {
         int inputNumber = 45633;
 
-        zeckendorfNumber.generateFibonacci(threshold);
+        zeckendorfNumber.generateFibonacci(THRESHOLD);
         List<Integer> resultArrayOfNumbers = zeckendorfNumber.representNumber(inputNumber);
         List<Integer> expectedArray = new ArrayList<>();
         expectedArray.add(28657);
