@@ -10,7 +10,7 @@ public class OneHundredDoors {
     }
 
     public void go(int j) {
-        for (int i = 0 ; i < listOfDoors.length ; i = i + j ) {
+        for (int i = 0; i < listOfDoors.length; i = i + j) {
             listOfDoors[i] = !listOfDoors[i];
         }
     }
