@@ -1,10 +1,10 @@
 package org.xander.katas;
 
 public class SpellOutANumber {
-    final static int hundred = 100;
-    final static int thousand = 1000;
-    final static int million = 1_000_000;
-    final static int billion = 1_000_000_000;
+    static final int HUNDRED = 100;
+    static final int THOUSAND = 1000;
+    private static final int MILLION = 1_000_000;
+    private static final int BILLION = 1_000_000_000;
 
     public String spellOutOneDigitNumber(int number) {
         String result = "";
@@ -68,12 +68,12 @@ public class SpellOutANumber {
     public String spellOutThreeDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfHundreds = number / hundred;
+            int numberOfHundreds = number / HUNDRED;
             String hundredsPart = "";
             if (numberOfHundreds > 0) {
-                hundredsPart = spellOutOneDigitNumber(numberOfHundreds) + " hundred ";
+                hundredsPart = spellOutOneDigitNumber(numberOfHundreds) + " HUNDRED ";
             }
-            result = hundredsPart + spellOutTwoDigitNumberAbove20(number % hundred);
+            result = hundredsPart + spellOutTwoDigitNumberAbove20(number % HUNDRED);
         }
         return result.trim();
     }
@@ -81,12 +81,12 @@ public class SpellOutANumber {
     public String spellOutFourDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfThousands = number / thousand;
+            int numberOfThousands = number / THOUSAND;
             String thousandsPart = "";
             if (numberOfThousands > 0) {
-                thousandsPart = spellOutOneDigitNumber(numberOfThousands) + " thousand ";
+                thousandsPart = spellOutOneDigitNumber(numberOfThousands) + " THOUSAND ";
             }
-            result = thousandsPart + spellOutThreeDigitNumber(number % thousand);
+            result = thousandsPart + spellOutThreeDigitNumber(number % THOUSAND);
         }
         return result.trim();
     }
@@ -94,12 +94,12 @@ public class SpellOutANumber {
     public String spellOutFiveDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfThousands = number / thousand;
+            int numberOfThousands = number / THOUSAND;
             String thousandsPart = "";
             if (numberOfThousands > 0) {
-                thousandsPart = spellOutTwoDigitNumber(numberOfThousands) + " thousand ";
+                thousandsPart = spellOutTwoDigitNumber(numberOfThousands) + " THOUSAND ";
             }
-            result = thousandsPart + spellOutThreeDigitNumber(number % thousand);
+            result = thousandsPart + spellOutThreeDigitNumber(number % THOUSAND);
             }
         return result.trim();
     }
@@ -107,12 +107,12 @@ public class SpellOutANumber {
     public String spellOutSixDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfThousands = number / thousand;
+            int numberOfThousands = number / THOUSAND;
             String thousandsPart = "";
             if (numberOfThousands > 0) {
-                thousandsPart = spellOutThreeDigitNumber(numberOfThousands) + " thousand ";
+                thousandsPart = spellOutThreeDigitNumber(numberOfThousands) + " THOUSAND ";
             }
-            result = thousandsPart + spellOutThreeDigitNumber(number % thousand);
+            result = thousandsPart + spellOutThreeDigitNumber(number % THOUSAND);
         }
         return result.trim();
     }
@@ -120,12 +120,12 @@ public class SpellOutANumber {
     public String spellOutSevenDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfMillions = number / million;
+            int numberOfMillions = number / MILLION;
             String thousandsPart = "";
             if (numberOfMillions > 0) {
-                thousandsPart = spellOutOneDigitNumber(numberOfMillions) + " million ";
+                thousandsPart = spellOutOneDigitNumber(numberOfMillions) + " MILLION ";
             }
-            result = thousandsPart + spellOutSixDigitNumber(number % million);
+            result = thousandsPart + spellOutSixDigitNumber(number % MILLION);
         }
         return result.trim();
     }
@@ -133,12 +133,12 @@ public class SpellOutANumber {
     public String spellOutEightDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfMillions = number / million;
+            int numberOfMillions = number / MILLION;
             String thousandsPart = "";
             if (numberOfMillions > 0) {
-                thousandsPart = spellOutTwoDigitNumberAbove20(numberOfMillions) + " million ";
+                thousandsPart = spellOutTwoDigitNumberAbove20(numberOfMillions) + " MILLION ";
             }
-            result = thousandsPart + spellOutSixDigitNumber(number % million);
+            result = thousandsPart + spellOutSixDigitNumber(number % MILLION);
         }
         return result.trim();
     }
@@ -146,12 +146,12 @@ public class SpellOutANumber {
     public String spellOutNineDigitNumber(int number) {
         String result = "";
         if (number != 0) {
-            int numberOfMillions = number / million;
+            int numberOfMillions = number / MILLION;
             String thousandsPart = "";
             if (numberOfMillions > 0) {
-                thousandsPart = spellOutThreeDigitNumber(numberOfMillions) + " million ";
+                thousandsPart = spellOutThreeDigitNumber(numberOfMillions) + " MILLION ";
             }
-            result = thousandsPart + spellOutSixDigitNumber(number % million);
+            result = thousandsPart + spellOutSixDigitNumber(number % MILLION);
         }
         return result.trim();
     }
@@ -159,12 +159,12 @@ public class SpellOutANumber {
     public String spellOutTenDigitNumber(long number) {
         String result = "";
         if (number != 0) {
-            long numberOfBillions = number / billion;
+            long numberOfBillions = number / BILLION;
             String thousandsPart = "";
             if (numberOfBillions > 0) {
-                thousandsPart = spellOutTwoDigitNumberAbove20((int) numberOfBillions) + " billion ";
+                thousandsPart = spellOutTwoDigitNumberAbove20((int) numberOfBillions) + " BILLION ";
             }
-            result = thousandsPart + spellOutNineDigitNumber((int) (number % billion));
+            result = thousandsPart + spellOutNineDigitNumber((int) (number % BILLION));
         }
         return result.trim();
     }
