@@ -6,12 +6,10 @@ public class WordWrap {
             return testString;
         }
         StringBuilder stringBuilder = new StringBuilder(testString);
-        String result = "";
 
-        for (int i = columnNumber; i > 0 ; i--) {
+        for (int i = columnNumber; i > 0; i--) {
             if (testString.charAt(i) == ' ') {
-                return result +=
-                        stringBuilder.substring(0, i)
+                return stringBuilder.substring(0, i)
                         + wrap(stringBuilder.deleteCharAt(i).insert(i, '\n').toString().substring(i),
                                columnNumber).toString();
             }
