@@ -44,7 +44,7 @@ public class AnagramCalculation {
                     String.valueOf(rightPartToWorkOn.deleteCharAt(pointer))));
         }
         // to save original symbol from the root of the recursion
-        for (Iterator<String> iterator = workOnWords.iterator(); iterator.hasNext(); ) {
+        for (Iterator<String> iterator = workOnWords.iterator(); iterator.hasNext();) {
             listOfWords.add(leftPart + iterator.next());
         }
     }
@@ -57,7 +57,7 @@ public class AnagramCalculation {
 
     private void removeOriginalWordIfPresent(String word, Set<String> listOfWords) {
         if (listOfWords.contains(word)) {
-            for (Iterator<String> iterator = listOfWords.iterator(); iterator.hasNext(); ) {
+            for (Iterator<String> iterator = listOfWords.iterator(); iterator.hasNext();) {
                 if (iterator.next().equals(word)) {
                     iterator.remove();
                 }
@@ -69,7 +69,9 @@ public class AnagramCalculation {
         int length = word.length();
         int result = 1;
 
-        while(length > 0) result *= length--;
+        while (length > 0) {
+            result *= length--;
+        }
 
         int originalWordShouldNotBeCount = result - 1;
         return originalWordShouldNotBeCount;
