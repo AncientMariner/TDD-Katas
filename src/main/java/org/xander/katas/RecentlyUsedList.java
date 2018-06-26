@@ -36,15 +36,17 @@ public class RecentlyUsedList {
 
     public String getLastString() {
         int lastElement = 0;
-        if (itIsPossibleToGetAnElement())
+        if (itIsPossibleToGetAnElement()) {
             return getReversedStringContainer().get(lastElement);
+        }
         throw new UnsupportedOperationException(LIST_IS_EMPTY);
     }
 
     public String getFirstString() {
         int firstElement = stringContainer.size() - 1;
-        if (itIsPossibleToGetAnElement())
+        if (itIsPossibleToGetAnElement()) {
             return getReversedStringContainer().get(firstElement);
+        }
         throw new UnsupportedOperationException(LIST_IS_EMPTY);
     }
 
@@ -74,8 +76,9 @@ public class RecentlyUsedList {
 
         String elementToGet = "";
         for (int i = 0; i < stringContainer.size(); i++) {
-            if (i == index)
+            if (i == index) {
                 elementToGet = stringContainer.get(i);
+            }
         }
         return elementToGet;
     }
