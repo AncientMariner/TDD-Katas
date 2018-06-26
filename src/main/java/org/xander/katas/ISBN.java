@@ -35,7 +35,7 @@ public class ISBN {
             if ((i + 1) % 2 != 0) {
                 checkDigit += Integer.parseInt(String.valueOf(((char) (int) numberToCalculate.charAt(i))));
             } else {
-                checkDigit += Integer.parseInt(String.valueOf(((char) (int) numberToCalculate.charAt(i)) )) * 3;
+                checkDigit += Integer.parseInt(String.valueOf(((char) (int) numberToCalculate.charAt(i)))) * 3;
             }
         }
         return String.valueOf(((10 - (checkDigit % 10)) % 10));
