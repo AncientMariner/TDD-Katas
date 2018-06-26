@@ -30,7 +30,7 @@ public class ZeckendorfNumber {
                 }
                 if (resultArray.isEmpty()) {
                     resultArray.add(fibonacciRow[i]);
-                } else if(!resultArray.isEmpty() && fibonacciRow[i] + sumOfAlreadyPresentElementsIn(resultArray) <= inputNumber) {
+                } else if (!resultArray.isEmpty() && fibonacciRow[i] + sumOfAlreadyPresentElementsIn(resultArray) <= inputNumber) {
                     resultArray.add(fibonacciRow[i]);
                 }
             }
