@@ -29,6 +29,7 @@ public class CalcStatsTest {
         assertEquals(6, statistics.getNumberOfElementsInSequence());
         assertEquals(21.833333333333332, statistics.getAverageValue(), 0.00000001);
     }
+
     @Test
     public void anotherInput() {
         int[] arrayOfNumbers = {126, 54669, -242, -121, 392, 1111, 11, 77, 31415};
