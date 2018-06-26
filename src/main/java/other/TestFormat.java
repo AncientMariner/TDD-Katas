@@ -12,7 +12,7 @@ public class TestFormat {
         List<Character> numbers = new ArrayList<>();
 
         int index = 1;
-        for (int i = symbols.length - 1 ; i >= 0; i--) {
+        for (int i = symbols.length - 1; i >= 0; i--) {
             if (index++ % 3 == 0) {
                 numbers.add(symbols[i]);
                 if (i > 0) {
