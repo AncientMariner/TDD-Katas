@@ -3,8 +3,8 @@ package org.xander.katas;
 import java.util.Arrays;
 
 public class OddEvenPrime {
-    static final int range = 10000;
-    static boolean[] sieveOfEratosthenes = new boolean[range];
+    private static final int RANGE = 10000;
+    private static boolean[] sieveOfEratosthenes = new boolean[RANGE];
 
     static {
         Arrays.fill(sieveOfEratosthenes, true);
