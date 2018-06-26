@@ -26,9 +26,9 @@ public class LetterDiamond {
 //        }
 
         StringBuilder finalResult = new StringBuilder();
-        for (char ch : listOfSymbols)
+        for (char ch : listOfSymbols) {
             finalResult.append(String.valueOf(ch));
-
+        }
         return finalResult.toString();
     }
 
