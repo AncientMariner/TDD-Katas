@@ -3,7 +3,7 @@ package org.xander.katas;
 import java.util.Arrays;
 
 public class PrimeFactors {
-    static boolean[] sieveOfEratosthenes=new boolean[1000];
+    static boolean[] sieveOfEratosthenes = new boolean[1000];
 
     static {
         Arrays.fill(sieveOfEratosthenes, true);
@@ -20,7 +20,7 @@ public class PrimeFactors {
 
     public int[] factorize(int inputNumber) {
         int originalNumber = inputNumber;
-        int[] result = new int[(int) Math.sqrt((double) originalNumber+1)];
+        int[] result = new int[(int) Math.sqrt((double) originalNumber + 1)];
 
         int counterOfFactors = 0;
 
