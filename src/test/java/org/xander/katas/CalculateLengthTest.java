@@ -11,7 +11,7 @@ public class CalculateLengthTest {
 
     @Before
     public void setUp() {
-        calculateLength = new CalculateLength();
+        calculateLength = new CalculateLength(5, 1);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class CalculateLengthTest {
         int bigBrickNumber = 2;
         int littleBrickNumber = 1;
 
-        boolean isPossible = calculateLength.measure(totalLength, bigBrickNumber, littleBrickNumber);
+        boolean isPossible = new CalculateLength(5, 1).measure(totalLength, bigBrickNumber, littleBrickNumber);
         assertTrue("Length is not corresponding", isPossible);
     }
 
