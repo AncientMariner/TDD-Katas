@@ -1,7 +1,10 @@
 package org.xander.katas;
 
 public class BowlingGame {
-    private int[] rolls = new int[21];
+    private static final int NUMBER_OF_ROLLS = 21;
+    private static int numberOfFrames = 10;
+
+    private int[] rolls = new int[NUMBER_OF_ROLLS];
     private int currentRoll = 0;
 
     public void role(int pins) {
@@ -11,7 +14,7 @@ public class BowlingGame {
     public int score() {
         int score = 0;
         int firstInFrame = 0;
-        for (int frame = 0; frame < 10; frame++) {
+        for (int frame = 0; frame < numberOfFrames; frame++) {
             if (isStrike(firstInFrame)) {
                 score += 10 + newTwoBallsForStrike(firstInFrame);
                 firstInFrame++;
