@@ -1,7 +1,7 @@
 package org.xander.katas;
 
 public class SpiltString {
-    private static int dividedStringsArrayCounter = 0;
+    private int dividedStringsArrayCounter = 0;
     String stringWithoutDelimiter = "";
 
     public String[] splitString(String input, char[] delimiter) {
