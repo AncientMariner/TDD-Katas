@@ -48,13 +48,15 @@ public class Tennis {
         }
 
         if (resultOfThe1st > resultOfThe2nd) {
-            if (winCondition(resultOfThe1st, pointsDifference1st2nd))
+            if (winCondition(resultOfThe1st, pointsDifference1st2nd)) {
                 return "first has won";
+            }
         }
 
         if (resultOfThe2nd > resultOfThe1st) {
-            if (winCondition(resultOfThe2nd, pointsDifference2nd1st))
+            if (winCondition(resultOfThe2nd, pointsDifference2nd1st)) {
                 return "second has won";
+            }
         }
 
         if ((pointsDifference1st2nd == 1 || pointsDifference2nd1st == 1)
