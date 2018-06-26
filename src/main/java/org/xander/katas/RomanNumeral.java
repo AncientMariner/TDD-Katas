@@ -99,7 +99,6 @@ public class RomanNumeral {
         if (customDigitLength == 1) {
             return convertOneDigit(customDigit);
         } else {
-
             if (customDigitLength == 4) {
                 int fourNumber = Integer.parseInt(customDigit) / THOUSAND;
                 while (fourNumber > 0) {
@@ -111,12 +110,7 @@ public class RomanNumeral {
                 result = new StringBuilder(threeDigitsNumberConvert(customDigit, result.toString()));
             } else if (customDigitLength == 2) {
                 result = new StringBuilder(twoDigitsNumberConvert(customDigit, result.toString()));
-            }
-//            else
-//            if (customDigitLength == 1) {
-//                result = new StringBuilder(oneDigitNumberConvert(customDigit, result.toString()));
-//            }
-            else {
+            } else {
                 result = new StringBuilder(ABSENT_NUMBER);
             }
         }
@@ -133,7 +127,7 @@ public class RomanNumeral {
 
     private String twoDigitsNumberConvert(String customDigit, String result) {
         if ((Integer.parseInt(customDigit) % HUNDRED) != 0) {
-            if((Integer.parseInt(customDigit) % HUNDRED) >= 10) {
+            if ((Integer.parseInt(customDigit) % HUNDRED) >= 10) {
                 int twoNumber = (Integer.parseInt(customDigit) % HUNDRED) / TEN;
                 result += convertTwoDigit(String.valueOf(twoNumber * TEN));
             }
