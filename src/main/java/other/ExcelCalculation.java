@@ -1,12 +1,14 @@
 package other;
 
 public class ExcelCalculation {
-    char[] a = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
+    private char[] a = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
                 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
                 'u', 'v', 'w', 'x', 'y', 'z'};
 
     public String calculate(int number) {
-        if (number == 0) { return ""; }
+        if (number == 0) {
+            return "";
+        }
 
         String result = "";
 
