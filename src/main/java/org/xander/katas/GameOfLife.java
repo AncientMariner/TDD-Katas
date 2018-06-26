@@ -25,7 +25,7 @@ public class GameOfLife {
 
         for (int y = 0; y < sizeOfYDimension; y++) {
             for (int x = 0; x < sizeOfXDimension; x++) {
-                if(y == (liveCellPositionY - 1) && x == (liveCellPositionX - 1)){
+                if (y == (liveCellPositionY - 1) && x == (liveCellPositionX - 1)) {
                     livingCell[y * lengthOfXDimension(sizeOfXDimension) + x] = '*';
                 }
             }
@@ -53,7 +53,9 @@ public class GameOfLife {
         for (char element : cell.toCharArray()) {
             if (element != '\n') {
                 size++;
-            } else break;
+            } else {
+                break;
+            }
         }
         return size;
     }
@@ -119,12 +121,13 @@ public class GameOfLife {
 
         for (int y = 0; y < sizeOfYDimension; y++) {
             for (int x = 0; x < sizeOfXDimension; x++) {
-                if(livingElements.contains(y * (lengthOfXDimension(sizeOfXDimension)) + x))
-                if (currentElementIsLiving(livingCell[y * (lengthOfXDimension(sizeOfXDimension)) + x])
-                        && ensureHorizontalBoundaries(sizeOfXDimension, x, y, livingCell)
-                        && ensureVerticalBoundaries(sizeOfXDimension, x, y, livingCell)
-                        && ensureFourNeighboursPresent(sizeOfXDimension, x, y, livingCell)) {
-                    deadElements.add(y * (lengthOfXDimension(sizeOfXDimension)) + x);
+                if (livingElements.contains(y * (lengthOfXDimension(sizeOfXDimension)) + x)) {
+                    if (currentElementIsLiving(livingCell[y * (lengthOfXDimension(sizeOfXDimension)) + x])
+                            && ensureHorizontalBoundaries(sizeOfXDimension, x, y, livingCell)
+                            && ensureVerticalBoundaries(sizeOfXDimension, x, y, livingCell)
+                            && ensureFourNeighboursPresent(sizeOfXDimension, x, y, livingCell)) {
+                        deadElements.add(y * (lengthOfXDimension(sizeOfXDimension)) + x);
+                    }
                 }
             }
         }
@@ -217,7 +220,7 @@ public class GameOfLife {
                && currentElementIsLiving(livingCell[theElementAbove(sizeOfXDimension, x, y)])
 
                || (currentElementIsLiving(livingCell[nextElement(sizeOfXDimension, x, y)])
-               && currentElementIsLiving(livingCell[theElementAbove(sizeOfXDimension, x, y)])))) );
+               && currentElementIsLiving(livingCell[theElementAbove(sizeOfXDimension, x, y)])))));
     }
 
     private boolean threeElementsAreLivingOnVerticalBorders(int sizeOfXDimension, int sizeOfYDimension, int x, int y, char[] livingCell) {
@@ -324,10 +327,11 @@ public class GameOfLife {
         StringBuilder newGeneration = new StringBuilder();
         for (int y = 0; y < sizeOfYDimension; y++) {
             for (int x = 0; x < sizeOfXDimension; x++) {
-                if (livingElements.contains(y * (lengthOfXDimension(sizeOfXDimension)) + x))
+                if (livingElements.contains(y * (lengthOfXDimension(sizeOfXDimension)) + x)) {
                     newGeneration.append("*");
-                else
+                } else {
                     newGeneration.append(".");
+                }
             }
             newGeneration.append("\n");
         }
