@@ -4,12 +4,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 
 import static org.junit.Assert.*;
 
 public class RomanNumeralTest {
     RomanNumeral romanNumeral;
-    final String ABSENT_NUMBER = "there is no such a number";
+    final static String ABSENT_NUMBER = "there is no such a number";
 
     @Before
     public void setUp() {
@@ -372,26 +374,23 @@ public class RomanNumeralTest {
                 writtenLines = i;
             }
         } finally {
-            writer.close();
+            if (writer != null) {
+                writer.close();
+            }
         }
 
         int lineNumber = 0;
-        FileReader fileReader = null;
         BufferedReader bufferReader = null;
         try {
-            fileReader = new FileReader(fileWithRomanNumbers);
-            bufferReader = new BufferedReader(fileReader);
-            while ((bufferReader.readLine()) != null) {
-                lineNumber++;
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            bufferReader = Files.newBufferedReader(fileWithRomanNumbers.toPath(), Charset.defaultCharset());
+            lineNumber = (int) bufferReader.lines().count();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
             try {
-                fileReader.close();
-                bufferReader.close();
+                if (bufferReader != null) {
+                    bufferReader.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -407,7 +406,7 @@ public class RomanNumeralTest {
             System.out.println("There was an error with file(" +
                     fileWithRomanNumbers.getName() +
                     ") deletion. Please delete manually");
-            System.exit(0);
+            throw new RuntimeException("file was not deleted");
         }
     }
 }
