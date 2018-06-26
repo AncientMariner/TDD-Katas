@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 public class StringCalculatorTest {
 
     StringCalculator stringCalculator;
-    final int zero = 0;
+    private static final int ZERO = 0;
 
     @Before
     public void setUp() {
@@ -20,7 +20,7 @@ public class StringCalculatorTest {
     public void zeroParametersTest() {
         int sum = stringCalculator.add();
 
-        assertEquals(zero, sum);
+        assertEquals(ZERO, sum);
     }
 
     @Test
@@ -56,18 +56,12 @@ public class StringCalculatorTest {
 
     @Test
     public void zeroStringTest() {
-        String number = "";
-        Integer sum = stringCalculator.add(number);
-
-        assertEquals(new Integer(zero), sum);
+        assertEquals(ZERO, stringCalculator.add(""));
     }
 
     @Test
     public void emptyStringTest() {
-        String number = "    ";
-        Integer sum = stringCalculator.add(number);
-
-        assertEquals(new Integer(zero), sum);
+        assertEquals(ZERO, stringCalculator.add("    "));
     }
 
     @Test
@@ -187,20 +181,20 @@ public class StringCalculatorTest {
         String number2 = "0";
         Integer sum1 = stringCalculator.add(number1, number2);
 
-        assertEquals(Integer.valueOf(zero), sum1);
+        assertEquals(Integer.valueOf(ZERO), sum1);
 
 
         String number3= "0";
         String number4 = "";
         Integer sum2 = stringCalculator.add(number3, number4);
 
-        assertEquals(Integer.valueOf(zero), sum2);
+        assertEquals(Integer.valueOf(ZERO), sum2);
 
         String number5= "";
         String number6 = "0";
         Integer sum3 = stringCalculator.add(number5, number6);
 
-        assertEquals(Integer.valueOf(zero), sum3);
+        assertEquals(Integer.valueOf(ZERO), sum3);
     }
 
     @Test
@@ -209,7 +203,7 @@ public class StringCalculatorTest {
         String number2 = " 0";
         Integer sum1 = stringCalculator.add(number1, number2);
 
-        assertEquals(Integer.valueOf(zero), sum1);
+        assertEquals(Integer.valueOf(ZERO), sum1);
 
         String number3= " 5";
         String number4 = "  ";
@@ -221,7 +215,7 @@ public class StringCalculatorTest {
         String number6 = "0";
         Integer sum3 = stringCalculator.add(number5, number6);
 
-        assertEquals(Integer.valueOf(zero), sum3);
+        assertEquals(Integer.valueOf(ZERO), sum3);
 
         String number7 = " ";
         String number8 = "3 ";
