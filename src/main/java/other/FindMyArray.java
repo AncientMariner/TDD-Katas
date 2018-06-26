@@ -1,6 +1,6 @@
 package other;
 
-public class FindMyArray implements FindArray{
+public class FindMyArray implements FindArray {
     @Override
     public int findArray(int[] array, int[] subArray) {
         if (array == null
@@ -20,8 +20,8 @@ public class FindMyArray implements FindArray{
 
                     //no need to check leftovers because starting index is not found going to the next i
 //                    if (j > 0 && startingIndex == -1) {
-//                        break;
-//                    }
+//                        break;s such as 'printResu
+//                    }s such as 'printResu
 
 
 
@@ -35,8 +35,9 @@ public class FindMyArray implements FindArray{
                     //element found second time
                    // if (startingIndex >= 0) {
                         if (array.length - i >= subArray.length) {
-                            if (i - startingIndex > 1 && j == 0)
+                            if (i - startingIndex > 1 && j == 0) {
                                 startingIndex = i;
+                            }
                         }
                   //  }
                 }
