@@ -3,9 +3,7 @@ package org.xander.katas;
 public class CalcStats {
     public Statistics calculateNumbers(int[] arrayOfNumbers) {
         int counterOfElements = 0;
-        for (int elementInArray : arrayOfNumbers) {
-            counterOfElements++;
-        }
+        counterOfElements = arrayOfNumbers.length;
 
         int minimumValue = 0;
         for (int min : arrayOfNumbers) {
