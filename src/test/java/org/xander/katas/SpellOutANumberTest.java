@@ -100,102 +100,102 @@ public class SpellOutANumberTest {
     @Test
     public void threeDigitNumber177() {
         String result = spellOutANumber.spellOutThreeDigitNumber(177);
-        assertEquals("one hundred seventy seven", result);
+        assertEquals("one HUNDRED seventy seven", result);
     }
 
     @Test
     public void anotherThreeDigitNumber134() {
         String result = spellOutANumber.spellOutThreeDigitNumber(134);
-        assertEquals("one hundred thirty four", result);
+        assertEquals("one HUNDRED thirty four", result);
     }
 
     @Test
     public void anotherThreeDigitNumber100() {
-        String result = spellOutANumber.spellOutThreeDigitNumber(SpellOutANumber.hundred);
-        assertEquals("one hundred", result);
+        String result = spellOutANumber.spellOutThreeDigitNumber(SpellOutANumber.HUNDRED);
+        assertEquals("one HUNDRED", result);
     }
 
     @Test
     public void anotherThreeDigitNumber101() {
         String result = spellOutANumber.spellOutThreeDigitNumber(101);
-        assertEquals("one hundred one", result);
+        assertEquals("one HUNDRED one", result);
     }
 
     @Test
     public void anotherThreeDigitNumber110() {
         String result = spellOutANumber.spellOutThreeDigitNumber(110);
-        assertEquals("one hundred ten", result);
+        assertEquals("one HUNDRED ten", result);
     }
 
     @Test
     public void anotherThreeDigitNumber999() {
         String result = spellOutANumber.spellOutThreeDigitNumber(999);
-        assertEquals("nine hundred ninety nine", result);
+        assertEquals("nine HUNDRED ninety nine", result);
     }
 
     @Test
     public void anotherFourDigitNumber4529() {
         String result = spellOutANumber.spellOutFourDigitNumber(4529);
-        assertEquals("four thousand five hundred twenty nine", result);
+        assertEquals("four THOUSAND five HUNDRED twenty nine", result);
     }
 
     @Test
     public void anotherFourDigitNumber1000() {
-        String result = spellOutANumber.spellOutFourDigitNumber(SpellOutANumber.thousand);
-        assertEquals("one thousand", result);
+        String result = spellOutANumber.spellOutFourDigitNumber(SpellOutANumber.THOUSAND);
+        assertEquals("one THOUSAND", result);
     }
 
     @Test
     public void anotherFourDigitNumber9999() {
         String result = spellOutANumber.spellOutFourDigitNumber(9999);
-        assertEquals("nine thousand nine hundred ninety nine", result);
+        assertEquals("nine THOUSAND nine HUNDRED ninety nine", result);
     }
 
     @Test
     public void fiveDigitNumber19999() {
         String result = spellOutANumber.spellOutFiveDigitNumber(19999);
-        assertEquals("nineteen thousand nine hundred ninety nine", result);
+        assertEquals("nineteen THOUSAND nine HUNDRED ninety nine", result);
     }
 
     @Test
     public void sixDigitNumber719999() {
         String result = spellOutANumber.spellOutSixDigitNumber(719999);
-        assertEquals("seven hundred nineteen thousand nine hundred ninety nine", result);
+        assertEquals("seven HUNDRED nineteen THOUSAND nine HUNDRED ninety nine", result);
     }
 
     @Test
     public void sevenDigitNumber1719999() {
         String result = spellOutANumber.spellOutSevenDigitNumber(1_719_999);
-        assertEquals("one million seven hundred nineteen thousand nine hundred ninety nine", result);
+        assertEquals("one MILLION seven HUNDRED nineteen THOUSAND nine HUNDRED ninety nine", result);
     }
 
     @Test
     public void eightDigitNumber43719999() {
         String result = spellOutANumber.spellOutEightDigitNumber(43_112_603);
-        assertEquals("forty three million one hundred twelve thousand six hundred three", result);
+        assertEquals("forty three MILLION one HUNDRED twelve THOUSAND six HUNDRED three", result);
     }
 
     @Test
     public void nineDigitNumber143719999() {
         String result = spellOutANumber.spellOutNineDigitNumber(143_112_603);
-        assertEquals("one hundred forty three million one hundred twelve thousand six hundred three", result);
+        assertEquals("one HUNDRED forty three MILLION one HUNDRED twelve THOUSAND six HUNDRED three", result);
     }
 
     @Test
     public void tenDigitNumber143719999() {
         String result = spellOutANumber.spellOutTenDigitNumber(15_143_112_603L);
-        assertEquals("fifteen billion one hundred forty three million one hundred twelve thousand six hundred three", result);
+        assertEquals("fifteen BILLION one HUNDRED forty three MILLION one HUNDRED twelve THOUSAND six HUNDRED three", result);
     }
 
     @Test
     public void anyNumberBelow100Billion() {
         String result = spellOutANumber.spellOutANumber(25_143_112_603L);
-        assertEquals("twenty five billion one hundred forty three million one hundred twelve thousand six hundred three", result);
+        assertEquals("twenty five BILLION one HUNDRED forty three MILLION one HUNDRED twelve THOUSAND six HUNDRED three", result);
     }
 
     @Test
     public void anotherAnyNumberBelow100Billion() {
         String result = spellOutANumber.spellOutANumber((long) 25_131_263);
-        assertEquals("twenty five million one hundred thirty one thousand two hundred sixty three", result);
+        assertEquals("twenty five MILLION one HUNDRED thirty one THOUSAND two HUNDRED sixty three", result);
     }
 }
