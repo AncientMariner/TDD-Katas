@@ -107,7 +107,7 @@ public class SplitStringTest {
 
         for (int i = 0; i < 10000000; i++) {
             startDateTime = System.nanoTime();
-            input.split("1", 6);
+//            input.split("1", 6);
             endDateTime = System.nanoTime();
             averageResultOfSplit += (endDateTime - startDateTime);
 
