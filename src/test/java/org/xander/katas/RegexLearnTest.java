@@ -675,31 +675,31 @@ public class RegexLearnTest {
         assertEquals("-foo-foo-foo-", sb.toString());
     }
 
-    @Rule
-    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
-
-    @Test
-    public void regexException() {
-        Pattern pattern = null;
-        Matcher matcher = null;
-
-        while (true) {
-            try{
-                //noinspection MalformedRegex specifically made for error check
-                pattern = Pattern.compile("\\?i)foo");
-                matcher = pattern.matcher("foo");
-            }
-            catch(PatternSyntaxException pse){
-                assertEquals("\\?i)foo", pse.getPattern());
-                assertEquals("Unmatched closing ')'", pse.getDescription());
-                assertEquals("Unmatched closing ')' near index 2\n\\?i)foo\n  ^", pse.getMessage());
-                assertEquals(2, pse.getIndex());
-
-                exit.expectSystemExitWithStatus(0);
-                System.exit(0);
-            }
-        }
-    }
+//    @Rule
+//    public final ExpectedSystemExit exit = ExpectedSystemExit.none();
+//
+//    @Test
+//    public void regexException() {
+//        Pattern pattern = null;
+//        Matcher matcher = null;
+//
+//        while (true) {
+//            try{
+//                //noinspection MalformedRegex specifically made for error check
+//                pattern = Pattern.compile("\\?i)foo");
+//                matcher = pattern.matcher("foo");
+//            }
+//            catch(PatternSyntaxException pse){
+//                assertEquals("\\?i)foo", pse.getPattern());
+//                assertEquals("Unmatched closing ')'", pse.getDescription());
+//                assertEquals("Unmatched closing ')' near index 2\n\\?i)foo\n  ^", pse.getMessage());
+//                assertEquals(2, pse.getIndex());
+//
+//                exit.expectSystemExitWithStatus(0);
+//                System.exit(0);
+//            }
+//        }
+//    }
 
     @Test
     public void firstAndLastNamesAreTheSame() {
