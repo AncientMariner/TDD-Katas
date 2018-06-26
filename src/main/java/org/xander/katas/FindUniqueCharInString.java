@@ -9,7 +9,7 @@ public class FindUniqueCharInString {
         for (int i = 0; i < s.length(); i++) {
             if (i == 0
                     && i + 1 < s.length()
-                    && s.charAt(i + 1) != s.charAt(i) ) {
+                    && s.charAt(i + 1) != s.charAt(i)) {
                 number = i;
                 break;
             }
@@ -21,7 +21,7 @@ public class FindUniqueCharInString {
                 break;
             }
             if (i == s.length() - 1
-                    && s.charAt(i - 1) != s.charAt(i) ) {
+                    && s.charAt(i - 1) != s.charAt(i)) {
                 number = i;
                 break;
             }
