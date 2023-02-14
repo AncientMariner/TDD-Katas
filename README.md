@@ -12,8 +12,8 @@ Learning TDD. Katas development
 	expressing each digit separately starting with the
 	leftmost digit and skipping any digit with a value of zero."
 	    
-| Trivial number |                           |               |   
-|-------------|--------------|---------------|---------------|  
+|Trivial number | | | |
+|---|---|---|---|
 | 1 ->    "I" | 10 ->    "X" | 100 ->    "C" | 1000 ->    "M"
 | 2 ->   "II" | 20 ->   "XX" | 200 ->   "CC" | 2000 ->   "MM"
 | 3 ->  "III" | 30 ->  "XXX" | 300 ->  "CCC" | 3000 ->  "MMM"
